@@ -593,8 +593,11 @@ function initializeDB() {
         localStorage.setItem("sae_founders", JSON.stringify(DEFAULT_FOUNDERS));
     }
     
-    // Sync with cloud database in background
-    syncWithFirestore();
+    // Sync with cloud database in background ONLY ONCE per page load to prevent infinite render loops
+    if (!window.isDBSynced) {
+        window.isDBSynced = true;
+        syncWithFirestore();
+    }
 }
 
 // Database Controllers

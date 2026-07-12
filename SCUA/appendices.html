@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملاحق الفنية - الكود السعودي للزراعة الحضرية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .appendix-section { background: white; margin-bottom: 20px; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .appendix-header { background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%); color: white; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .appendix-title { font-size: 1.3rem; font-weight: 700; margin: 0; }
+        .appendix-content { padding: 30px; display: none; border-top: 1px solid #eee; }
+        .table-container { overflow-x: auto; }
+        .code-table { width: 100%; border-collapse: collapse; text-align: center; }
+        .code-table th, .code-table td { padding: 12px 15px; border: 1px solid #ddd; }
+        .code-table th { background-color: #f2f2f2; }
+        .checklist li { list-style-type: none; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين" style="width: 120px; height: auto; border-radius: 8px;">
+                    <div class="logo-text">
+                        <h1>الملاحق الفنية</h1>
+                        <p>Technical Appendices</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#books">كتب الكود</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding: 60px 0;">
+        <div class="container">
+            <div class="appendix-section">
+                <div class="appendix-header" onclick="toggleAppendix('appendixA')">
+                    <h3 class="appendix-title">الملحق (أ): الدليل الوطني لاختيار النباتات</h3><i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="appendix-content" id="appendixA">
+                    <p>هذه القائمة هي نموذج استرشادي، وتصدر القوائم الكاملة والمعتمدة لكل منطقة من قبل الجهة المشرفة على الكود.</p>
+                    <a href="plant-guide.html" class="btn btn-primary">الانتقال إلى دليل النباتات التفاعلي</a>
+                </div>
+            </div>
+            <div class="appendix-section">
+                <div class="appendix-header" onclick="toggleAppendix('appendixB')">
+                    <h3 class="appendix-title">الملحق (ب): التفاصيل الإنشائية القياسية</h3><i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="appendix-content" id="appendixB">
+                    <h4>تفصيلة (ب-١): زراعة شجرة قياسية في منطقة مرصوفة</h4>
+                    <ol>
+                        <li>الحفر بأبعاد لا تقل عن 2م × 2م × 2م.</li>
+                        <li>تركيب حاجز جذور بعمق 60 سم على الجوانب المجاورة للرصيف.</li>
+                        <li>تركيب أنبوب تهوية وري عمودي بقطر 10 سم.</li>
+                        <li>وضع طبقة من الحصى (إذا لزم الأمر) ثم طبقة من النسيج الفاصل.</li>
+                        <li>الردم بتربة زراعية معتمدة حتى منسوب الزراعة.</li>
+                        <li>زراعة الشجرة بحيث يكون عنق الجذر أعلى قليلاً من مستوى سطح التربة.</li>
+                        <li>إكمال الردم والري الغزير.</li>
+                        <li>وضع طبقة غطاء عضوي (Mulch) بسمك 7.5 سم.</li>
+                        <li>تركيب سنادتين خشبيتين وربط الشجرة بأربطة مرنة.</li>
+                        <li>تركيب غطاء الحوض المعدني (Tree Grate).</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="appendix-section">
+                <div class="appendix-header" onclick="toggleAppendix('appendixC')">
+                    <h3 class="appendix-title">الملحق (ج): ورقة عمل حساب ميزانية المياه (LWR)</h3><i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="appendix-content" id="appendixC">
+                    <h4>المعادلة الأساسية: LWR = (ETo × KL × A) / IE</h4>
+                    <p>مثال عملي لمشروع في الرياض:</p>
+                    <ul>
+                        <li>المساحة (A): 1000 م² (200 م² مسطح أخضر، 800 م² شجيرات).</li>
+                        <li>البخر-نتح (ETo): متوسط 8 مم/يوم في الصيف.</li>
+                        <li>معامل الموقع (KL): 0.8 للمسطح الأخضر، 0.4 للشجيرات.</li>
+                        <li>كفاءة الري (IE): 0.75 للرشاشات، 0.85 للتنقيط.</li>
+                    </ul>
+                    <p><strong>حساب المسطح:</strong> (8 × 0.8 × 200) / 0.75 = 1706 لتر/يوم.</p>
+                    <p><strong>حساب الشجيرات:</strong> (8 × 0.4 × 800) / 0.85 = 3011 لتر/يوم.</p>
+                    <p><strong>إجمالي الاحتياج المائي للمشروع:</strong> 1706 + 3011 = 4717 لتر/يوم.</p>
+                </div>
+            </div>
+            <div class="appendix-section">
+                <div class="appendix-header" onclick="toggleAppendix('appendixD')">
+                    <h3 class="appendix-title">الملحق (د): قائمة فحص التسليم الابتدائي</h3><i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="appendix-content" id="appendixD">
+                    <ul class="checklist">
+                        <li><input type="checkbox" id="d1"><label for="d1"> تم تسليم المخططات التنفيذية النهائية (As-Built Drawings).</label></li>
+                        <li><input type="checkbox" id="d2"><label for="d2"> تم تسليم دليل التشغيل والصيانة.</label></li>
+                        <li><input type="checkbox" id="d3"><label for="d3"> جودة النباتات مطابقة للمواصفات.</label></li>
+                        <li><input type="checkbox" id="d4"><label for="d4"> تم اجتياز اختبار الضغط لشبكة الري بنجاح.</label></li>
+                        <li><input type="checkbox" id="d5"><label for="d5"> تسليم الموقع نظيفاً وجاهزاً للتشغيل.</label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="appendix-section">
+                <div class="appendix-header" onclick="toggleAppendix('appendixE')">
+                    <h3 class="appendix-title">الملحق (هـ): جدول المخالفات والجزاءات</h3><i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="appendix-content" id="appendixE">
+                    <div class="table-container">
+                        <table class="code-table">
+                            <thead><tr><th>وصف المخالفة</th><th>مرجع الكود</th><th>الغرامة (ريال)</th></tr></thead>
+                            <tbody>
+                                <tr><td>عدم ري أو عدم كفاية مياه الري للمتر المربع</td><td>SAC-611</td><td>10 لكل م² (يومياً)</td></tr>
+                                <tr><td>الري بماء غير صالح</td><td>SAC-211-2.0</td><td>2000</td></tr>
+                                <tr><td>عدم تغيير شجرة أو نخلة ميتة</td><td>SAC-601</td><td>200 (لكل شجرة)</td></tr>
+                                <tr><td>التقليم الجائر الذي يشوه الشجرة</td><td>SAC-612</td><td>200 (لكل شجرة)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 جمعية المهندسين الزراعيين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAppendix(appendixId) {
+            const content = document.getElementById(appendixId);
+            const icon = content.previousElementSibling.querySelector('i');
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                content.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+    </script>
+</body>
+</html>

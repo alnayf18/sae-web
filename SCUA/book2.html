@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكتاب الثاني: الموارد الطبيعية والتخطيط البيئي - SAC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .code-content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #E8F5E8;
+            padding-bottom: 30px;
+        }
+
+        .chapter:last-child {
+            border-bottom: none;
+        }
+
+        .chapter-title {
+            color: #2E7D32;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-number {
+            color: #4CAF50;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .subsection {
+            margin-bottom: 15px;
+            padding-right: 20px;
+            border-right: 3px solid #C8E6C9;
+        }
+
+        .content-text {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .toc {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            color: #2E7D32;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .toc li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .toc li a:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين"
+                        style="width: 120px; height: auto; border-radius: 8px;">
+                    <div class="logo-text">
+                        <h1>الكتاب الثاني: الموارد الطبيعية والتخطيط البيئي</h1>
+                        <p>SAC-200</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#books">كتب الكود</a></li>
+                        <li><a href="index.html#tools">الأدوات</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="code-content">
+                <div class="toc">
+                    <h3><i class="fas fa-list"></i> فهرس الكتاب الثاني</h3>
+                    <ul>
+                        <li><a href="#chapter210">الباب 210: كود إدارة الموارد المائية</a></li>
+                        <li><a href="#chapter220">الباب 220: كود التربة والوسط الزراعي المستدام</a></li>
+                        <li><a href="#chapter230">الباب 230: كود النباتات وقاعدة البيانات الوطنية</a></li>
+                    </ul>
+                </div>
+
+                <div class="chapter" id="chapter210">
+                    <h2 class="chapter-title">الباب 210: كود إدارة الموارد المائية</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-211: تقييم جودة المياه</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-211-1.0 (تحليل المياه):</strong> إلزامية إجراء تحليل
+                                كيميائي شامل لمصدر مياه الري المقترح للمشروع قبل البدء في أعمال التصميم.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-211-2.0 (معايير جودة المياه للري):</strong><br>
+                                - <strong>الملوحة (TDS/EC):</strong> ممتاز: أقل من 1000 ppm. مقبول: 1000-2000 ppm. يتطلب
+                                معالجة: 2000-4000 ppm. ممنوع: أعلى من 4000 ppm.<br>
+                                - <strong>درجة الحموضة (pH):</strong> يجب أن تتراوح بين 6.5 و 8.4.<br>
+                                - <strong>نسبة امتصاص الصوديوم (SAR):</strong> يجب ألا تتجاوز 9.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-212: مصادر المياه وأولوياتها</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-212-1.0:</strong> تحديد أولوية مصادر الري بشكل إلزامي:
+                                1) مياه الأمطار المحصودة، 2) المياه الرمادية المعالجة، 3) المياه المعالجة ثلاثياً (TSE)،
+                                4) مصادر أخرى معتمدة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-213: حصاد مياه الأمطار</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-213-1.0 (التصميم الإلزامي):</strong> يجب تصميم جميع
+                                المشاريع الجديدة لتوجيه وتجميع مياه الأمطار الساقطة على الأسطح والممرات والمناطق
+                                المرصوفة إلى مناطق تجميع أو مناطق زراعية للاستفادة منها.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-213-2.0 (تقنيات التجميع):</strong> يشمل حدائق المطر،
+                                الآبار الجافة، والأرصفة المنفذة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter220">
+                    <h2 class="chapter-title">الباب 220: كود التربة والوسط الزراعي المستدام</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-221: تصنيف وتحليل التربة</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-221-1.0 (التحليل الإلزامي):</strong> إلزامية إجراء تحليل
+                                فيزيائي وكيميائي للتربة في الموقع قبل البدء في التصميم لتحديد قوامها، ملوحتها، حموضتها،
+                                ومحتواها العضوي.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-222: مواصفات خلطات التربة الزراعية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-222-1.0 (الخلطة القياسية):</strong> 60% رمل زراعي، 30%
+                                تربة طينية، 10% سماد عضوي متحلل.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-222-2.0 (الخلطة خفيفة الوزن للأسطح الخضراء):</strong>
+                                50% بيتموس، 30% بيرلايت، 20% سماد عضوي متحلل. يجب ألا تزيد الكثافة الجافة للخلطة عن 1100
+                                كجم/م³.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-223: الغطاء العضوي (Mulch)</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-223-1.0 (الاستخدام الإلزامي):</strong> إلزامية تغطية
+                                جميع أحواض الزراعة المفتوحة بطبقة من الغطاء العضوي بسماكة تتراوح بين 7-10 سم.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-223-2.0 (المواد المعتمدة):</strong> يسمح باستخدام نشارة
+                                الخشب المعالجة، لحاء الأشجار، أو الحصى. يمنع استخدام المخلفات النباتية غير المعالجة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-224: فحص التربة من الملوثات</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-224-1.0 (الفحص الإلزامي للملوثات):</strong> يجب إجراء
+                                فحص شامل للتربة من الملوثات التالية قبل أي مشروع زراعي حضري، خاصة في المواقع القريبة من
+                                المباني القديمة أو المناطق الصناعية السابقة:<br>
+                                - <strong>الرصاص (Pb):</strong> الحد الأقصى المسموح 400 ppm<br>
+                                - <strong>الكادميوم (Cd):</strong> الحد الأقصى المسموح 3 ppm<br>
+                                - <strong>الزرنيخ (As):</strong> الحد الأقصى المسموح 20 ppm<br>
+                                - <strong>الزئبق (Hg):</strong> الحد الأقصى المسموح 1 ppm<br>
+                                - <strong>الهيدروكربونات النفطية:</strong> الحد الأقصى 100 ppm</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-224-2.0 (المعالجة في حالة التلوث):</strong> في حالة
+                                تجاوز الحدود المسموحة، يجب اتخاذ أحد الإجراءات التالية:<br>
+                                - استخدام أحواض زراعة مرتفعة بتربة نظيفة مستوردة<br>
+                                - إضافة الفوسفات لتقليل امتصاص الرصاص من قبل النباتات<br>
+                                - استخدام الفحم النشط لامتصاص الملوثات العضوية<br>
+                                - إزالة التربة الملوثة واستبدالها بتربة نظيفة (في الحالات الشديدة)</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-224-3.0 (تكرار الفحص):</strong> يجب إعادة فحص التربة كل
+                                5 سنوات في المناطق الحضرية، وكل 3 سنوات في المناطق الصناعية السابقة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-225: معايير الزراعة العمودية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-225-1.0 (الأوساط الزراعية الخفيفة):</strong> يجب استخدام
+                                أوساط زراعية خفيفة الوزن في أنظمة الزراعة العمودية بالنسب التالية:<br>
+                                - البيرلايت: 30-40%<br>
+                                - البيتموس أو ألياف جوز الهند: 30-40%<br>
+                                - الفيرميكوليت: 20-30%<br>
+                                - الكثافة الجافة: لا تزيد عن 400 كجم/م³</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-225-2.0 (كفاءة استخدام المياه):</strong> يجب أن توفر
+                                أنظمة
+                                الزراعة العمودية 80-90% من المياه مقارنة بالزراعة التقليدية من خلال أنظمة الري المغلقة
+                                وإعادة تدوير المياه.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-225-3.0 (الإنتاجية):</strong> يجب أن تحقق أنظمة الزراعة
+                                العمودية إنتاجية لا تقل عن 10 أضعاف الزراعة التقليدية لكل متر مربع من المساحة الأرضية.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter230">
+                    <h2 class="chapter-title">الباب 230: كود النباتات وقاعدة البيانات الوطنية</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-231: قاعدة البيانات الوطنية للنباتات (KSA-PDB)</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-231-1.0 (المرجعية الإلزامية):</strong> تعتبر قاعدة
+                                البيانات
+                                الوطنية للنباتات هي المرجع الرسمي الوحيد لاختيار الأنواع النباتية المسموح بها في
+                                المشاريع.
+                            </p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-231-2.0 (محتويات القاعدة):</strong> يجب أن تحتوي المنصة
+                                على
+                                معلومات تفصيلية لكل نبات تشمل: الاسم العلمي والشائع، الخصائص، المتطلبات المائية
+                                والبيئية،
+                                الوظيفة، والصيانة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-232: النباتات المحظورة والغازية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-232-1.0:</strong> يمنع منعاً باتاً استيراد أو زراعة أو
+                                إكثار
+                                أي نوع نباتي مدرج في قائمة النباتات المحظورة والغازية في الملحق الفني (د).</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-232-2.0:</strong> يجب على جميع المشاتل ومقاولي تنسيق
+                                المواقع
+                                الالتزام بهذه القائمة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 جمعية المهندسين الزراعيين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

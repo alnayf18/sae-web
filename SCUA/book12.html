@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكتاب الثاني عشر: التقنيات الزراعية الذكية - SAC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .code-content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #E8F5E8;
+            padding-bottom: 30px;
+        }
+
+        .chapter:last-child {
+            border-bottom: none;
+        }
+
+        .chapter-title {
+            color: #2E7D32;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-number {
+            color: #4CAF50;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .subsection {
+            margin-bottom: 15px;
+            padding-right: 20px;
+            border-right: 3px solid #C8E6C9;
+        }
+
+        .content-text {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .toc {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            color: #2E7D32;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .toc li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .toc li a:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين"
+                        style="width: 120px; height: auto; border-radius: 8px;">
+                    <div class="logo-text">
+                        <h1>الكتاب الثاني عشر: التقنيات الزراعية الذكية</h1>
+                        <p>SAC-1200</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#books">كتب الكود</a></li>
+                        <li><a href="index.html#tools">الأدوات</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="code-content">
+                <div class="toc">
+                    <h3><i class="fas fa-list"></i> فهرس الكتاب الثاني عشر</h3>
+                    <ul>
+                        <li><a href="#chapter1210">الباب 1210: أنظمة الري الذكية (Smart Irrigation)</a></li>
+                        <li><a href="#chapter1220">الباب 1220: إنترنت الأشياء والمراقبة (IoT & Monitoring)</a></li>
+                    </ul>
+                </div>
+
+                <div class="chapter" id="chapter1210">
+                    <h2 class="chapter-title">الباب 1210: أنظمة الري الذكية</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1211: وحدات التحكم المركزية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1211-1.0 (التحكم المناخي):</strong> يجب أن تكون جميع
+                                وحدات التحكم في الري (Controllers) في المشاريع التي تزيد مساحتها عن 1000 متر مربع مرتبطة
+                                بمحطة أرصاد جوية محلية أو عبر الإنترنت لتعديل جداول الري تلقائياً بناءً على الطقس
+                                (ET-based).</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1211-2.0 (كشف التسرب):</strong> يجب تزويد النظام بحساسات
+                                تدفق (Flow Sensors) تكتشف التدفق غير الطبيعي (كسر في الأنابيب) وتقوم بإغلاق الصمام
+                                الرئيسي تلقائياً وإرسال تنبيه للمشغل.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1212: الحساسات الأرضية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1212-1.0 (حساسات الرطوبة):</strong> يجب تركيب حساسات
+                                رطوبة تربة (Soil Moisture Sensors) في كل منطقة ري (Hydrozone) لضمان عدم الري إلا عند
+                                الحاجة الفعلية للنبات.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1212-2.0 (حساسات المطر):</strong> إلزامية تركيب حساسات
+                                إيقاف الري عند هطول الأمطار (Rain Sensors) في جميع أنظمة الري الأوتوماتيكية.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter1220">
+                    <h2 class="chapter-title">الباب 1220: إنترنت الأشياء والمراقبة</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1221: الأتمتة والتحكم عن بعد</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1221-1.0 (الاتصال):</strong> يفضل أن تكون أنظمة إدارة
+                                الحدائق العامة متصلة بشبكة مركزية تتيح المراقبة والتحكم عن بعد (Centralized Management
+                                System).</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1221-2.0 (تحليل البيانات):</strong> استخدام خوارزميات
+                                الذكاء الاصطناعي لتحليل بيانات استهلاك المياه وصحة النباتات للتنبؤ بالأعطال وجدولة
+                                الصيانة الوقائية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 جمعية المهندسين الزراعيين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أخبارنا وفعالياتنا | جمعية المهندسين الزراعيين (SAE)</title>
+    <meta name="description" content="تابع آخر الأخبار، الأنشطة، والفعاليات التي تقيمها جمعية المهندسين الزراعيين (SAE) بالرياض.">
+    <link rel="icon" type="image/png" href="./assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .news-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(197, 160, 89, 0.3);
+        }
+        
+        .news-img-wrapper {
+            position: relative;
+            height: 220px;
+            background-color: #f4f6f5;
+            overflow: hidden;
+        }
+        
+        .news-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+        
+        .news-card:hover .news-img {
+            transform: scale(1.06);
+        }
+        
+        .news-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .news-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .news-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            line-height: 1.4;
+        }
+        
+        .news-info p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        
+        .news-readmore {
+            color: var(--accent-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .news-readmore:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo-wrapper">
+                <a href="./index.html">
+                    <img src="./assets/logo.png" alt="شعار جمعية المهندسين الزراعيين" class="logo-img">
+                </a>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-link-item"><a href="./index.html" class="nav-link">الرئيسية</a></li>
+                    <li class="nav-link-item"><a href="./about.html" class="nav-link">عن الجمعية</a></li>
+                    <li class="nav-link-item"><a href="./objectives.html" class="nav-link">أهدافنا</a></li>
+                    <li class="nav-link-item"><a href="./memberships.html" class="nav-link">العضويات</a></li>
+                    <li class="nav-link-item"><a href="./governance.html" class="nav-link">الحوكمة والسياسات</a></li>
+                    <li class="nav-link-item"><a href="./news.html" class="nav-link active">الأخبار والفعاليات</a></li>
+                    <li class="nav-link-item"><a href="./SCUA/index.html" class="nav-link">كود الزراعة الحضرية (SCUA)</a></li>
+                    <li class="nav-link-item"><a href="./contact.html" class="nav-link">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-cta">
+                <a href="./memberships.html" class="btn btn-accent"><i class="fa-solid fa-user-plus"></i> انضم إلينا</a>
+            </div>
+            
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>الأخبار والفعاليات</h1>
+            <ul class="breadcrumbs">
+                <li><a href="./index.html">الرئيسية</a></li>
+                <li class="active">الأخبار</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- News Grid Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">آخر المستجدات</span>
+                <h2 class="section-title">شاهد فعالياتنا ومشاركتنا المجتمعية بالصور</h2>
+                <p>نعمل باستمرار على توثيق مبادراتنا الزراعية، لقاءاتنا التنموية، ومشاركتنا الفاعلة في أسبوع البيئة والمعارض المتخصصة.</p>
+            </div>
+            <div class="news-grid" id="dynamic-news-grid">
+                <!-- News cards will be rendered dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="./assets/logo.png" alt="شعار جمعية SAE البيضاء" class="footer-logo">
+                <p class="footer-desc">
+                    جمعية المهندسين الزراعيين (SAE) - جمعية أهلية معتمدة ومرخصة برقم 2117 لخدمة وتطوير وتدريب الكفاءات الزراعية والهندسية في المملكة العربية السعودية.
+                </p>
+                <div class="footer-socials">
+                    <a href="https://x.com/sae_sa" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://linkedin.com/company/sae-sa" target="_blank" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:info@sae.sa" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links-col">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="./index.html">الرئيسية</a></li>
+                    <li class="footer-link-item"><a href="./about.html">عن الجمعية</a></li>
+                    <li class="footer-link-item"><a href="./objectives.html">أهدافنا</a></li>
+                    <li class="footer-link-item"><a href="./memberships.html">باقات العضويات</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links-col">
+                <h3>اللوائح والسياسات</h3>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="./assets/docs/اللائحة-الأساسیة.pdf" download>اللائحة الأساسية (PDF)</a></li>
+                    <li class="footer-link-item"><a href="./assets/docs/الميثاق-الاخلاقي.pdf" download>الميثاق الأخلاقي (PDF)</a></li>
+                    <li class="footer-link-item"><a href="./assets/docs/سياسة-تعارض-مصالح.pdf" download>سياسة تعارض المصالح (PDF)</a></li>
+                    <li class="footer-link-item"><a href="./assets/docs/سياسة-حماية-المبلغين.pdf" download>سياسة حماية المبلغين (PDF)</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 جميع الحقوق محفوظة لجمعية المهندسين الزراعيين (SAE).</p>
+            <div class="footer-bottom-links">
+                <a href="./governance.html">سياسة الخصوصية</a>
+                <a href="./governance.html">شروط الاستخدام</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./assets/js/db.js"></script>
+    <script src="./main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const newsGrid = document.getElementById("dynamic-news-grid");
+            
+            function renderAllNews() {
+                if (newsGrid && window.SAE_DB) {
+                    const newsList = window.SAE_DB.getNews();
+                    newsGrid.innerHTML = newsList.map(item => `
+                        <div class="news-card">
+                        <div class="news-img-wrapper">
+                            <img src="${item.image}" alt="${item.title}" class="news-img" onerror="this.onerror=null; this.src='./assets/img/news-newspaper-1.jpg';">
+                        </div>
+                        <div class="news-info">
+                            <div class="news-meta">
+                                <span><i class="fa-solid fa-calendar-days"></i> ${item.dateFormatted || item.date}</span>
+                                <span><i class="fa-solid fa-tags"></i> ${item.tag}</span>
+                            </div>
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                            <a href="javascript:void(0)" onclick="openNewsModal('${item.id}')" class="news-readmore">اقرأ التفاصيل <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                    `).join('');
+                }
+            }
+            
+            // Initial render
+            renderAllNews();
+            
+            // Check hash on load to open modal
+            function checkHash() {
+                if (window.location.hash) {
+                    const targetId = window.location.hash.substring(1);
+                    openNewsModal(targetId);
+                }
+            }
+            
+            // Wait slightly for DOM to settle, then check hash
+            setTimeout(checkHash, 150);
+            
+            // Listen for hashchange
+            window.addEventListener("hashchange", checkHash);
+            
+            // Listen for background updates from Firebase
+            window.addEventListener("sae-db-updated", (e) => {
+                if (e.detail.type === "news") {
+                    renderAllNews();
+                    checkHash();
+                }
+            });
+        });
+
+        function openNewsModal(id) {
+            if (!window.SAE_DB) return;
+            const news = window.SAE_DB.getNews();
+            const item = news.find(n => n.id === id);
+            if (item) {
+                const contentDiv = document.getElementById("modal-news-content");
+                contentDiv.innerHTML = `
+                    <div style="height: 300px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+                        <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='./assets/img/news-newspaper-1.jpg';">
+                    </div>
+                    <div style="display: flex; gap: 1rem; color: var(--accent-color); font-size: 0.85rem; margin-bottom: 1rem; font-weight: 600;">
+                        <span><i class="fa-solid fa-calendar-days"></i> ${item.dateFormatted || item.date}</span>
+                        <span><i class="fa-solid fa-tags"></i> ${item.tag}</span>
+                    </div>
+                    <h2 style="font-size: 1.65rem; margin-bottom: 1.25rem; color: var(--accent-color); line-height: 1.4; font-family: 'Cairo', sans-serif; font-weight: 700; border-bottom: 2px solid rgba(20, 184, 166, 0.15); padding-bottom: 0.75rem;">${item.title}</h2>
+                    <p style="font-size: 1.15rem; color: #f8fafc; line-height: 1.95; white-space: pre-wrap; font-family: 'Cairo', sans-serif; font-weight: 400; text-align: justify; direction: rtl;">${item.description}</p>
+                `;
+                document.getElementById("news-detail-modal").style.display = "flex";
+                document.body.style.overflow = "hidden"; // Lock background scroll
+            }
+        }
+
+        function closeNewsModal() {
+            document.getElementById("news-detail-modal").style.display = "none";
+            document.body.style.overflow = ""; // Unlock background scroll
+            // Clear URL hash without triggering page reload
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+        }
+    </script>
+
+    <!-- News Detail Modal -->
+    <div id="news-detail-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; justify-content: center; align-items: flex-start; overflow-y: auto; padding: 2rem 1.5rem; -webkit-overflow-scrolling: touch;">
+        <div class="modal-card" style="background: #1e293b; border: 1px solid var(--border-color); border-radius: 20px; width: 100%; max-width: 650px; padding: 2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); position: relative; color: var(--text-light); text-align: right; margin: 2rem auto;">
+            <button onclick="closeNewsModal()" style="position: absolute; top: 1.5rem; left: 1.5rem; background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; transition: color 0.2s;"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-news-content" style="margin-top: 1rem;">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

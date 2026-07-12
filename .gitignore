@@ -1,0 +1,15 @@
+# Firebase
+.firebase/
+*-debug-*.log
+.firebaserc
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Antigravity IDE
+.gemini/
+brain/
+scratch/
+.system_generated/
+*.log

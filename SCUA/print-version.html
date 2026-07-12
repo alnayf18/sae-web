@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طباعة الكود الكامل - الكود السعودي للزراعة الحضرية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+
+        .print-container {
+            max-width: 8.5in;
+            margin: 30px auto;
+            padding: 0.5in;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cover-page {
+            text-align: center;
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 9in;
+            border: 5px double #2E7D32;
+        }
+
+        .cover-page img {
+            max-width: 250px;
+            margin-bottom: 40px;
+        }
+
+        .cover-page h1 {
+            font-size: 2.5rem;
+            color: #2E7D32;
+            margin-bottom: 20px;
+        }
+
+        .cover-page p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .book {
+            page-break-before: always;
+        }
+
+        .book-title {
+            font-size: 2rem;
+            color: #2E7D32;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .chapter-title {
+            font-size: 1.6rem;
+            color: #4CAF50;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .section-number {
+            color: #2E7D32;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .content-text {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            padding-right: 15px;
+        }
+
+        @media print {
+
+            body,
+            .print-container {
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+
+            .print-controls {
+                display: none;
+            }
+
+            .cover-page {
+                border: none;
+            }
+        }
+
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .print-button,
+        .home-button {
+            background: #2E7D32;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .home-button {
+            background: #FF6B35;
+        }
+
+        .print-button:hover,
+        .home-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="print-controls">
+        <button class="print-button" onclick="window.print()"><i class="fas fa-print"></i> طباعة الكود الكامل</button>
+        <a href="index.html" class="home-button"><i class="fas fa-home"></i> العودة للرئيسية</a>
+    </div>
+    <div class="print-container">
+        <div class="cover-page">
+            <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين">
+            <h1>الكود السعودي للزراعة الحضرية (SAC)</h1>
+            <p>النسخة الثانية – 2025</p>
+            <p>إعداد: م / عبدالمجيد عبدالله</p>
+        </div>
+
+        <!-- Book 1 -->
+        <div class="book" id="book1">
+            <h2 class="book-title">الكتاب الأول: الحوكمة والإطار التنظيمي (SAC-100)</h2>
+            <div class="chapter" id="chapter110">
+                <h3 class="chapter-title">الباب 110: المبادئ العامة</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-111: الرؤية والنطاق</h4>
+                    <p class="content-text"><strong>SAC-111-1.0 (الرؤية):</strong> بناء قطاع زراعي وبيئة عمرانية خضراء
+                        ومستدامة عالمية المستوى، تعزز جودة الحياة وتحترم الهوية الطبيعية للمملكة، وتساهم بفعالية في
+                        تحقيق أهداف رؤية 2030.</p>
+                    <p class="content-text"><strong>SAC-111-2.0 (النطاق):</strong> تطبيق اختياري على كافة مشاريع
+                        المساحات الخضراء والمناظر الطبيعية الجديدة والمؤهلة في المملكة.</p>
+                </div>
+                <div class="section">
+                    <h4 class="section-number">SAC-112: المصطلحات والتعاريف</h4>
+                    <p class="content-text"><strong>البنية التحتية الخضراء:</strong> شبكة مترابطة من المساحات الطبيعية
+                        وشبه الطبيعية المخططة والمصممة لتقديم خدمات بيئية للمجتمع.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="book" id="book2">
+            <h2 class="book-title">الكتاب الثاني: الموارد الطبيعية والتخطيط البيئي (SAC-200)</h2>
+            <div class="chapter" id="chapter210">
+                <h3 class="chapter-title">الباب 210: كود إدارة الموارد المائية</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-211: تقييم جودة المياه</h4>
+                    <p class="content-text"><strong>SAC-211-1.0 (تحليل المياه):</strong> إلزامية إجراء تحليل كيميائي
+                        شامل لمصدر مياه الري المقترح للمشروع قبل البدء في أعمال التصميم.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="book" id="book3">
+            <h2 class="book-title">الكتاب الثالث: التصميم الهندسي للمناظر الطبيعية (SAC-300)</h2>
+            <div class="chapter" id="chapter310">
+                <h3 class="chapter-title">الباب 310: الشرايين الخضراء</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-311: مواصفات أحواض زراعة الأشجار</h4>
+                    <p class="content-text"><strong>SAC-311-1.0 (الحجم الأدنى):</strong> يجب ألا يقل الحجم الفعال لحوض
+                        زراعة الأشجار في المناطق المرصوفة عن 15 مترًا مكعبًا.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="book" id="book4">
+            <h2 class="book-title">الكتاب الرابع: تنسيق البنى التحتية والمرافق (SAC-400)</h2>
+            <div class="chapter" id="chapter410">
+                <h3 class="chapter-title">الباب 410: البنى التحتية لمياه الري</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-411: تصميم شبكات الري</h4>
+                    <p class="content-text">إلزامية استخدام أنظمة الري الموفرة للمياه (التنقيط والرش الدقيق).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 5 -->
+        <div class="book" id="book5">
+            <h2 class="book-title">الكتاب الخامس: معايير التنفيذ والإنشاء (SAC-500)</h2>
+            <div class="chapter" id="chapter510">
+                <h3 class="chapter-title">الباب 510: تجهيز الموقع والأعمال الترابية</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-511: أعمال الحفر</h4>
+                    <p class="content-text"><strong>SAC-511-1.0 (التصنيف):</strong> جميع أعمال الحفر تعتبر غير مصنفة
+                        وتشمل جميع أنواع التربة والصخور.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 6 -->
+        <div class="book" id="book6">
+            <h2 class="book-title">الكتاب السادس: التشغيل والصيانة والإدارة (SAC-600)</h2>
+            <div class="chapter" id="chapter610">
+                <h3 class="chapter-title">الباب 610: صيانة الأعمال الزراعية</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-611: إدارة الري</h4>
+                    <p class="content-text"><strong>SAC-611-1.0:</strong> يجب على المقاول الالتزام ببرنامج الري المعتمد.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 7 -->
+        <div class="book" id="book7">
+            <h2 class="book-title">الكتاب السابع: الصحة العامة وجودة البيئة الحضرية (SAC-700)</h2>
+            <div class="chapter" id="chapter710">
+                <h3 class="chapter-title">الباب 710: حماية وتعزيز التنوع البيولوجي</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-711:</h4>
+                    <p class="content-text">إلزامية أن تشكل النباتات المحلية ما لا يقل عن 70% من إجمالي النباتات
+                        المستخدمة في الحدائق العامة.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 8 -->
+        <div class="book" id="book8">
+            <h2 class="book-title">الكتاب الثامن: إدارة المخلفات العضوية والاستدامة (SAC-800)</h2>
+            <div class="chapter" id="chapter810">
+                <h3 class="chapter-title">الباب 810: إعادة التدوير في الموقع</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-810:</h4>
+                    <p class="content-text">إلزام المشاريع التي تزيد مساحتها عن 5 هكتارات بتخصيص منطقة لإنتاج السماد
+                        العضوي (Composting).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 9 -->
+        <div class="book" id="book9">
+            <h2 class="book-title">الكتاب التاسع: جودة البيئة الحضرية (SAC-900)</h2>
+            <div class="chapter" id="chapter910">
+                <h3 class="chapter-title">الباب 910: حماية وتعزيز التنوع البيولوجي</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-911: استخدام النباتات المحلية</h4>
+                    <p class="content-text">يجب أن تشكل النباتات المحلية ما لا يقل عن 70% من إجمالي النباتات المستخدمة
+                        في مشاريع الحدائق العامة.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 10 -->
+        <div class="book" id="book10">
+            <h2 class="book-title">الكتاب العاشر: متطلبات المشاريع المتخصصة (SAC-1000)</h2>
+            <div class="chapter" id="chapter1010">
+                <h3 class="chapter-title">الباب 1010: المستشفيات والمرافق الصحية</h3>
+                <div class="section">
+                    <h4 class="section-number">SAC-1011: حدائق الاستشفاء</h4>
+                    <p class="content-text"><strong>SAC-1011-1.0 (التصميم الإلزامي):</strong> يجب على المستشفيات الجديدة
+                        تخصيص 15% من مساحة الأرض المفتوحة كحديقة استشفاء.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

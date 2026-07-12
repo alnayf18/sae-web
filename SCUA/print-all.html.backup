@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكود السعودي للزراعة الحضرية - النسخة الكاملة للطباعة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Noto Sans Arabic', 'Arial Unicode MS', 'Tahoma', sans-serif !important;
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', 'Arial Unicode MS', 'Tahoma', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .print-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cover-page {
+            text-align: center;
+            page-break-after: always;
+            padding: 50px 0;
+            border: 3px solid #2E7D32;
+            margin-bottom: 40px;
+        }
+
+        .cover-page h1 {
+            font-size: 2.5rem;
+            color: #2E7D32;
+            margin: 30px 0;
+        }
+
+        .cover-page h2 {
+            font-size: 1.8rem;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+
+        .cover-page p {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .book {
+            page-break-before: always;
+            margin-bottom: 40px;
+        }
+
+        .book-title {
+            font-size: 2rem;
+            color: #2E7D32;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .chapter {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E8F5E8;
+            padding-bottom: 20px;
+        }
+
+        .chapter:last-child {
+            border-bottom: none;
+        }
+
+        .chapter-title {
+            font-size: 1.6rem;
+            color: #4CAF50;
+            margin: 25px 0 15px 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-number {
+            color: #2E7D32;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .subsection {
+            margin-bottom: 12px;
+            padding-right: 15px;
+            border-right: 2px solid #C8E6C9;
+        }
+
+        .content-text {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .toc {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+
+        .toc h3 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            padding-right: 10px;
+        }
+
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .print-button,
+        .home-button {
+            background: #2E7D32;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button {
+            background: #FF6B35;
+        }
+
+        .print-button:hover,
+        .home-button:hover {
+            transform: translateY(-1px);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .print-container {
+                max-width: none;
+                margin: 0;
+                padding: 15mm;
+                box-shadow: none;
+            }
+
+            .print-controls {
+                display: none;
+            }
+
+            .cover-page {
+                border: 2px solid #2E7D32;
+            }
+
+            .book {
+                page-break-before: always;
+            }
+
+            .chapter {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="print-controls">
+        <button class="print-button" onclick="window.print()">
+            <i class="fas fa-print"></i> طباعة الكود الكامل
+        </button>
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> العودة للرئيسية
+        </a>
+    </div>
+
+    <div class="print-container">
+        <!-- صفحة الغلاف -->
+        <div class="cover-page">
+            <h1>الكود السعودي للزراعة الحضرية</h1>
+            <h2>Saudi Code for Urban Agriculture (SAC)</h2>
+            <p><strong>النسخة الثانية - 2025</strong></p>
+            <p>إعداد: المهندس عبدالمجيد عبدالله</p>
+            <p>المملكة العربية السعودية</p>
+            <br>
+            <p style="font-size: 1rem; color: #888;">
+                المرجع الشامل لتخطيط وتصميم وتنفيذ وإدارة<br>
+                كافة مشاريع التخضير والتشجير في المملكة
+            </p>
+        </div>
+
+        <!-- فهرس المحتويات العام -->
+        <div class="toc" style="page-break-after: always;">
+            <h3><i class="fas fa-list"></i> فهرس المحتويات العام</h3>
+            <ul>
+                <li><strong>الكتاب الأول:</strong> الحوكمة والإطار التنظيمي (SAC-100)</li>
+                <li><strong>الكتاب الثاني:</strong> الموارد الطبيعية والتخطيط البيئي (SAC-200)</li>
+                <li><strong>الكتاب الثالث:</strong> التصميم الهندسي للمناظر الطبيعية (SAC-300)</li>
+                <li><strong>الكتاب الرابع:</strong> تنسيق البنى التحتية والمرافق (SAC-400)</li>
+                <li><strong>الكتاب الخامس:</strong> معايير التنفيذ والإنشاء (SAC-500)</li>
+                <li><strong>الكتاب السادس:</strong> التشغيل والصيانة والإدارة (SAC-600)</li>
+                <li><strong>الكتاب السابع:</strong> الصحة العامة وجودة البيئة (SAC-700)</li>
+                <li><strong>الكتاب الثامن:</strong> إدارة المخلفات العضوية (SAC-800)</li>
+                <li><strong>الكتاب التاسع:</strong> جودة البيئة الحضرية (SAC-900)</li>
+                <li><strong>الكتاب العاشر:</strong> متطلبات المشاريع المتخصصة (SAC-1000)</li>
+                <li><strong>الكتاب الحادي عشر:</strong> الزراعة الحضرية المنتجة (SAC-1100)</li>
+                <li><strong>الكتاب الثاني عشر:</strong> التقنيات الزراعية الذكية (SAC-1200)</li>
+                <li><strong>الملاحق الفنية</strong></li>
+            </ul>
+        </div>
+
+        <!-- الكتاب الأول -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الأول: الحوكمة والإطار التنظيمي (SAC-100)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الأول</h3>
+                <ul>
+                    <li>الباب 110: المبادئ العامة</li>
+                    <li>الباب 120: الإطار الإداري والمسؤوليات</li>
+                    <li>الباب 130: إجراءات التراخيص والاعتماد</li>
+                    <li>الباب 140: الامتثال، المخالفات، والجزاءات</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 110: المبادئ العامة</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-111: الرؤية والنطاق</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-111-1.0 (الرؤية):</strong> بناء قطاع زراعي وبيئة عمرانية
+                            خضراء ومستدامة عالمية المستوى، تعزز جودة الحياة وتحترم الهوية الطبيعية للمملكة، وتساهم
+                            بفعالية في تحقيق أهداف رؤية 2030.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-111-2.0 (النطاق):</strong> تطبيق اختياري على كافة مشاريع
+                            المساحات الخضراء والمناظر الطبيعية الجديدة والمؤهلة في المملكة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-111-3.0 (الأهداف):</strong> تحديد أهداف الكود بشكل مفصل
+                            (استدامة، كفاءة، جودة حياة، هوية محلية).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-111-4.0 (العلاقة مع الأكواد الأخرى):</strong> التأكيد على أن
+                            متطلبات هذا الكود هي جزء لا يتجزأ من منظومة الأكواد السعودية، مع سيادة الشرط الأكثر صرامة
+                            عند التعارض.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-112: المصطلحات والتعاريف</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>البنية التحتية الخضراء:</strong> شبكة مترابطة من المساحات
+                            الطبيعية وشبه الطبيعية المخططة والمصممة لتقديم خدمات بيئية للمجتمع.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>الزراعة المستدامة:</strong> نظام زراعي متكامل يهدف إلى تلبية
+                            احتياجات الحاضر دون المساس بقدرة الأجيال القادمة على تلبية احتياجاتها.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>الجزيرة الحرارية الحضرية:</strong> ظاهرة ارتفاع درجة حرارة
+                            المناطق الحضرية مقارنة بالمناطق الريفية المحيطة بها.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>حصاد مياه الأمطار:</strong> مجموعة من التقنيات المستخدمة لتجميع
+                            وتخزين مياه الأمطار.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>النباتات المحلية:</strong> الأنواع النباتية التي نشأت وتطورت
+                            بشكل طبيعي في منطقة جغرافية معينة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>الري الذكي:</strong> أنظمة ري تستخدم البيانات لتطبيق كمية المياه
+                            المطلوبة بدقة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>التكريب:</strong> تشذيب قواعد العسيب الجاف للنخيل لإعطائها
+                            مظهراً منتظماً.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 120: الإطار الإداري والمسؤوليات</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-121: الجهات التنظيمية والإشرافية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-121-1.0 (الجهة المشرفة):</strong> جمعية المهندسين الزراعيين
+                            المسؤولة عن الكود وصلاحياتها في التفسير والتحديث وإصدار الموافقات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-121-2.0 (جهات الترخيص):</strong> تحديد دور الأمانات
+                            والبلديات في التحقق من امتثال طلبات رخص البناء لمتطلبات الكود.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-122: مسؤوليات الأطراف</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-122-1.0 (مسؤوليات المالك):</strong> تعيين "ممثل معتمد
+                            للمالك"، ضمان توفير شهادات تحليل التربة والمياه، والحصول على الموافقات التنظيمية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-122-2.0 (مسؤوليات المصمم):</strong> إعداد "تقرير تصميمي"
+                            مفصل، المسؤولية عن دقة المخططات، وتقديم حسابات "ميزانية المياه التقديرية".</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-122-3.0 (مسؤوليات المقاول):</strong> توفير "مدير مشروع
+                            معتمد"، إعداد "خطة إدارة الجودة"، وإعداد "خطة السلامة والصحة المهنية".</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 130: إجراءات التراخيص والاعتماد</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-131: تقديم المستندات</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-131-1.0:</strong> يجب أن تشتمل مستندات طلب رخصة البناء على
+                            مجموعة كاملة من مخططات ومواصفات تنسيق المواقع والري معتمدة من مصمم مؤهل.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-132: آلية المراجعة والاعتماد</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-132-1.0 (المراجعة الأولية):</strong> تقوم جهة الترخيص
+                            بمراجعة المستندات للتأكد من الامتثال المبدئي.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-132-2.0 (المراجعة النهائية):</strong> قبل إصدار شهادة إتمام
+                            البناء، يجب على المالك تقديم تقرير من طرف ثالث معتمد يفيد باكتمال التنفيذ وفقاً للكود.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 140: الامتثال، المخالفات، والجزاءات</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-141: التفتيش والمراقبة</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-141-1.0:</strong> يحق للمهندس المشرف وممثلي الجهة المشرفة
+                            دخول موقع المشروع في أي وقت للتفتيش على جودة المواد والتنفيذ.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-142: آلية التعامل مع المخالفات</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-142-1.0 (إشعار المخالفة):</strong> عند رصد مخالفة، يصدر
+                            المهندس المشرف "إشعار مخالفة رسمي" يحدد طبيعة المخالفة والمهلة الزمنية للتصحيح.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-142-2.0 (عدم التصحيح):</strong> في حال انقضاء المهلة دون
+                            تصحيح، يتم تطبيق الجزاءات.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-143: جدول الجزاءات</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-143-1.0:</strong> يتم تطبيق الجزاءات والغرامات المالية وفقاً
+                            للجدول المفصل في الملحق الفني (هـ).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب الثاني -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الثاني: الموارد الطبيعية والتخطيط البيئي (SAC-200)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الثاني</h3>
+                <ul>
+                    <li>الباب 210: كود إدارة الموارد المائية</li>
+                    <li>الباب 220: كود التربة والوسط الزراعي المستدام</li>
+                    <li>الباب 230: كود النباتات وقاعدة البيانات الوطنية</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 210: كود إدارة الموارد المائية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-211: تقييم جودة المياه</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-211-1.0 (تحليل المياه):</strong> إلزامية إجراء تحليل كيميائي
+                            شامل لمصدر مياه الري المقترح للمشروع قبل البدء في أعمال التصميم.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-211-2.0 (معايير جودة المياه للري):</strong><br>
+                            - <strong>الملوحة (TDS/EC):</strong> ممتاز: أقل من 1000 ppm. مقبول: 1000-2000 ppm. يتطلب
+                            معالجة: 2000-4000 ppm. ممنوع: أعلى من 4000 ppm.<br>
+                            - <strong>درجة الحموضة (pH):</strong> يجب أن تتراوح بين 6.5 و 8.4.<br>
+                            - <strong>نسبة امتصاص الصوديوم (SAR):</strong> يجب ألا تتجاوز 9.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-212: مصادر المياه وأولوياتها</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-212-1.0:</strong> تحديد أولوية مصادر الري بشكل إلزامي: 1)
+                            مياه الأمطار المحصودة، 2) المياه الرمادية المعالجة، 3) المياه المعالجة ثلاثياً (TSE)، 4)
+                            مصادر أخرى معتمدة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-213: حصاد مياه الأمطار</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-213-1.0 (التصميم الإلزامي):</strong> يجب تصميم جميع المشاريع
+                            الجديدة لتوجيه وتجميع مياه الأمطار الساقطة على الأسطح والممرات والمناطق المرصوفة إلى مناطق
+                            تجميع أو مناطق زراعية للاستفادة منها.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-213-2.0 (تقنيات التجميع):</strong> يشمل حدائق المطر، الآبار
+                            الجافة، والأرصفة المنفذة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 220: كود التربة والوسط الزراعي المستدام</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-221: تصنيف وتحليل التربة</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-221-1.0 (التحليل الإلزامي):</strong> إلزامية إجراء تحليل
+                            فيزيائي وكيميائي للتربة في الموقع قبل البدء في التصميم لتحديد قوامها، ملوحتها، حموضتها،
+                            ومحتواها العضوي.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-222: مواصفات خلطات التربة الزراعية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-222-1.0 (الخلطة القياسية):</strong> 60% رمل زراعي، 30% تربة
+                            طينية، 10% سماد عضوي متحلل.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-222-2.0 (الخلطة خفيفة الوزن للأسطح الخضراء):</strong> 50%
+                            بيتموس، 30% بيرلايت، 20% سماد عضوي متحلل. يجب ألا تزيد الكثافة الجافة للخلطة عن 1100 كجم/م³.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-223: الغطاء العضوي (Mulch)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-223-1.0 (الاستخدام الإلزامي):</strong> إلزامية تغطية جميع
+                            أحواض الزراعة المفتوحة بطبقة من الغطاء العضوي بسماكة تتراوح بين 7-10 سم.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-223-2.0 (المواد المعتمدة):</strong> يسمح باستخدام نشارة
+                            الخشب المعالجة، لحاء الأشجار، أو الحصى. يمنع استخدام المخلفات النباتية غير المعالجة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-224: فحص التربة من الملوثات</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-224-1.0 (الفحص الإلزامي للملوثات):</strong> يجب إجراء
+                            فحص شامل للتربة من الملوثات التالية قبل أي مشروع زراعي حضري، خاصة في المواقع القريبة من
+                            المباني القديمة أو المناطق الصناعية السابقة:<br>
+                            - <strong>الرصاص (Pb):</strong> الحد الأقصى المسموح 400 ppm<br>
+                            - <strong>الكادميوم (Cd):</strong> الحد الأقصى المسموح 3 ppm<br>
+                            - <strong>الزرنيخ (As):</strong> الحد الأقصى المسموح 20 ppm<br>
+                            - <strong>الزئبق (Hg):</strong> الحد الأقصى المسموح 1 ppm<br>
+                            - <strong>الهيدروكربونات النفطية:</strong> الحد الأقصى 100 ppm</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-224-2.0 (المعالجة في حالة التلوث):</strong> في حالة
+                            تجاوز الحدود المسموحة، يجب اتخاذ أحد الإجراءات التالية:<br>
+                            - استخدام أحواض زراعة مرتفعة بتربة نظيفة مستوردة<br>
+                            - إضافة الفوسفات لتقليل امتصاص الرصاص من قبل النباتات<br>
+                            - استخدام الفحم النشط لامتصاص الملوثات العضوية<br>
+                            - إزالة التربة الملوثة واستبدالها بتربة نظيفة (في الحالات الشديدة)</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-224-3.0 (تكرار الفحص):</strong> يجب إعادة فحص التربة كل
+                            5 سنوات في المناطق الحضرية، وكل 3 سنوات في المناطق الصناعية السابقة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-225: معايير الزراعة العمودية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-225-1.0 (الأوساط الزراعية الخفيفة):</strong> يجب استخدام
+                            أوساط زراعية خفيفة الوزن في أنظمة الزراعة العمودية بالنسب التالية:<br>
+                            - البيرلايت: 30-40%<br>
+                            - البيتموس أو ألياف جوز الهند: 30-40%<br>
+                            - الفيرميكوليت: 20-30%<br>
+                            - الكثافة الجافة: لا تزيد عن 400 كجم/م³</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-225-2.0 (كفاءة استخدام المياه):</strong> يجب أن توفر
+                            أنظمة الزراعة العمودية 80-90% من المياه مقارنة بالزراعة التقليدية من خلال أنظمة الري المغلقة
+                            وإعادة تدوير المياه.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-225-3.0 (الإنتاجية):</strong> يجب أن تحقق أنظمة الزراعة
+                            العمودية إنتاجية لا تقل عن 10 أضعاف الزراعة التقليدية لكل متر مربع من المساحة الأرضية.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 230: كود النباتات وقاعدة البيانات الوطنية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-231: قاعدة البيانات الوطنية للنباتات (KSA-PDB)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-231-1.0 (المرجعية الإلزامية):</strong> تعتبر قاعدة البيانات
+                            الوطنية للنباتات هي المرجع الرسمي الوحيد لاختيار الأنواع النباتية المسموح بها في المشاريع.
+                        </p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-231-2.0 (محتويات القاعدة):</strong> يجب أن تحتوي المنصة على
+                            معلومات تفصيلية لكل نبات تشمل: الاسم العلمي والشائع، الخصائص، المتطلبات المائية والبيئية،
+                            الوظيفة، والصيانة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-232: النباتات المحظورة والغازية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-232-1.0:</strong> يمنع منعاً باتاً استيراد أو زراعة أو إكثار
+                            أي نوع نباتي مدرج في قائمة النباتات المحظورة والغازية في الملحق الفني (د).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-232-2.0:</strong> يجب على جميع المشاتل ومقاولي تنسيق المواقع
+                            الالتزام بهذه القائمة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب الثالث -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الثالث: التصميم الهندسي للمناظر الطبيعية (SAC-300)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الثالث</h3>
+                <ul>
+                    <li>الباب 310: الشرايين الخضراء (الطرق، ممرات المشاة، مواقف السيارات)</li>
+                    <li>الباب 320: الرئات الحضرية (الحدائق والمتنزهات العامة)</li>
+                    <li>الباب 330: المباني الحية</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 310: الشرايين الخضراء</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-311: مواصفات أحواض زراعة الأشجار</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-311-1.0 (أبعاد الحفر):</strong> تعتمد أبعاد حفرة الزراعة على
+                            حجم "المركن" أو "الصلاية" (Rootball) للنبات. يجب أن يكون <strong>عرض الحفرة</strong> من 2
+                            إلى 3 أضعاف قطر كتلة الجذور، بينما يكون <strong>عمق الحفرة</strong> مساوياً تماماً لارتفاع
+                            كتلة الجذور، بحيث تستقر قاعدة الساق (Roo Flare) عند مستوى سطح التربة أو أعلى قليلاً (2-5 سم)
+                            لضمان التهوية وعدم تعفن الساق.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-311-2.0 (حواجز الجذور):</strong> إلزامية استخدام حواجز
+                            الجذور (Root Barriers) بعمق لا يقل عن 60 سم في جميع أحواض الزراعة المجاورة للأرصفة ومسارات
+                            المشاة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-311-3.0 (أغطية الأحواض):</strong> يجب تغطية أحواض الأشجار في
+                            ممرات المشاة بأغطية (Tree Grates) تسمح بنفاذ المياه والهواء وتوفر سطحاً آمناً للمشاة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-312: المسافات والتباعد الآمن</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-312-1.0 (المسافة البينية):</strong> الحد الأدنى للمسافة بين
+                            جذع شجرة وأخرى: كبيرة (10-15م)، متوسطة (8-10م)، صغيرة (6-8م).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-312-2.0 (المسافات عن المرافق):</strong> الحد الأدنى للمسافة
+                            عن حافة الطريق (2م)، الأسوار (2م)، ممرات المشاة (0.75م)، أعمدة الإنارة (6م)، وخطوط الخدمات
+                            (2م).</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-313: متطلبات التظليل والأداء البيئي</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-313-1.0 (تظليل ممرات المشاة):</strong> يجب أن يحقق تصميم
+                            التشجير نسبة تظليل لا تقل عن 70% على مسارات المشاة الرئيسية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-313-2.0 (تظليل مواقف السيارات):</strong> يجب زراعة أشجار
+                            لتظليل ما لا يقل عن 50% من مساحة مواقف السيارات السطحية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 320: الرئات الحضرية (الحدائق والمتنزهات العامة)</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-321: التصميم المكاني والوظيفي</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-321-1.1:</strong> يجب ألا تزيد نسبة المسطحات العشبية عالية
+                            الاستهلاك للمياه عن 15% من إجمالي المساحة الخضراء للحديقة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-321-1.2:</strong> يجب تخصيص منطقة طبيعية لا تقل مساحتها عن
+                            20% في الحدائق الكبرى (تزيد عن 5 هكتار).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-321-2.1 (مناطق لعب الأطفال):</strong> يجب أن تكون جميع ألعاب
+                            الأطفال مطابقة لمواصفات الهيئة السعودية للمواصفات والمقاييس والجودة (SASO).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-321-2.2:</strong> يجب توفير أسطح آمنة لامتصاص الصدمات تحت
+                            جميع الألعاب، وتمتد لمسافة لا تقل عن 1.8 متر في جميع الاتجاهات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-321-2.3:</strong> يمنع منعًا باتًا زراعة أي نباتات سامة أو
+                            ذات أشواك بالقرب من مناطق لعب الأطفال.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 330: المباني الحية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-331: الأسطح الخضراء (Green Roofs)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-331-1.0 (التطبيق الإلزامي):</strong> إلزام المباني الجديدة
+                            (التجارية والحكومية والسكنية متعددة الطوابق) التي تزيد مساحة سطحها عن 500 متر مربع، بتغطية
+                            50% من المساحة المتاحة بأسطح خضراء أو ما يعادلها.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-331-2.0 (المتطلبات الفنية):</strong> يجب أن يتكون نظام السطح
+                            الأخضر كحد أدنى من الطبقات التالية بالترتيب: غشاء مانع لتسرب المياه، غشاء واقٍ من اختراق
+                            الجذور، طبقة صرف وتخزين المياه، نسيج فاصل (فلتر)، وسط زراعي خفيف، ثم النباتات.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-332: الجدران الخضراء (Green Walls)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-332-1.0 (المواصفات الفنية):</strong> يجب أن يكون نظام
+                            التثبيت الهيكلي للجدار الأخضر مقاوماً للتآكل ومصمماً لتحمل وزن النباتات والوسط الزراعي
+                            المشبع بالمياه بالإضافة إلى أحمال الرياح السائدة في المنطقة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-332-2.0 (الري والصرف):</strong> يجب أن يكون نظام الري
+                            أوتوماتيكياً ومغلقاً (دائرة مغلقة)، مع نظام متكامل لجمع وتصريف وإعادة تدوير المياه الزائدة.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-344: الحدائق المجتمعية (Community Gardens)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-344-1.0 (المساحة والتخصيص):</strong> الحد الأدنى لمساحة
+                            الحديقة المجتمعية 500 متر مربع. مساحة القطعة الواحدة للعائلة: 10-20 متر مربع. يجب توفير
+                            مساحات مشتركة لا تقل عن 30% من المساحة الكلية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-344-2.0 (المرافق الأساسية):</strong> يجب توفير: مصدر مياه
+                            صالح للري، مخزن للأدوات المشتركة، منطقة كومبوست مشتركة، مظلات للراحة، ودورات مياه.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-344-3.0 (الإدارة والتنظيم):</strong> يجب تشكيل لجنة إدارة من
+                            المشاركين، ووضع لائحة داخلية تنظم الاستخدام، وجدول صيانة دوري للمرافق المشتركة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-344-4.0 (الأمان):</strong> يجب إحاطة الحديقة بسور آمن
+                            بارتفاع 1.5-2 متر، مع بوابة رئيسية قابلة للقفل، وإضاءة كافية للمسارات الرئيسية.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-345: إمكانية الوصول الشامل (Universal Accessibility)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-345-1.0 (المسارات الشاملة):</strong> الحد الأدنى لعرض
+                            المسارات الرئيسية 1.5 متر لاستيعاب الكراسي المتحركة. ميل المنحدرات: لا يتجاوز 1:12 (8.3%).
+                            يجب أن تكون جميع الأسطح غير قابلة للانزلاق حتى عند البلل.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-345-2.0 (الأحواض الزراعية المرتفعة):</strong> ارتفاع الأحواض
+                            للكراسي المتحركة: 60-80 سم من مستوى الأرض. عمق الأحواض: لا يزيد عن 60 سم للوصول السهل. يجب
+                            توفير مساحة دوران كافية (قطر 1.5 متر على الأقل) أمام كل حوض.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-345-3.0 (اللافتات الشاملة):</strong> يجب أن تحتوي اللافتات
+                            على خط برايل للمكفوفين، وألوان متباينة لضعاف البصر. ارتفاع اللافتات: 90-120 سم من مستوى
+                            الأرض. حجم الخط: لا يقل عن 3 سم للعناوين الرئيسية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-345-4.0 (مواقف السيارات):</strong> يجب توفير موقف واحد على
+                            الأقل لذوي الإعاقة لكل 25 موقف عادي، بعرض لا يقل عن 3.5 متر، وبالقرب من المدخل الرئيسي.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-345-5.0 (الحدائق الحسية):</strong> يُنصح بتخصيص منطقة
+                            للحدائق الحسية تحتوي على نباتات ذات ملمس مميز، وروائح عطرية، وألوان زاهية، لتعزيز تجربة ذوي
+                            الإعاقة البصرية والسمعية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب الرابع -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الرابع: تنسيق البنى التحتية والمرافق (SAC-400)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الرابع</h3>
+                <ul>
+                    <li>الباب 410: البنى التحتية لمياه الري</li>
+                    <li>الباب 420: شبكات الكهرباء والإضاءة</li>
+                    <li>الباب 430: أنظمة الصرف والتصريف</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 410: البنى التحتية لمياه الري</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-411: تصميم شبكات الري</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-411-1.0 (أنظمة الري الموفرة):</strong> إلزامية استخدام أنظمة
+                            الري الموفرة للمياه (التنقيط والرش الدقيق) في جميع المشاريع الجديدة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-411-2.0 (أنظمة التحكم الذكي):</strong> يجب تركيب أنظمة تحكم
+                            ذكية تعتمد على أجهزة استشعار رطوبة التربة والظروف الجوية.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-412: مواصفات الأنابيب والتجهيزات</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-412-1.0 (مواد الأنابيب):</strong> استخدام أنابيب البولي
+                            إيثيلين عالي الكثافة (HDPE) أو PVC للخطوط الرئيسية، وأنابيب البولي إيثيلين للخطوط الفرعية.
+                        </p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-412-2.0 (العمق والحماية):</strong> دفن الأنابيب الرئيسية على
+                            عمق لا يقل عن 80 سم مع توفير طبقة حماية من الرمل.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 420: شبكات الكهرباء والإضاءة</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-421: الإضاءة الخارجية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-421-1.0 (تقنية LED):</strong> إلزامية استخدام تقنية LED في
+                            جميع أعمال الإضاءة الخارجية لتوفير الطاقة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-421-2.0 (التحكم الذكي):</strong> تركيب أنظمة تحكم ذكية تعمل
+                            بأجهزة استشعار الحركة والضوء الطبيعي.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 430: أنظمة الصرف والتصريف</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-431: صرف مياه الأمطار</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-431-1.0 (التصريف المستدام):</strong> تصميم أنظمة صرف تعتمد
+                            على الحلول الطبيعية مثل الحدائق المطرية والأرصفة المنفذة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-431-2.0 (معدل التصريف):</strong> تصميم الشبكة لاستيعاب عاصفة
+                            مطرية بمعدل عودة 25 سنة كحد أدنى.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب الخامس -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الخامس: معايير التنفيذ والإنشاء (SAC-500)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الخامس</h3>
+                <ul>
+                    <li>الباب 510: تجهيز الموقع والأعمال الترابية</li>
+                    <li>الباب 520: أعمال الزراعة والغرس</li>
+                    <li>الباب 530: أعمال الري والبنية التحتية</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 510: تجهيز الموقع والأعمال الترابية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-511: أعمال الحفر</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-511-1.0 (التصنيف):</strong> جميع أعمال الحفر تعتبر غير مصنفة
+                            وتشمل جميع أنواع التربة والصخور.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-511-2.0 (الحفر للأشجار):</strong> حفر حفر الأشجار بأبعاد
+                            تزيد عن حجم كتلة الجذور بـ 50% على الأقل.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-512: تحضير التربة</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-512-1.0 (التحسين):</strong> إضافة المحسنات العضوية والمعدنية
+                            حسب نتائج تحليل التربة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-512-2.0 (الدمك):</strong> دمك التربة بنسبة 85% من الكثافة
+                            القصوى للمناطق المرصوفة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 520: أعمال الزراعة والغرس</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-521: زراعة الأشجار</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-521-1.0 (التوقيت):</strong> زراعة الأشجار في الفترة من
+                            أكتوبر إلى مارس لضمان أفضل معدلات النجاح.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-521-2.0 (الدعامات):</strong> تركيب دعامات للأشجار التي يزيد
+                            ارتفاعها عن 2.5 متر.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-522: زراعة الشجيرات والنباتات المعمرة</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-522-1.0 (التباعد):</strong> زراعة الشجيرات بالتباعد المحدد
+                            في جداول النباتات المعتمدة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-522-2.0 (الري الأولي):</strong> ري النباتات فور الزراعة
+                            وبشكل يومي لأول أسبوعين.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 530: أعمال الري والبنية التحتية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-531: تركيب شبكات الري</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-531-1.0 (الاختبار):</strong> اختبار جميع الخطوط بضغط يزيد عن
+                            ضغط التشغيل بـ 50% لمدة 24 ساعة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-531-2.0 (التدرج):</strong> ضمان التدرج المناسب للخطوط لتجنب
+                            تجمع الهواء والمياه.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب السادس -->
+        <div class="book">
+            <h1 class="book-title">الكتاب السادس: التشغيل والصيانة والإدارة (SAC-600)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب السادس</h3>
+                <ul>
+                    <li>الباب 610: صيانة الأعمال الزراعية</li>
+                    <li>الباب 620: إدارة أنظمة الري</li>
+                    <li>الباب 630: برامج المراقبة والتقييم</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 610: صيانة الأعمال الزراعية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-611: إدارة الري</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-611-1.0 (برنامج الري):</strong> يجب على المقاول الالتزام
+                            ببرنامج الري المعتمد والمبني على احتياجات النباتات والظروف المناخية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-611-2.0 (مراقبة الاستهلاك):</strong> تركيب عدادات مياه
+                            لمراقبة الاستهلاك وضمان عدم تجاوز الحدود المقررة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-612: التسميد والتغذية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-612-1.0 (برنامج التسميد):</strong> تطبيق برنامج تسميد متوازن
+                            يعتمد على تحليل التربة واحتياجات النباتات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-612-2.0 (الأسمدة العضوية):</strong> إعطاء الأولوية للأسمدة
+                            العضوية والمحسنات الطبيعية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 620: إدارة أنظمة الري</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-621: الصيانة الدورية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-621-1.0 (التفتيش الأسبوعي):</strong> فحص جميع مكونات نظام
+                            الري أسبوعياً وإصلاح أي أعطال فوراً.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-621-2.0 (تنظيف الفلاتر):</strong> تنظيف فلاتر النظام شهرياً
+                            أو حسب الحاجة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 630: برامج المراقبة والتقييم</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-631: مؤشرات الأداء</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-631-1.0 (معدل البقاء):</strong> يجب أن يحقق المشروع معدل
+                            بقاء للنباتات لا يقل عن 95% خلال السنة الأولى.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-631-2.0 (كفاءة المياه):</strong> مراقبة كفاءة استخدام المياه
+                            وضمان عدم تجاوز المعدلات المقررة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب السابع -->
+        <div class="book">
+            <h1 class="book-title">الكتاب السابع: الصحة العامة وجودة البيئة (SAC-700)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب السابع</h3>
+                <ul>
+                    <li>الباب 710: حماية وتعزيز التنوع البيولوجي</li>
+                    <li>الباب 720: مكافحة الآفات المتكاملة</li>
+                    <li>الباب 730: جودة الهواء والبيئة الحضرية</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 710: حماية وتعزيز التنوع البيولوجي</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-711: استخدام النباتات المحلية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-711-1.0 (النسبة الإلزامية):</strong> إلزامية أن تشكل
+                            النباتات المحلية ما لا يقل عن 70% من إجمالي النباتات المستخدمة في الحدائق العامة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-711-2.0 (الأولوية للنباتات الأصلية):</strong> إعطاء الأولوية
+                            للنباتات الأصلية في المنطقة الجغرافية للمشروع.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-712: حماية الموائل الطبيعية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-712-1.0 (الحفاظ على الموائل):</strong> حماية وتعزيز الموائل
+                            الطبيعية الموجودة في الموقع قبل التطوير.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-712-2.0 (إنشاء ممرات بيولوجية):</strong> إنشاء ممرات خضراء
+                            تربط بين المناطق الطبيعية المختلفة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 720: مكافحة الآفات المتكاملة</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-721: الإدارة المتكاملة للآفات</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-721-1.0 (الأولوية للطرق الطبيعية):</strong> إعطاء الأولوية
+                            للطرق البيولوجية والطبيعية في مكافحة الآفات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-721-2.0 (تقليل المبيدات):</strong> تقليل استخدام المبيدات
+                            الكيميائية إلى الحد الأدنى الضروري.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 730: جودة الهواء والبيئة الحضرية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-731: تحسين جودة الهواء</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-731-1.0 (النباتات المنقية للهواء):</strong> استخدام النباتات
+                            المعروفة بقدرتها على تنقية الهواء وامتصاص الملوثات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-731-2.0 (تقليل الغبار):</strong> تصميم المساحات الخضراء
+                            لتقليل انتشار الغبار والجسيمات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب الثامن -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الثامن: إدارة المخلفات العضوية (SAC-800)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الثامن</h3>
+                <ul>
+                    <li>الباب 810: إعادة التدوير في الموقع</li>
+                    <li>الباب 820: إنتاج السماد العضوي</li>
+                    <li>الباب 830: إدارة مخلفات التقليم</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 810: إعادة التدوير في الموقع</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-811: إنتاج السماد العضوي (Composting)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-811-1.0 (المشاريع الكبرى):</strong> إلزام المشاريع التي تزيد
+                            مساحتها عن 5 هكتارات بتخصيص منطقة لإنتاج السماد العضوي من المخلفات النباتية، مع مراعاة
+                            التهوية الجيدة وتقليب الكومة بانتظام.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-811-2.0 (الكمبوست المنزلي):</strong> يشجع الكود على استخدام
+                            حاويات الكمبوست المنزلية المغلقة (Compost Bins) لتدوير بقايا الطعام النباتية، شريطة وضعها في
+                            مكان جيد التهوية بعيداً عن النوافذ.</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-number">SAC-812: مزارع الدود (Vermicomposting)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-812-1.0:</strong> يسمح باستخدام مزارع الدود (Red Wigglers)
+                            لإنتاج الفيرميكومبوست عالي الجودة داخل المنازل والمؤسسات، بشرط الحفاظ على رطوبة الوسط
+                            (60-70%) ودرجة حرارة معتدلة (15-25 درجة مئوية).</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-number">SAC-813: الأغطية العضوية (Mulching)</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-813-1.0:</strong> يجب إعادة استخدام ناتج تقطيع فروع الأشجار
+                            كغطاء عضوي (Mulch) بسمك 5-10 سم في أحواض الزراعة لتقليل تبخر المياه ومنع نمو الحشائش.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-811: معالجة المخلفات العضوية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-811-1.0 (فصل المخلفات):</strong> فصل المخلفات العضوية عن
+                            المخلفات الأخرى في الموقع.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-811-2.0 (المعالجة الموقعية):</strong> معالجة المخلفات
+                            العضوية في الموقع لإنتاج سماد عضوي عالي الجودة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 820: إنتاج السماد العضوي</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-821: مواصفات السماد العضوي</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-821-1.0 (معايير الجودة):</strong> يجب أن يلبي السماد العضوي
+                            المنتج معايير الجودة المحددة في المواصفات السعودية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-821-2.0 (فترة النضج):</strong> فترة نضج لا تقل عن 6 أشهر
+                            للسماد العضوي قبل الاستخدام.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 830: إدارة مخلفات التقليم</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-831: إعادة استخدام مخلفات التقليم</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-831-1.0 (التقطيع والاستخدام):</strong> تقطيع مخلفات التقليم
+                            واستخدامها كغطاء عضوي (Mulch) في الموقع.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-831-2.0 (منع الحرق):</strong> منع حرق مخلفات التقليم
+                            والمخلفات العضوية في الموقع.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب التاسع -->
+        <div class="book">
+            <h1 class="book-title">الكتاب التاسع: جودة البيئة الحضرية (SAC-900)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب التاسع</h3>
+                <ul>
+                    <li>الباب 910: تخفيف الجزر الحرارية الحضرية</li>
+                    <li>الباب 920: إدارة الضوضاء والتلوث الصوتي</li>
+                    <li>الباب 930: تعزيز الراحة الحرارية</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 910: تخفيف الجزر الحرارية الحضرية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-911: استراتيجيات التبريد الطبيعي</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-911-1.0 (التظليل الإلزامي):</strong> توفير تظليل طبيعي لا
+                            يقل عن 60% من المساحات المفتوحة في المناطق الحضرية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-911-2.0 (الأسطح الخضراء):</strong> تشجيع استخدام الأسطح
+                            الخضراء لتقليل امتصاص الحرارة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-912: تحسين دوران الهواء</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-912-1.0 (الممرات الهوائية):</strong> تصميم ممرات هوائية
+                            طبيعية لتحسين دوران الهواء في المناطق الحضرية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-912-2.0 (توجيه الرياح):</strong> استخدام النباتات لتوجيه
+                            الرياح وتحسين التهوية الطبيعية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 920: إدارة الضوضاء والتلوث الصوتي</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-921: الحواجز النباتية للضوضاء</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-921-1.0 (النباتات العازلة):</strong> استخدام النباتات
+                            الكثيفة كحواجز طبيعية لتقليل الضوضاء.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-921-2.0 (التصميم الصوتي):</strong> تصميم المساحات الخضراء
+                            لامتصاص وتشتيت الأصوات غير المرغوبة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 930: تعزيز الراحة الحرارية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-931: مناطق الراحة المناخية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-931-1.0 (المناطق المظللة):</strong> إنشاء مناطق مظللة ومريحة
+                            مناخياً للمستخدمين.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-931-2.0 (عناصر المياه):</strong> دمج عناصر المياه لتحسين
+                            الراحة الحرارية والرطوبة النسبية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب العاشر -->
+        <div class="book">
+            <h1 class="book-title">الكتاب العاشر: المشاريع المتخصصة (SAC-1000)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب العاشر</h3>
+                <ul>
+                    <li>الباب 1010: المستشفيات والمرافق الصحية</li>
+                    <li>الباب 1020: المطارات والمنافذ</li>
+                    <li>الباب 1030: السكك الحديدية ومسارات النقل العام</li>
+                    <li>الباب 1040: المدارس والمؤسسات التعليمية</li>
+                    <li>الباب 1050: المساجد والمرافق الدينية</li>
+                    <li>الباب 1060: المجمعات السكنية</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1010: المستشفيات والمرافق الصحية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1011: حدائق الاستشفاء</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1011-1.0 (التصميم الإلزامي):</strong> يجب على المستشفيات
+                            الجديدة تخصيص 15% من مساحة الأرض المفتوحة كحديقة استشفاء.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1011-2.0 (النباتات العلاجية):</strong> استخدام النباتات ذات
+                            الخصائص العلاجية والعطرية المهدئة.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1011-3.0 (منع النباتات المسببة للحساسية):</strong> منع
+                            استخدام النباتات المسببة للحساسية أو ذات الروائح القوية.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-1012: الأسطح والجدران الخضراء العلاجية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1012-1.0:</strong> يجب أن تكون الأسطح الخضراء مرئية من غرف
+                            المرضى كلما أمكن ذلك.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1020: المطارات والمنافذ</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1021: السلامة الجوية أولاً</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1021-1.0 (منع جذب الطيور):</strong> يمنع منعاً باتاً زراعة
+                            الأشجار المثمرة أو النباتات التي تشكل مصدراً غذائياً للطيور ضمن مسافة 3 كيلومترات من المدارج
+                            وممرات الطائرات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1021-2.0 (ارتفاعات النباتات):</strong> يجب ألا يتجاوز ارتفاع
+                            أي شجرة أو نبات الحدود المسموح بها في خرائط العوائق الجوية للمطار.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-1022: الواجهة الحضارية والهوية المحلية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1022-1.0:</strong> يجب أن يعكس تصميم المناظر الطبيعية في
+                            مناطق المداخل الرئيسية هوية المنطقة البيئية، مع استخدام 80% على الأقل من النباتات المحلية.
+                        </p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1022-2.0 (استخدام المياه المعالجة):</strong> إلزامية استخدام
+                            المياه الرمادية المعالجة أو المياه المعالجة ثلاثياً (TSE) لري جميع المساحات الخضراء.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1030: السكك الحديدية ومسارات النقل العام</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1031: تثبيت المنحدرات والجسور</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1031-1.0 (التحكم في التعرية):</strong> يجب زراعة المنحدرات
+                            الترابية المجاورة لخطوط السكك الحديدية بنباتات مغطية للتربة ذات جذور ليفية قوية لمنع تآكل
+                            التربة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-number">SAC-1032: السلامة التشغيلية ووضوح الرؤية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1032-1.0 (منطقة خالية من العوائق):</strong> يجب الحفاظ على
+                            منطقة خالية من الأشجار والشجيرات الكبيرة بعرض لا يقل عن 5 أمتار من كل جانب من جوانب مسار
+                            القطار.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1020: المدارس والمرافق التعليمية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1021: الحدائق التعليمية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1021-1.0 (الحديقة التعليمية):</strong> تخصيص مساحة لا تقل عن
+                            10% من المساحة المفتوحة كحديقة تعليمية للطلاب.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1021-2.0 (النباتات الآمنة):</strong> استخدام النباتات الآمنة
+                            وغير السامة فقط في المناطق المخصصة للأطفال.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1021-3.0 (مناطق اللعب الطبيعية):</strong> إنشاء مناطق لعب
+                            طبيعية تعزز التعلم والاستكشاف.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1030: المجمعات التجارية والمكاتب</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1031: المساحات الخضراء للموظفين</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1031-1.0 (مناطق الاستراحة):</strong> توفير مساحات خضراء
+                            مخصصة لاستراحة الموظفين والزوار.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1031-2.0 (تحسين الإنتاجية):</strong> تصميم المساحات الخضراء
+                            لتعزيز الراحة النفسية وتحسين الإنتاجية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1040: المناطق الصناعية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1041: التشجير الصناعي</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1041-1.0 (الحزام الأخضر):</strong> إنشاء حزام أخضر حول
+                            المناطق الصناعية لتقليل التلوث البصري والبيئي.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1041-2.0 (النباتات المقاومة للتلوث):</strong> استخدام
+                            النباتات المقاومة للتلوث والظروف الصناعية القاسية.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1041-3.0 (معالجة الانبعاثات):</strong> استخدام النباتات
+                            القادرة على امتصاص ومعالجة الانبعاثات الصناعية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب الحادي عشر -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الحادي عشر: الزراعة الحضرية المنتجة (SAC-1100)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الحادي عشر</h3>
+                <ul>
+                    <li>الباب 1110: زراعة الأسطح المنتجة (Rooftop Farming)</li>
+                    <li>الباب 1120: الزراعة المائية والعمودية (Hydroponics)</li>
+                    <li>الباب 1130: تربية النحل في المناطق الحضرية (Urban Beekeeping)</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1110: زراعة الأسطح المنتجة</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1111: المتطلبات الإنشائية والسلامة</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1111-1.0 (الأحمال الحية والميتة):</strong> يجب تقديم تقرير
+                            هندسي إنشائي يثبت قدرة السطح على تحمل أحمال التربة المشبعة بالمياه، أحواض الزراعة، والمعدات،
+                            بالإضافة إلى الأحمال الحية (المزارعين والزوار).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1111-2.0 (حماية الرياح):</strong> يجب تركيب مصدات رياح آمنة
+                            ومثبتة جيداً لحماية المحاصيل من الرياح القوية، مع مراعاة عدم تأثيرها على سلامة المبنى.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1111-3.0 (حواجز السقوط):</strong> يجب أن يحيط بمنطقة الزراعة
+                            سور آمن بارتفاع لا يقل عن 1.2 متر لمنع السقوط.</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-number">SAC-1112: نظم الزراعة والري</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1112-1.0 (الوسط الزراعي):</strong> يفضل استخدام أوساط زراعية
+                            خفيفة الوزن (مثل البيرلايت، البيتموس، ألياف جوز الهند) لتقليل الأحمال على السطح.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1112-2.0 (العزل المائي):</strong> يجب تطبيق طبقات عزل مائي
+                            عالية الجودة ومقاومة لاختراق الجذور (Root-Resistant Membrane) على كامل مساحة السطح المزروع.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1120: الزراعة المائية والعمودية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1121: معايير الجودة والسلامة الغذائية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1121-1.0 (جودة المياه):</strong> يجب استخدام مياه صالحة للري
+                            وخالية من الملوثات الكيميائية والبيولوجية، مع إجراء فحص دوري للمحلول المغذي.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1121-2.0 (المواد المستخدمة):</strong> يجب أن تكون جميع
+                            الأنابيب والأوعية المستخدمة في النظام مصنوعة من مواد آمنة غذائياً (Food Grade) ومقاومة
+                            للأشعة فوق البنفسجية.</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-number">SAC-1122: كفاءة الطاقة والموارد</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1122-1.0 (الإضاءة):</strong> في حال الزراعة الداخلية (Indoor
+                            Farming)، يجب استخدام إضاءة LED زراعية (Grow Lights) موفرة للطاقة وذات طيف ضوئي مناسب لنمو
+                            النبات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1122-2.0 (تدوير المياه):</strong> يجب تصميم النظام ليكون
+                            مغلقاً (Closed Loop) لتدوير المياه والمغذيات وتقليل الهدر بنسبة لا تقل عن 90% مقارنة
+                            بالزراعة التقليدية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1130: تربية النحل في المناطق الحضرية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1131: الموقع والمسافات الآمنة</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1131-1.0 (المسافة عن الجيران):</strong> يجب أن تبعد خلايا
+                            النحل مسافة لا تقل عن 3 أمتار عن حدود ملكية الجيران، أو وجود حاجز بارتفاع 2 متر يجبر النحل
+                            على الطيران عالياً.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1131-2.0 (الكثافة):</strong> يسمح بخلية واحدة لكل 200 متر
+                            مربع من مساحة الحديقة أو السطح، بحد أقصى 5 خلايا في العقار السكني الواحد.</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-number">SAC-1132: الإدارة والمسؤولية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1132-1.0 (مصدر المياه):</strong> يجب توفير مصدر مياه دائم
+                            ونظيف للنحل داخل موقع المنحل لمنع توجه النحل إلى مسابح أو مصادر مياه الجيران.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1132-2.0 (سلالات النحل):</strong> يجب تربية سلالات نحل هادئة
+                            وغير عدوانية، واستبدال الملكة فوراً في حال ظهور سلوك عدواني من الخلية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكتاب الثاني عشر -->
+        <div class="book">
+            <h1 class="book-title">الكتاب الثاني عشر: التقنيات الزراعية الذكية (SAC-1200)</h1>
+
+            <div class="toc">
+                <h3>فهرس الكتاب الثاني عشر</h3>
+                <ul>
+                    <li>الباب 1210: أنظمة الري الذكية (Smart Irrigation)</li>
+                    <li>الباب 1220: إنترنت الأشياء والمراقبة (IoT & Monitoring)</li>
+                </ul>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1210: أنظمة الري الذكية</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1211: وحدات التحكم المركزية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1211-1.0 (التحكم المناخي):</strong> يجب أن تكون جميع وحدات
+                            التحكم في الري (Controllers) في المشاريع التي تزيد مساحتها عن 1000 متر مربع مرتبطة بمحطة
+                            أرصاد جوية محلية أو عبر الإنترنت لتعديل جداول الري تلقائياً بناءً على الطقس (ET-based).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1211-2.0 (كشف التسرب):</strong> يجب تزويد النظام بحساسات
+                            تدفق (Flow Sensors) تكتشف التدفق غير الطبيعي (كسر في الأنابيب) وتقوم بإغلاق الصمام الرئيسي
+                            تلقائياً وإرسال تنبيه للمشغل.</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-number">SAC-1212: الحساسات الأرضية</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1212-1.0 (حساسات الرطوبة):</strong> يجب تركيب حساسات رطوبة
+                            تربة (Soil Moisture Sensors) في كل منطقة ري (Hydrozone) لضمان عدم الري إلا عند الحاجة
+                            الفعلية للنبات.</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1212-2.0 (حساسات المطر):</strong> إلزامية تركيب حساسات إيقاف
+                            الري عند هطول الأمطار (Rain Sensors) في جميع أنظمة الري الأوتوماتيكية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الباب 1220: إنترنت الأشياء والمراقبة</h2>
+                <div class="section">
+                    <h3 class="section-number">SAC-1221: الأتمتة والتحكم عن بعد</h3>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1221-1.0 (الاتصال):</strong> يفضل أن تكون أنظمة إدارة
+                            الحدائق العامة متصلة بشبكة مركزية تتيح المراقبة والتحكم عن بعد (Centralized Management
+                            System).</p>
+                    </div>
+                    <div class="subsection">
+                        <p class="content-text"><strong>SAC-1221-2.0 (تحليل البيانات):</strong> استخدام خوارزميات الذكاء
+                            الاصطناعي لتحليل بيانات استهلاك المياه وصحة النباتات للتنبؤ بالأعطال وجدولة الصيانة
+                            الوقائية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الملاحق الفنية -->
+        <div class="book">
+            <h1 class="book-title">الملاحق الفنية</h1>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الملحق (أ): جداول النباتات المعتمدة</h2>
+                <div class="section">
+                    <p class="content-text">يحتوي هذا الملحق على قوائم شاملة للنباتات المعتمدة مصنفة حسب الأقاليم
+                        المناخية في المملكة.</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الملحق (ب): معادلات حساب المياه</h2>
+                <div class="section">
+                    <p class="content-text">يتضمن المعادلات الرياضية المستخدمة في حساب احتياجات النباتات المائية
+                        ومعاملات المحاصيل.</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الملحق (ج): مواصفات التربة والأسمدة</h2>
+                <div class="section">
+                    <p class="content-text">يحدد المواصفات الفنية لخلطات التربة والأسمدة المعتمدة في المشاريع.</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الملحق (د): قائمة النباتات المحظورة</h2>
+                <div class="section">
+                    <p class="content-text">قائمة شاملة بالنباتات المحظورة والغازية الممنوع استخدامها في المشاريع.</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h2 class="chapter-title">الملحق (هـ): جدول الجزاءات والغرامات</h2>
+                <div class="section">
+                    <p class="content-text">يحدد الجزاءات والغرامات المالية المطبقة عند مخالفة أحكام الكود.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- بيان حقوق الطبع والنشر -->
+        <div
+            style="text-align: center; margin-top: 50px; padding: 30px; border-top: 2px solid #2E7D32; page-break-before: avoid;">
+            <p style="font-size: 1.1rem; color: #2E7D32; font-weight: 600; margin: 0;">
+                © 2025 - جميع الحقوق محفوظة لجمعية المهندسين الزراعيين
+            </p>
+            <p style="font-size: 0.9rem; color: #666; margin: 10px 0 0 0;">
+                المملكة العربية السعودية
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

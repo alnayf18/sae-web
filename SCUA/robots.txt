@@ -1,0 +1,72 @@
+# ملف robots.txt للكود السعودي للزراعة الحضرية
+# Saudi Agriculture Code Website - Robots Configuration
+
+User-agent: *
+
+# السماح بالوصول للصفحات الرئيسية
+Allow: /
+Allow: /index.html
+Allow: /book*.html
+Allow: /plant-guide.html
+Allow: /water-calculator.html
+Allow: /engineering-tools.html
+Allow: /restricted-plants.html
+Allow: /appendices.html
+Allow: /print-all.html
+
+# السماح بالوصول للملفات الثابتة
+Allow: /styles.css
+Allow: /script.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+
+# منع الوصول للملفات الحساسة
+Disallow: /*.md
+Disallow: /*.zip
+Disallow: /.htaccess
+Disallow: /upload-instructions.md
+Disallow: /bluehost-upload-guide.md
+Disallow: /next-steps-guide.md
+Disallow: /website-security-analysis.md
+
+# منع الوصول للملفات المؤقتة والنسخ الاحتياطية
+Disallow: /*.tmp
+Disallow: /*.bak
+Disallow: /*~
+Disallow: /*.log
+
+# منع الوصول لمجلدات النظام (إن وجدت)
+Disallow: /cgi-bin/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.well-known/
+
+# تحديد موقع خريطة الموقع
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# معلومات إضافية للزحف
+Crawl-delay: 1
+
+# تعليمات خاصة لمحركات البحث المختلفة
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# منع البوتات الضارة
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

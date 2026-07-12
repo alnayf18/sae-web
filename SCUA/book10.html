@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكتاب العاشر: متطلبات المشاريع المتخصصة - SAC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .code-content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #E8F5E8;
+            padding-bottom: 30px;
+        }
+
+        .chapter:last-child {
+            border-bottom: none;
+        }
+
+        .chapter-title {
+            color: #2E7D32;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-number {
+            color: #4CAF50;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .subsection {
+            margin-bottom: 15px;
+            padding-right: 20px;
+            border-right: 3px solid #C8E6C9;
+        }
+
+        .content-text {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .toc {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            color: #2E7D32;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .toc li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .toc li a:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين"
+                        style="width: 120px; height: auto; border-radius: 8px;">
+                    <div class="logo-text">
+                        <h1>الكتاب العاشر: متطلبات المشاريع المتخصصة</h1>
+                        <p>SAC-1000</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#books">كتب الكود</a></li>
+                        <li><a href="index.html#tools">الأدوات</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="code-content">
+                <div class="toc">
+                    <h3><i class="fas fa-list"></i> فهرس الكتاب العاشر</h3>
+                    <ul>
+                        <li><a href="#chapter1010">الباب 1010: المستشفيات والمرافق الصحية</a></li>
+                        <li><a href="#chapter1020">الباب 1020: المطارات والمنافذ</a></li>
+                        <li><a href="#chapter1030">الباب 1030: السكك الحديدية ومسارات النقل العام</a></li>
+                        <li><a href="#chapter1040">الباب 1040: المدارس والمؤسسات التعليمية</a></li>
+                        <li><a href="#chapter1050">الباب 1050: المساجد والمرافق الدينية</a></li>
+                        <li><a href="#chapter1060">الباب 1060: المجمعات السكنية</a></li>
+                    </ul>
+                </div>
+
+                <div class="chapter" id="chapter1010">
+                    <h2 class="chapter-title">الباب 1010: المستشفيات والمرافق الصحية</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1011: حدائق الاستشفاء (Healing Gardens)</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1011-1.0 (التصميم الإلزامي):</strong> يجب على جميع
+                                المستشفيات الجديدة تخصيص مساحة لا تقل عن 15% من مساحة الأرض المفتوحة لإنشاء حديقة
+                                استشفاء واحدة على الأقل.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1011-2.0 (متطلبات التصميم):</strong> يجب أن تكون الممرات
+                                سهلة الاستخدام لكراسي المقعدين، وتوفير مناطق جلوس متنوعة، وزراعة نباتات ذات روائح عطرية
+                                هادئة.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1011-3.0 (اختيار النباتات):</strong> يمنع منعاً باتاً
+                                زراعة أي نباتات معروفة بأنها سامة أو مسببة للحساسية الشديدة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1012: الأسطح والجدران الخضراء العلاجية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1012-1.0:</strong> يجب أن تكون الأسطح الخضراء مرئية من
+                                غرف المرضى كلما أمكن ذلك.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter1020">
+                    <h2 class="chapter-title">الباب 1020: المطارات والمنافذ</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1021: السلامة الجوية أولاً</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1021-1.0 (منع جذب الطيور):</strong> يمنع منعاً باتاً
+                                زراعة الأشجار المثمرة أو النباتات التي تشكل مصدراً غذائياً للطيور ضمن مسافة 3 كيلومترات
+                                من المدارج وممرات الطائرات.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1021-2.0 (ارتفاعات النباتات):</strong> يجب ألا يتجاوز
+                                ارتفاع أي شجرة أو نبات الحدود المسموح بها في خرائط العوائق الجوية للمطار.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1022: الواجهة الحضارية والهوية المحلية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1022-1.0:</strong> يجب أن يعكس تصميم المناظر الطبيعية في
+                                مناطق المداخل الرئيسية هوية المنطقة البيئية، مع استخدام 80% على الأقل من النباتات
+                                المحلية.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1022-2.0 (استخدام المياه المعالجة):</strong> إلزامية
+                                استخدام المياه الرمادية المعالجة أو المياه المعالجة ثلاثياً (TSE) لري جميع المساحات
+                                الخضراء.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter1030">
+                    <h2 class="chapter-title">الباب 1030: السكك الحديدية ومسارات النقل العام</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1031: تثبيت المنحدرات والجسور</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1031-1.0 (التحكم في التعرية):</strong> يجب زراعة
+                                المنحدرات الترابية المجاورة لخطوط السكك الحديدية بنباتات مغطية للتربة ذات جذور ليفية
+                                قوية لمنع تآكل التربة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-1032: السلامة التشغيلية ووضوح الرؤية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-1032-1.0 (منطقة خالية من العوائق):</strong> يجب الحفاظ
+                                على منطقة خالية من الأشجار والشجيرات الكبيرة بعرض لا يقل عن 5 أمتار من كل جانب من جوانب
+                                مسار القطار.</p>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter1040">
+                        <h2 class="chapter-title">الباب 1040: المدارس والمؤسسات التعليمية</h2>
+                        <div class="section">
+                            <h3 class="section-number">SAC-1041: متطلبات السلامة العامة</h3>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1041-1.0 (اختيار النباتات الآمنة):</strong> يمنع
+                                    منعاً باتاً زراعة أي نباتات سامة أو شوكية أو مسببة للحساسية الشديدة في محيط المدارس
+                                    والمؤسسات التعليمية. يجب أن تكون جميع النباتات آمنة للأطفال في حالة اللمس أو
+                                    الابتلاع العرضي.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1041-2.0 (قائمة النباتات المحظورة):</strong> تشمل
+                                    القائمة التفصيلية للنباتات الممنوعة في المدارس: الدفلة (Nerium oleander)، الخروع
+                                    (Ricinus communis)، الديفنباخيا، الفيلودندرون، البونسيانا الحمراء (بذورها سامة)،
+                                    التنضب الشوكي، وأي نباتات ذات أشواك حادة أو عصارة مهيجة للجلد.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1041-3.0 (فحص التربة الإلزامي):</strong> يجب إجراء
+                                    فحص شامل للتربة من الرصاص والمعادن الثقيلة (الكادميوم، الزرنيخ، الزئبق) قبل إنشاء أي
+                                    حدائق مدرسية، خاصة في المواقع القريبة من المباني القديمة أو المناطق الصناعية
+                                    السابقة. في حالة وجود تلوث، يجب استخدام أحواض زراعة مرتفعة بتربة نظيفة مستوردة.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1041-4.0 (الرؤية الواضحة):</strong> يجب الحفاظ على
+                                    خطوط رؤية واضحة في جميع أنحاء الحرم المدرسي. لا يجوز أن تعيق الشجيرات أو الأشجار
+                                    رؤية المشرفين للطلاب. الحد الأقصى لارتفاع الشجيرات بالقرب من مناطق اللعب هو 60 سم.
+                                </p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1041-5.0 (تخزين الأدوات والمواد):</strong> يجب توفير
+                                    مخزن آمن ومقفل بإحكام لجميع أدوات البستنة والأسمدة والمواد الكيميائية. يحظر تخزين أي
+                                    مواد خطرة في أماكن يمكن للطلاب الوصول إليها.</p>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <h3 class="section-number">SAC-1042: الحدائق التعليمية والزراعية</h3>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1042-1.0 (المساحة المخصصة):</strong> يجب تخصيص ما لا
+                                    يقل عن 10% من إجمالي المساحة المفتوحة في المدرسة لإنشاء حدائق تعليمية. هذه المساحة
+                                    تشمل أحواض الزراعة، ومناطق الكومبوست، ومساحات التعلم الخارجية.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1042-2.0 (الأحواض الزراعية المرتفعة):</strong> يجب
+                                    أن تكون الأحواض الزراعية مرتفعة بارتفاع 40-60 سم للمرحلة الابتدائية، و60-80 سم
+                                    للمرحلة المتوسطة والثانوية، لتسهيل الوصول وتقليل الانحناء. يجب أن تكون حواف الأحواض
+                                    ناعمة وآمنة.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1042-3.0 (اختيار المحاصيل التعليمية):</strong> يُنصح
+                                    بزراعة محاصيل سريعة النمو وآمنة مثل: الخس، الفجل، النعناع، الريحان، الطماطم الكرزية،
+                                    الفراولة، والزهور الصالحة للأكل مثل الكبوسين (Nasturtium).</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1042-4.0 (منطقة الكومبوست):</strong> في حالة إنشاء
+                                    منطقة كومبوست تعليمية، يجب أن تكون محاطة بسياج آمن، وبعيدة عن مناطق تناول الطعام
+                                    بمسافة لا تقل عن 10 أمتار. يُمنع استخدام السماد العضوي الطازج غير المعالج.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1042-5.0 (مصادر المياه):</strong> يجب استخدام مياه
+                                    صالحة للشرب فقط لري المحاصيل الصالحة للأكل. في حالة استخدام مياه الأمطار المجمعة،
+                                    يجب فحصها دورياً أو استخدامها فقط للنباتات الزينة.</p>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <h3 class="section-number">SAC-1043: مناطق اللعب والترفيه</h3>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1043-1.0 (أسطح اللعب الآمنة):</strong> يجب استخدام
+                                    مواد آمنة للسقوط تحت جميع معدات اللعب، مثل المطاط المعاد تدويره، أو رقائق الخشب
+                                    المعالجة، أو الرمل الناعم. الحد الأدنى لعمق المواد الواقية هو 30 سم تحت معدات اللعب
+                                    التي يزيد ارتفاعها عن متر واحد.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1043-2.0 (المسافات الآمنة من الأشجار):</strong> يجب
+                                    الحفاظ على مسافة لا تقل عن 3 أمتار بين جذوع الأشجار وأي معدات لعب. هذا يمنع الإصابات
+                                    ويسمح بنمو الجذور بشكل طبيعي دون تلف المعدات.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1043-3.0 (توفير الظل الطبيعي):</strong> يجب توفير
+                                    مناطق ظل طبيعي تغطي ما لا يقل عن 60% من مساحة اللعب الخارجية. يُفضل استخدام أشجار ظل
+                                    كثيفة مثل السدر، الغاف، أو اللوز الهندي، مع مراعاة المسافات الآمنة.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1043-4.0 (منع النباتات الجاذبة للحشرات):</strong>
+                                    يجب تجنب زراعة النباتات المزهرة بكثافة عالية بالقرب من مناطق اللعب، حيث تجذب النحل
+                                    والدبابير. المسافة الموصى بها بين النباتات المزهرة ومناطق اللعب هي 5 أمتار على
+                                    الأقل.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1043-5.0 (الفحص الدوري للمعدات):</strong> يجب إجراء
+                                    فحص سنوي على الأقل بواسطة مفتش معتمد لسلامة الملاعب للتأكد من سلامة المعدات والأسطح
+                                    الواقية والمناظر الطبيعية المحيطة.</p>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <h3 class="section-number">SAC-1044: أنظمة الري والصيانة</h3>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1044-1.0 (أنظمة الري الآمنة):</strong> يجب استخدام
+                                    أنظمة الري بالتنقيط تحت السطحية أو أنظمة الري الذكية المبرمجة. يُمنع استخدام
+                                    الرشاشات المتحركة أو الخراطيم المكشوفة في مناطق اللعب أثناء ساعات الدوام المدرسي.
+                                </p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1044-2.0 (جدولة الري):</strong> يجب برمجة أنظمة الري
+                                    للعمل خارج أوقات الدوام المدرسي، ويُفضل في الساعات المبكرة من الصباح (4-6 صباحاً) أو
+                                    بعد انتهاء اليوم الدراسي (بعد الساعة 4 مساءً).</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1044-3.0 (حظر المبيدات الكيميائية):</strong> يُمنع
+                                    منعاً باتاً استخدام المبيدات الحشرية أو مبيدات الأعشاب الكيميائية في الحرم المدرسي.
+                                    يجب استخدام طرق المكافحة المتكاملة للآفات (IPM) والحلول العضوية فقط، مثل الزيوت
+                                    النباتية والصابون الحشري.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1044-4.0 (الأسمدة العضوية):</strong> في حالة استخدام
+                                    الأسمدة، يجب أن تكون عضوية ومعتمدة للاستخدام في الحدائق المدرسية. يُمنع استخدام
+                                    الأسمدة الكيميائية عالية التركيز. يجب تطبيق الأسمدة خارج أوقات الدوام وبواسطة أشخاص
+                                    مدربين فقط.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1044-5.0 (إدارة المياه الراكدة):</strong> يجب التأكد
+                                    من عدم وجود مياه راكدة في أي مكان بالحرم المدرسي، حيث تشكل بيئة لتكاثر البعوض وخطر
+                                    انزلاق للطلاب. يجب فحص أنظمة الصرف بانتظام.</p>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <h3 class="section-number">SAC-1045: المسارات والوصول الآمن</h3>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1045-1.0 (عرض المسارات):</strong> الحد الأدنى لعرض
+                                    المسارات الرئيسية في الحرم المدرسي هو 2 متر، والمسارات الفرعية 1.5 متر، لضمان حركة
+                                    آمنة ومريحة للطلاب، بما في ذلك ذوي الإعاقة.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1045-2.0 (الأسطح المانعة للانزلاق):</strong> يجب أن
+                                    تكون جميع المسارات مصنوعة من مواد غير قابلة للانزلاق، حتى عند البلل. يُنصح باستخدام
+                                    الخرسانة المحززة، أو البلاط الخشن، أو الأسفلت المعالج بمواد مانعة للانزلاق.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1045-3.0 (الإضاءة الكافية):</strong> يجب توفير إضاءة
+                                    كافية على جميع المسارات بحد أدنى 50 لوكس، خاصة في المناطق المظللة بالأشجار. يُفضل
+                                    استخدام إضاءة LED موفرة للطاقة مع مستشعرات حركة.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1045-4.0 (إمكانية الوصول الشامل):</strong> يجب أن
+                                    تكون جميع المسارات والحدائق التعليمية متاحة للطلاب ذوي الإعاقة، مع منحدرات بميل لا
+                                    يتجاوز 1:12، ومساحات دوران كافية للكراسي المتحركة (قطر 1.5 متر على الأقل).</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1045-5.0 (اللافتات التعليمية):</strong> يُنصح بتركيب
+                                    لافتات تعليمية عند النباتات المختلفة، توضح الاسم العربي والعلمي، والفوائد البيئية،
+                                    وتعليمات السلامة. يجب أن تكون اللافتات على ارتفاع مناسب للأطفال (80-120 سم).</p>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <h3 class="section-number">SAC-1046: التعليم والإشراف</h3>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1046-1.0 (الإشراف الدائم):</strong> يجب وجود إشراف
+                                    من البالغين في جميع الأوقات عند استخدام الطلاب للحدائق المدرسية. نسبة الإشراف الموصى
+                                    بها هي معلم واحد لكل 15 طالباً في الحدائق التعليمية.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1046-2.0 (قواعد السلامة):</strong> يجب وضع قواعد
+                                    واضحة ومعلنة للحديقة المدرسية تشمل: المشي فقط على المسارات، عدم تناول أي نبات دون
+                                    إذن، غسل اليدين قبل وبعد البستنة، ارتداء أحذية مغلقة، واحترام النباتات والحيوانات.
+                                </p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1046-3.0 (النظافة الشخصية):</strong> يجب توفير مرافق
+                                    غسل اليدين بالقرب من الحدائق المدرسية، مع صابون ومناشف ورقية. يجب تعليم الطلاب غسل
+                                    اليدين جيداً لمدة 20 ثانية على الأقل بعد أي نشاط بستاني.</p>
+                            </div>
+                            <div class="subsection">
+                                <p class="content-text"><strong>SAC-1046-4.0 (إجراءات الطوارئ):</strong> يجب وجود خطة
+                                    طوارئ واضحة تشمل: أرقام الطوارئ، موقع أقرب حقيبة إسعافات أولية، إجراءات التعامل مع
+                                <div class="chapter" id="chapter1050">
+                                    <h2 class="chapter-title">الباب 1050: المساجد والمرافق الدينية</h2>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1051: متطلبات التصميم الإسلامي</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1051-1.0 (النباتات المذكورة في القرآن
+                                                    والسنة):</strong> يُنصح بشدة باستخدام النباتات المذكورة في القرآن
+                                                الكريم والسنة النبوية مثل: النخيل (Phoenix dactylifera)، الزيتون (Olea
+                                                europaea)، الرمان (Punica granatum)، التين (Ficus carica)، السدر
+                                                (Ziziphus spina-christi)، والعنب (Vitis vinifera).</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1051-2.0 (الروائح العطرية
+                                                    المناسبة):</strong> يجب تجنب النباتات ذات الروائح القوية جداً التي
+                                                قد تشتت المصلين. يُفضل استخدام نباتات عطرية خفيفة مثل الريحان، الياسمين،
+                                                والورد الجوري في المناطق الخارجية البعيدة عن قاعة الصلاة.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1051-3.0 (مناطق الظل):</strong> يجب
+                                                توفير مناطق ظل طبيعي تغطي ما لا يقل عن 70% من ساحات الانتظار والمداخل،
+                                                خاصة في أوقات الصلاة الحارة (الظهر والعصر).</p>
+                                        </div>
+                                    </div>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1052: الوضوء والنظافة</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1052-1.0 (النباتات العطرية
+                                                    الطبيعية):</strong> يُنصح بزراعة نباتات عطرية طبيعية مثل الريحان
+                                                (Ocimum basilicum) والنعناع (Mentha) بالقرب من مناطق الوضوء، مع الحفاظ
+                                                على مسافة آمنة لا تقل عن 2 متر.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1052-2.0 (تجنب الحشرات):</strong> يجب
+                                                تجنب النباتات الجاذبة للحشرات (خاصة النحل والدبابير) بالقرب من أماكن
+                                                الوضوء ومداخل المسجد. المسافة الموصى بها: 10 أمتار على الأقل.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1052-3.0 (النباتات قليلة
+                                                    التساقط):</strong> يُفضل استخدام نباتات دائمة الخضرة قليلة التساقط
+                                                للأوراق والثمار للحفاظ على نظافة المسجد وتقليل أعمال الصيانة.</p>
+                                        </div>
+                                    </div>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1053: السلامة والأمان</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1053-1.0 (الرؤية الواضحة):</strong> يجب
+                                                الحفاظ على خطوط رؤية واضحة في جميع أنحاء المسجد لأسباب أمنية. لا يجوز أن
+                                                تعيق الشجيرات أو الأشجار رؤية المداخل والمخارج ومواقف السيارات.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1053-2.0 (تجنب النباتات
+                                                    الشوكية):</strong> يمنع منعاً باتاً زراعة أي نباتات شوكية في مسارات
+                                                الدخول والخروج، وفي المناطق المحيطة بمداخل المسجد ومواقف السيارات.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1053-3.0 (الإضاءة الكافية):</strong> يجب
+                                                توفير إضاءة كافية على جميع المسارات والمداخل، مع تجنب زراعة أشجار كثيفة
+                                                قد تحجب الإضاءة الاصطناعية.</p>
+                                        </div>
+                                    </div>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1054: الاستدامة والبيئة</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1054-1.0 (النباتات المحلية):</strong>
+                                                يجب أن تشكل النباتات المحلية ما لا يقل عن 80% من إجمالي النباتات
+                                                المستخدمة، لتقليل استهلاك المياه والصيانة.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1054-2.0 (أنظمة الري الذكية):</strong>
+                                                يجب استخدام أنظمة ري ذكية مبرمجة لتجنب الري أثناء أوقات الصلاة، خاصة
+                                                صلاة الجمعة.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="chapter" id="chapter1060">
+                                    <h2 class="chapter-title">الباب 1060: المجمعات السكنية</h2>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1061: المساحات الخضراء المشتركة</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1061-1.0 (الحد الأدنى للمساحات
+                                                    الخضراء):</strong> يجب تخصيص ما لا يقل عن 20% من إجمالي مساحة المجمع
+                                                السكني للمساحات الخضراء المشتركة، موزعة بشكل عادل بين جميع الوحدات.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1061-2.0 (مناطق لعب الأطفال):</strong>
+                                                يجب توفير منطقة لعب آمنة للأطفال بمساحة لا تقل عن 100 متر مربع لكل 50
+                                                وحدة سكنية، مع أسطح آمنة لامتصاص الصدمات ومظلات طبيعية.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1061-3.0 (مسارات المشي
+                                                    والرياضة):</strong> يُنصح بتوفير مسارات مشي ورياضة بعرض لا يقل عن 2
+                                                متر، مظللة بنسبة 60% على الأقل، ومزودة بمقاعد للراحة كل 50 متر.</p>
+                                        </div>
+                                    </div>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1062: الخصوصية والفصل</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1062-1.0 (الشجيرات الفاصلة):</strong>
+                                                يجب استخدام شجيرات كثيفة دائمة الخضرة كفواصل طبيعية بين الوحدات السكنية.
+                                                الارتفاع الموصى به: 1.5-2 متر.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1062-2.0 (النباتات الموصى بها
+                                                    للخصوصية):</strong> يُنصح باستخدام: الدورانتا (Duranta erecta)،
+                                                الفيكس (Ficus nitida)، الثويا (Thuja orientalis)، أو الأتربلكس
+                                                (Atriplex).</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1062-3.0 (المسافة من النوافذ):</strong>
+                                                يجب أن تبعد الشجيرات الكثيفة مسافة لا تقل عن 1.5 متر من نوافذ الوحدات
+                                                السكنية لضمان التهوية والإضاءة الطبيعية.</p>
+                                        </div>
+                                    </div>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1063: الصيانة المشتركة</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1063-1.0 (اختيار نباتات قليلة
+                                                    الصيانة):</strong> يجب اختيار نباتات محلية قوية قليلة الصيانة لتقليل
+                                                التكاليف على السكان. يُفضل النباتات التي لا تحتاج إلى تقليم متكرر.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1063-2.0 (نظام الري المركزي):</strong>
+                                                يجب تركيب نظام ري أوتوماتيكي مركزي لجميع المساحات المشتركة، مع حساسات
+                                                رطوبة وأمطار لتوفير المياه.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1063-3.0 (خطة الصيانة السنوية):</strong>
+                                                يجب وضع خطة صيانة سنوية واضحة تحدد مسؤوليات الصيانة والتكاليف المتوقعة،
+                                                وتوزيعها على جميع السكان بشكل عادل.</p>
+                                        </div>
+                                    </div>
+                                    <div class="section">
+                                        <h3 class="section-number">SAC-1064: الأمان والسلامة</h3>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1064-1.0 (الإضاءة الليلية):</strong> يجب
+                                                توفير إضاءة كافية لجميع المسارات والمساحات المشتركة، مع تجنب زراعة أشجار
+                                                كثيفة قد تحجب الإضاءة أو تخلق مناطق مظلمة.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1064-2.0 (كاميرات المراقبة):</strong>
+                                                يجب مراعاة مواقع كاميرات المراقبة عند تصميم المناظر الطبيعية، وتجنب
+                                                زراعة نباتات قد تعيق الرؤية.</p>
+                                        </div>
+                                        <div class="subsection">
+                                            <p class="content-text"><strong>SAC-1064-3.0 (مخارج الطوارئ):</strong> يجب
+                                                الحفاظ على مخارج الطوارئ خالية من أي نباتات أو عوائق، مع مسافة أمان لا
+                                                تقل عن 2 متر من كل جانب.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 جمعية المهندسين الزراعيين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

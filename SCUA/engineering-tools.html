@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أدوات القياس الهندسية - الكود السعودي للزراعة الحضرية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tools-section {
+            padding: 60px 0;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E8F5E8;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            color: #2E7D32;
+            margin-left: 15px;
+        }
+
+        .tool-title {
+            color: #2E7D32;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .tool-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2E7D32;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .results {
+            background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            display: none;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.2);
+        }
+
+        .result-label {
+            font-weight: 600;
+            color: #2E7D32;
+        }
+
+        .result-value {
+            font-weight: 700;
+            color: #1B5E20;
+            font-size: 1.1rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #E8F5E8;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #2E7D32;
+            border-bottom-color: #4CAF50;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #17a2b8;
+        }
+
+        @media print {
+
+            .header,
+            .footer,
+            .tabs,
+            .hero-subtitle,
+            .calculate-btn {
+                display: none !important;
+            }
+
+            .hero {
+                padding: 20px 0 !important;
+                text-align: center;
+            }
+
+            .hero h2 {
+                color: black;
+                font-size: 24pt;
+            }
+
+            .tool-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .tab-content {
+                display: block !important;
+                /* Show all tools or just active? Let's show active only usually, but for tools page maybe they want to print specific one. */
+            }
+
+            /* Actually, usually users want to print the RESULT of a calculation. 
+               So we should hide the form inputs if a result is visible, or just print the whole active tool.
+               Let's hide non-active tabs.
+            */
+            .tab-content:not(.active) {
+                display: none !important;
+            }
+
+            .results {
+                display: block !important;
+                /* Ensure results are visible if they exist */
+                border: 1px solid #ccc;
+                background: white !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين"
+                        style="width: 120px; height: auto; border-radius: 8px;">
+                    <div class="logo-text">
+                        <h1>أدوات القياس الهندسية</h1>
+                        <p>Engineering Calculation Tools</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#books">كتب الكود</a></li>
+                        <li><a href="water-calculator.html">حاسبة المياه</a></li>
+                        <li><a href="index.html#tools">الأدوات</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 60px 0;">
+            <div class="container">
+                <h2>أدوات القياس الهندسية</h2>
+                <p class="hero-subtitle">مجموعة شاملة من الأدوات الحاسوبية لمساعدة المهندسين الزراعيين في الحسابات
+                    والتصميم</p>
+            </div>
+        </section>
+
+        <section class="tools-section">
+            <div class="container">
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('water-stress')">الإجهاد المائي</button>
+                    <button class="tab" onclick="showTab('heat-stress')">الإجهاد الحراري</button>
+                    <button class="tab" onclick="showTab('soil-analysis')">تحليل التربة</button>
+                    <button class="tab" onclick="showTab('plant-spacing')">تباعد النباتات</button>
+                    <button class="tab" onclick="showTab('irrigation-design')">تصميم الري</button>
+                    <button class="tab" onclick="showTab('environmental')">البيئة الحضرية</button>
+                    <button class="tab" onclick="showTab('planting-hole')">أبعاد الحفر</button>
+                    <button class="tab" onclick="showTab('hydroponics')">الزراعة المائية</button>
+                </div>
+
+                <!-- أداة حساب الإجهاد المائي -->
+                <div id="water-stress" class="tab-content active">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-tint tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">حاسبة الإجهاد المائي للنباتات</h3>
+                                <p class="tool-description">حساب مستوى الإجهاد المائي للنباتات بناءً على البيانات
+                                    المناخية والتربة</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>معادلة الإجهاد المائي:</strong> WSI = (ETo - P - I) / ETo<br>
+                            حيث WSI = مؤشر الإجهاد المائي، ETo = البخر-نتح المرجعي، P = الأمطار، I = الري
+                        </div>
+
+                        <form id="waterStressForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="eto">البخر-نتح المرجعي (مم/يوم):</label>
+                                    <input type="number" id="eto" step="0.1" placeholder="مثال: 8.5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rainfall">الأمطار (مم/يوم):</label>
+                                    <input type="number" id="rainfall" step="0.1" placeholder="مثال: 0.5" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="irrigation">الري المطبق (مم/يوم):</label>
+                                    <input type="number" id="irrigation" step="0.1" placeholder="مثال: 6.0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="plantType">نوع النبات:</label>
+                                    <select id="plantType" required>
+                                        <option value="">اختر نوع النبات</option>
+                                        <option value="grass">مسطح أخضر</option>
+                                        <option value="shrubs">شجيرات</option>
+                                        <option value="trees">أشجار</option>
+                                        <option value="succulents">نباتات عصارية</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                احسب الإجهاد المائي
+                            </button>
+                        </form>
+
+                        <div id="waterStressResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">نتائج الإجهاد المائي</h4>
+                            <div class="result-item">
+                                <span class="result-label">مؤشر الإجهاد المائي (WSI):</span>
+                                <span class="result-value" id="wsiValue">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">مستوى الإجهاد:</span>
+                                <span class="result-value" id="stressLevel">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">التوصية:</span>
+                                <span class="result-value" id="recommendation">-</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="waterStressChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أداة حساب الإجهاد الحراري -->
+                <div id="heat-stress" class="tab-content">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-thermometer-half tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">حاسبة الإجهاد الحراري</h3>
+                                <p class="tool-description">حساب مؤشر الحرارة والرطوبة وتأثيره على النباتات</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>مؤشر الحرارة:</strong> HI = -42.379 + 2.04901523×T + 10.14333127×RH -
+                            0.22475541×T×RH<br>
+                            حيث T = درجة الحرارة (°C)، RH = الرطوبة النسبية (%)
+                        </div>
+
+                        <form id="heatStressForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="temperature">درجة الحرارة (°C):</label>
+                                    <input type="number" id="temperature" step="0.1" placeholder="مثال: 45" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="humidity">الرطوبة النسبية (%):</label>
+                                    <input type="number" id="humidity" step="1" min="0" max="100" placeholder="مثال: 30"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="windSpeed">سرعة الرياح (م/ث):</label>
+                                    <input type="number" id="windSpeed" step="0.1" placeholder="مثال: 2.5" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="solarRadiation">الإشعاع الشمسي (W/m²):</label>
+                                    <input type="number" id="solarRadiation" step="1" placeholder="مثال: 800" value="0">
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                احسب الإجهاد الحراري
+                            </button>
+                        </form>
+
+                        <div id="heatStressResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">نتائج الإجهاد الحراري</h4>
+                            <div class="result-item">
+                                <span class="result-label">مؤشر الحرارة:</span>
+                                <span class="result-value" id="heatIndex">0°C</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">مستوى الخطر:</span>
+                                <span class="result-value" id="heatRisk">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">تأثير على النباتات:</span>
+                                <span class="result-value" id="plantImpact">-</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="heatStressChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أداة تحليل التربة -->
+                <div id="soil-analysis" class="tab-content">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-seedling tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">محلل خصائص التربة</h3>
+                                <p class="tool-description">تحليل خصائص التربة وتقييم صلاحيتها للزراعة</p>
+                            </div>
+                        </div>
+
+                        <form id="soilAnalysisForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="sand">نسبة الرمل (%):</label>
+                                    <input type="number" id="sand" step="1" min="0" max="100" placeholder="مثال: 60"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="clay">نسبة الطين (%):</label>
+                                    <input type="number" id="clay" step="1" min="0" max="100" placeholder="مثال: 25"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="silt">نسبة الطمي (%):</label>
+                                    <input type="number" id="silt" step="1" min="0" max="100" placeholder="مثال: 15"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ph">درجة الحموضة (pH):</label>
+                                    <input type="number" id="ph" step="0.1" min="0" max="14" placeholder="مثال: 7.2"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ec">التوصيل الكهربائي (dS/m):</label>
+                                    <input type="number" id="ec" step="0.1" placeholder="مثال: 2.5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="organicMatter">المادة العضوية (%):</label>
+                                    <input type="number" id="organicMatter" step="0.1" placeholder="مثال: 3.5" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                حلل التربة
+                            </button>
+                        </form>
+
+                        <div id="soilAnalysisResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">نتائج تحليل التربة</h4>
+                            <div class="result-item">
+                                <span class="result-label">نوع التربة:</span>
+                                <span class="result-value" id="soilType">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">تقييم الحموضة:</span>
+                                <span class="result-value" id="phAssessment">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">تقييم الملوحة:</span>
+                                <span class="result-value" id="salinityAssessment">-</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">الصلاحية للزراعة:</span>
+                                <span class="result-value" id="suitability">-</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="soilChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أداة تباعد النباتات -->
+                <div id="plant-spacing" class="tab-content">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-ruler tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">حاسبة تباعد النباتات</h3>
+                                <p class="tool-description">حساب المسافات المثلى بين النباتات وعددها في المساحة</p>
+                            </div>
+                        </div>
+
+                        <form id="plantSpacingForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="areaLength">طول المساحة (م):</label>
+                                    <input type="number" id="areaLength" step="0.1" placeholder="مثال: 20" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="areaWidth">عرض المساحة (م):</label>
+                                    <input type="number" id="areaWidth" step="0.1" placeholder="مثال: 15" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="plantSize">حجم النبات عند النضج:</label>
+                                    <select id="plantSize" required>
+                                        <option value="">اختر حجم النبات</option>
+                                        <option value="small">صغير (1-2 م)</option>
+                                        <option value="medium">متوسط (2-5 م)</option>
+                                        <option value="large">كبير (5-10 م)</option>
+                                        <option value="xlarge">كبير جداً (أكثر من 10 م)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="plantCategory">فئة النبات:</label>
+                                    <select id="plantCategory" required>
+                                        <option value="">اختر فئة النبات</option>
+                                        <option value="trees">أشجار</option>
+                                        <option value="shrubs">شجيرات</option>
+                                        <option value="groundcover">أغطية أرضية</option>
+                                        <option value="perennials">نباتات معمرة</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                احسب التباعد
+                            </button>
+                        </form>
+
+                        <div id="plantSpacingResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">نتائج تباعد النباتات</h4>
+                            <div class="result-item">
+                                <span class="result-label">المسافة الموصى بها:</span>
+                                <span class="result-value" id="recommendedSpacing">0 م</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">عدد النباتات المطلوب:</span>
+                                <span class="result-value" id="plantCount">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">المساحة الإجمالية:</span>
+                                <span class="result-value" id="totalArea">0 م²</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">كثافة الزراعة:</span>
+                                <span class="result-value" id="plantDensity">0 نبات/م²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أداة تصميم الري -->
+                <div id="irrigation-design" class="tab-content">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-shower tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">مصمم أنظمة الري</h3>
+                                <p class="tool-description">حساب متطلبات نظام الري والضغط والتدفق</p>
+                            </div>
+                        </div>
+
+                        <form id="irrigationDesignForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="irrigationArea">مساحة الري (م²):</label>
+                                    <input type="number" id="irrigationArea" step="0.1" placeholder="مثال: 1000"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="systemType">نوع نظام الري:</label>
+                                    <select id="systemType" required>
+                                        <option value="">اختر نوع النظام</option>
+                                        <option value="drip">تنقيط</option>
+                                        <option value="micro">ميكرو سبراي</option>
+                                        <option value="sprinkler">رشاشات</option>
+                                        <option value="bubbler">بابلرات</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="waterRequirement">الاحتياج المائي (لتر/م²/يوم):</label>
+                                    <input type="number" id="waterRequirement" step="0.1" placeholder="مثال: 5"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="operatingHours">ساعات التشغيل اليومية:</label>
+                                    <input type="number" id="operatingHours" step="0.5" min="0.5" max="24"
+                                        placeholder="مثال: 2" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                صمم نظام الري
+                            </button>
+                        </form>
+
+                        <div id="irrigationDesignResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">نتائج تصميم الري</h4>
+                            <div class="result-item">
+                                <span class="result-label">التدفق المطلوب:</span>
+                                <span class="result-value" id="flowRate">0 لتر/ساعة</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">عدد المنقطات/الرشاشات:</span>
+                                <span class="result-value" id="emitterCount">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">الضغط المطلوب:</span>
+                                <span class="result-value" id="requiredPressure">0 بار</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">قطر الأنبوب الرئيسي:</span>
+                                <span class="result-value" id="pipeSize">0 مم</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أداة البيئة الحضرية -->
+                <div id="environmental" class="tab-content">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-city tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">محلل البيئة الحضرية</h3>
+                                <p class="tool-description">تقييم تأثير المساحات الخضراء على البيئة الحضرية</p>
+                            </div>
+                        </div>
+
+                        <form id="environmentalForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="greenArea">المساحة الخضراء (م²):</label>
+                                    <input type="number" id="greenArea" step="0.1" placeholder="مثال: 5000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="treeCount">عدد الأشجار:</label>
+                                    <input type="number" id="treeCount" step="1" placeholder="مثال: 100" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ambientTemp">درجة الحرارة المحيطة (°C):</label>
+                                    <input type="number" id="ambientTemp" step="0.1" placeholder="مثال: 40" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="urbanDensity">كثافة البناء:</label>
+                                    <select id="urbanDensity" required>
+                                        <option value="">اختر كثافة البناء</option>
+                                        <option value="low">منخفضة</option>
+                                        <option value="medium">متوسطة</option>
+                                        <option value="high">عالية</option>
+                                        <option value="very-high">عالية جداً</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                حلل التأثير البيئي
+                            </button>
+                        </form>
+
+                        <div id="environmentalResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">نتائج التحليل البيئي</h4>
+                            <div class="result-item">
+                                <span class="result-label">انخفاض درجة الحرارة:</span>
+                                <span class="result-value" id="tempReduction">0°C</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">امتصاص CO₂ سنوياً:</span>
+                                <span class="result-value" id="co2Absorption">0 كجم</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">إنتاج الأكسجين:</span>
+                                <span class="result-value" id="oxygenProduction">0 كجم/سنة</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">تقييم التأثير البيئي:</span>
+                                <span class="result-value" id="environmentalImpact">-</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="environmentalChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أداة أبعاد حفر التشجير -->
+                <div id="planting-hole" class="tab-content">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-digging tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">حاسبة أبعاد حفر التشجير</h3>
+                                <p class="tool-description">حساب الأبعاد المثالية لحفر الزراعة لضمان نمو صحي للجذور</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>القاعدة العامة:</strong> عرض الحفرة يجب أن يكون 2-3 أضعاف قطر المركن/الجذر، والعمق
+                            مساوٍ لارتفاع المركن.
+                        </div>
+
+                        <form id="plantingHoleForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="rootBallDiameter">قطر المركن/الجذر (سم):</label>
+                                    <input type="number" id="rootBallDiameter" step="1" placeholder="مثال: 30" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rootBallHeight">ارتفاع المركن/الجذر (سم):</label>
+                                    <input type="number" id="rootBallHeight" step="1" placeholder="مثال: 30" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="soilTypeHole">نوع التربة في الموقع:</label>
+                                    <select id="soilTypeHole" required>
+                                        <option value="">اختر نوع التربة</option>
+                                        <option value="sandy">رملية (جيدة الصرف)</option>
+                                        <option value="loamy">طمية (متوسطة)</option>
+                                        <option value="clay">طينية (ثقيلة/سيئة الصرف)</option>
+                                        <option value="rocky">صخرية (قاسية)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                احسب أبعاد الحفرة
+                            </button>
+                        </form>
+
+                        <div id="plantingHoleResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">أبعاد الحفرة الموصى بها</h4>
+                            <div class="result-item">
+                                <span class="result-label">عرض الحفرة (القطر):</span>
+                                <span class="result-value" id="holeWidth">0 سم</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">عمق الحفرة:</span>
+                                <span class="result-value" id="holeDepth">0 سم</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">حجم التربة المحسنة المطلوب:</span>
+                                <span class="result-value" id="soilVolume">0 لتر</span>
+                            </div>
+                            <div class="warning" id="holeWarning" style="display:none; margin-top: 15px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أداة الزراعة المائية -->
+                <div id="hydroponics" class="tab-content">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-water tool-icon"></i>
+                            <div>
+                                <h3 class="tool-title">حاسبة المحاليل المغذية (الزراعة المائية)</h3>
+                                <p class="tool-description">حساب تراكيز العناصر الغذائية وضبط الحموضة للأنظمة المائية
+                                </p>
+                            </div>
+                        </div>
+
+                        <form id="hydroponicsForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="tankSize">حجم الخزان (لتر):</label>
+                                    <input type="number" id="tankSize" step="1" placeholder="مثال: 100" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cropType">نوع المحصول:</label>
+                                    <select id="cropType" required>
+                                        <option value="">اختر المحصول</option>
+                                        <option value="leafy">ورقيات (خس، نعناع)</option>
+                                        <option value="fruiting">تمريات (طماطم، خيار)</option>
+                                        <option value="herbs">أعشاب عطرية</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="growthStage">مرحلة النمو:</label>
+                                    <select id="growthStage" required>
+                                        <option value="seedling">بادرات (أول أسبوعين)</option>
+                                        <option value="vegetative">نمو خضري</option>
+                                        <option value="flowering">تزهير وإثمار</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-flask"></i>
+                                احسب المقادير
+                            </button>
+                        </form>
+
+                        <div id="hydroponicsResults" class="results">
+                            <h4 style="color: #2E7D32; margin-bottom: 20px;">توصيات المحلول المغذي</h4>
+                            <div class="result-item">
+                                <span class="result-label">التركيز المستهدف (EC):</span>
+                                <span class="result-value" id="targetEC">0 mS/cm</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">درجة الحموضة (pH):</span>
+                                <span class="result-value" id="targetPH">5.5 - 6.5</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">كمية المحلول A (تقريبي):</span>
+                                <span class="result-value" id="amountA">0 مل</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">كمية المحلول B (تقريبي):</span>
+                                <span class="result-value" id="amountB">0 مل</span>
+                            </div>
+                            <div class="info" style="margin-top: 15px;">
+                                <small>* الكميات تقديرية لمحليل مركزة (1:100). يجب دائماً استخدام جهاز قياس EC
+                                    للتأكد.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 جمعية المهندسين الزراعيين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Water Stress Calculator
+        document.getElementById('waterStressForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const eto = parseFloat(document.getElementById('eto').value);
+            const rainfall = parseFloat(document.getElementById('rainfall').value) || 0;
+            const irrigation = parseFloat(document.getElementById('irrigation').value);
+            const plantType = document.getElementById('plantType').value;
+
+            // Calculate Water Stress Index
+            const wsi = (eto - rainfall - irrigation) / eto;
+
+            let stressLevel, recommendation;
+            if (wsi <= 0) {
+                stressLevel = 'لا يوجد إجهاد';
+                recommendation = 'مستوى الري مناسب أو زائد';
+            } else if (wsi <= 0.2) {
+                stressLevel = 'إجهاد خفيف';
+                recommendation = 'زيادة الري بنسبة 10-15%';
+            } else if (wsi <= 0.4) {
+                stressLevel = 'إجهاد متوسط';
+                recommendation = 'زيادة الري بنسبة 20-30%';
+            } else if (wsi <= 0.6) {
+                stressLevel = 'إجهاد شديد';
+                recommendation = 'زيادة الري بنسبة 40-50%';
+            } else {
+                stressLevel = 'إجهاد حرج';
+                recommendation = 'مراجعة نظام الري بالكامل';
+            }
+
+            document.getElementById('wsiValue').textContent = wsi.toFixed(3);
+            document.getElementById('stressLevel').textContent = stressLevel;
+            document.getElementById('recommendation').textContent = recommendation;
+
+            document.getElementById('waterStressResults').style.display = 'block';
+
+            // Create chart
+            const ctx = document.getElementById('waterStressChart').getContext('2d');
+            if (window.waterStressChart) {
+                window.waterStressChart.destroy();
+            }
+            window.waterStressChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['البخر-نتح', 'الأمطار', 'الري', 'العجز المائي'],
+                    datasets: [{
+                        data: [eto, rainfall, irrigation, Math.max(0, eto - rainfall - irrigation)],
+                        backgroundColor: ['#f44336', '#2196F3', '#4CAF50', '#ff9800']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+
+        // Heat Stress Calculator
+        document.getElementById('heatStressForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const temp = parseFloat(document.getElementById('temperature').value);
+            const humidity = parseFloat(document.getElementById('humidity').value);
+            const windSpeed = parseFloat(document.getElementById('windSpeed').value) || 0;
+            const solarRadiation = parseFloat(document.getElementById('solarRadiation').value) || 0;
+
+            // Simplified Heat Index calculation
+            const heatIndex = temp + (0.5 * humidity) - (0.1 * windSpeed);
+
+            let heatRisk, plantImpact;
+            if (heatIndex < 30) {
+                heatRisk = 'منخفض';
+                plantImpact = 'تأثير طفيف على النباتات';
+            } else if (heatIndex < 40) {
+                heatRisk = 'متوسط';
+                plantImpact = 'قد تحتاج النباتات لري إضافي';
+            } else if (heatIndex < 50) {
+                heatRisk = 'عالي';
+                plantImpact = 'إجهاد حراري واضح، زيادة الري ضرورية';
+            } else {
+                heatRisk = 'خطير جداً';
+                plantImpact = 'خطر موت النباتات، تدابير طوارئ مطلوبة';
+            }
+
+            document.getElementById('heatIndex').textContent = heatIndex.toFixed(1) + '°C';
+            document.getElementById('heatRisk').textContent = heatRisk;
+            document.getElementById('plantImpact').textContent = plantImpact;
+
+            document.getElementById('heatStressResults').style.display = 'block';
+
+            // Create chart
+            const ctx = document.getElementById('heatStressChart').getContext('2d');
+            if (window.heatStressChart) {
+                window.heatStressChart.destroy();
+            }
+            window.heatStressChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['درجة الحرارة', 'الرطوبة', 'مؤشر الحرارة'],
+                    datasets: [{
+                        label: 'القيم',
+                        data: [temp, humidity, heatIndex],
+                        backgroundColor: ['#ff5722', '#03a9f4', '#ff9800']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+
+        // Soil Analysis Calculator
+        document.getElementById('soilAnalysisForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const sand = parseFloat(document.getElementById('sand').value);
+            const clay = parseFloat(document.getElementById('clay').value);
+            const silt = parseFloat(document.getElementById('silt').value);
+            const ph = parseFloat(document.getElementById('ph').value);
+            const ec = parseFloat(document.getElementById('ec').value);
+            const organicMatter = parseFloat(document.getElementById('organicMatter').value);
+
+            // Check if percentages add up to 100
+            const total = sand + clay + silt;
+            if (Math.abs(total - 100) > 1) {
+                alert('مجموع نسب الرمل والطين والطمي يجب أن يساوي 100%');
+                return;
+            }
+
+            // Determine soil type
+            let soilType;
+            if (sand >= 85 && silt + clay <= 15) soilType = 'رملية';
+            else if (sand >= 70 && sand < 85 && silt + clay < 30) soilType = 'رملية طمية';
+            else if (clay >= 40 && silt < 40 && sand <= 45) soilType = 'طينية';
+            else if (silt >= 80 && clay < 12) soilType = 'طمية (Silt)';
+            else soilType = 'طمية (Loam) - خليط متوازن';
+
+            // Assessment
+            let phAssessment = ph >= 6.0 && ph <= 7.5 ? 'مثالي' : (ph < 6.0 ? 'حامضي' : 'قلوي');
+            let salinityAssessment = ec < 2 ? 'غير مالح' : (ec < 4 ? 'ملوحة خفيفة' : (ec < 8 ? 'ملوحة متوسطة' : 'ملوحة عالية'));
+
+            let suitability = 'صالحة للزراعة';
+            if (ec > 8 || ph > 8.5 || ph < 4.5) suitability = 'تحتاج معالجة قبل الزراعة';
+            else if (ec > 4 || ph > 8.0) suitability = 'صالحة مع محاذير (نباتات متحملة)';
+
+            document.getElementById('soilType').textContent = soilType;
+            document.getElementById('phAssessment').textContent = phAssessment;
+            document.getElementById('salinityAssessment').textContent = salinityAssessment;
+            document.getElementById('suitability').textContent = suitability;
+
+            document.getElementById('soilAnalysisResults').style.display = 'block';
+
+            // Chart
+            const ctx = document.getElementById('soilChart').getContext('2d');
+            if (window.soilChart) {
+                window.soilChart.destroy();
+            }
+            window.soilChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['الرمل', 'الطين', 'الطمي', 'المادة العضوية'],
+                    datasets: [{
+                        label: 'تكوين التربة',
+                        data: [sand, clay, silt, organicMatter * 10], // Scale organic matter for visibility
+                        backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                        borderColor: '#4CAF50',
+                        pointBackgroundColor: '#2E7D32'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+
+        // Planting Hole Calculator
+        document.getElementById('plantingHoleForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const diameter = parseFloat(document.getElementById('rootBallDiameter').value);
+            const height = parseFloat(document.getElementById('rootBallHeight').value);
+            const soilType = document.getElementById('soilTypeHole').value;
+
+            // Logic: Width should be 2-3 times diameter, Depth should equal height (or slightly less to keep flare visible)
+            let widthMultiplier = 2;
+            let depthMultiplier = 1;
+            let warningMsg = '';
+
+            if (soilType === 'clay' || soilType === 'rocky') {
+                widthMultiplier = 3; // Wider hole for bad soil to allow root spread
+                warningMsg = 'في التربة الطينية أو الصخرية، ينصح بتوسيع الحفرة قدر الإمكان وتخشين الجوانب لمنع "تأصيص" الجذور.';
+            } else if (soilType === 'sandy') {
+                widthMultiplier = 2;
+            }
+
+            const holeWidth = diameter * widthMultiplier;
+            const holeDepth = height * depthMultiplier;
+
+            // Calculate volume of cylinder: V = πr²h
+            // r = width/2
+            const radius = holeWidth / 2;
+            const volumeCm3 = Math.PI * Math.pow(radius, 2) * holeDepth;
+            const volumeLiters = volumeCm3 / 1000; // Convert to liters
+
+            document.getElementById('holeWidth').textContent = holeWidth.toFixed(0) + ' سم';
+            document.getElementById('holeDepth').textContent = holeDepth.toFixed(0) + ' سم';
+            document.getElementById('soilVolume').textContent = volumeLiters.toFixed(1) + ' لتر';
+
+            const warningEl = document.getElementById('holeWarning');
+            if (warningMsg) {
+                warningEl.textContent = warningMsg;
+                warningEl.style.display = 'block';
+            } else {
+                warningEl.style.display = 'none';
+            }
+
+            document.getElementById('plantingHoleResults').style.display = 'block';
+        });
+
+        // Hydroponics Calculator
+        document.getElementById('hydroponicsForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const tankSize = parseFloat(document.getElementById('tankSize').value);
+            const cropType = document.getElementById('cropType').value;
+            const stage = document.getElementById('growthStage').value;
+
+            let targetEC = 1.5;
+            let nutrientRatio = 2; // ml per liter (approximate for standard A+B solutions)
+
+            // Adjust EC based on crop and stage
+            if (cropType === 'leafy') {
+                if (stage === 'seedling') targetEC = 0.8;
+                else targetEC = 1.2;
+            } else if (cropType === 'fruiting') {
+                if (stage === 'seedling') targetEC = 1.0;
+                else if (stage === 'vegetative') targetEC = 2.0;
+                else if (stage === 'flowering') targetEC = 2.5;
+            }
+
+            // Calculate amounts (Assuming standard concentration where 1L treats 100L for EC 1.0 -> 10ml/L)
+            // This is a simplified logic. Real nutrients vary. We'll use a generic "2-4 ml/L" rule of thumb for demonstration.
+            // Let's say 1ml A + 1ml B raises EC by 0.5 (generic assumption)
+
+            const mlPerLiter = (targetEC / 0.5);
+            const totalAmount = mlPerLiter * tankSize;
+
+            document.getElementById('targetEC').textContent = targetEC.toFixed(1) + ' mS/cm';
+            document.getElementById('amountA').textContent = totalAmount.toFixed(0) + ' مل';
+            document.getElementById('amountB').textContent = totalAmount.toFixed(0) + ' مل';
+
+            document.getElementById('hydroponicsResults').style.display = 'block';
+        });
+
+
+        // Plant Spacing Calculator
+        document.getElementById('plantSpacingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const length = parseFloat(document.getElementById('areaLength').value);
+            const width = parseFloat(document.getElementById('areaWidth').value);
+            const plantSize = document.getElementById('plantSize').value;
+            const plantCategory = document.getElementById('plantCategory').value;
+
+            // Determine spacing based on plant size and category
+            let spacing;
+            const spacingMap = {
+                'small': { 'trees': 3, 'shrubs': 1.5, 'groundcover': 0.5, 'perennials': 0.8 },
+                'medium': { 'trees': 6, 'shrubs': 2.5, 'groundcover': 1, 'perennials': 1.2 },
+                'large': { 'trees': 10, 'shrubs': 4, 'groundcover': 1.5, 'perennials': 2 },
+                'xlarge': { 'trees': 15, 'shrubs': 6, 'groundcover': 2, 'perennials': 3 }
+            };
+
+            spacing = spacingMap[plantSize][plantCategory];
+
+            const totalArea = length * width;
+            const plantsPerRow = Math.floor(length / spacing);
+            const plantsPerColumn = Math.floor(width / spacing);
+            const plantCount = plantsPerRow * plantsPerColumn;
+            const plantDensity = plantCount / totalArea;
+
+            document.getElementById('recommendedSpacing').textContent = spacing + ' م';
+            document.getElementById('plantCount').textContent = plantCount;
+            document.getElementById('totalArea').textContent = totalArea.toFixed(1) + ' م²';
+            document.getElementById('plantDensity').textContent = plantDensity.toFixed(3) + ' نبات/م²';
+
+            document.getElementById('plantSpacingResults').style.display = 'block';
+        });
+
+        // Irrigation Design Calculator
+        document.getElementById('irrigationDesignForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const area = parseFloat(document.getElementById('irrigationArea').value);
+            const systemType = document.getElementById('systemType').value;
+            const waterReq = parseFloat(document.getElementById('waterRequirement').value);
+            const operatingHours = parseFloat(document.getElementById('operatingHours').value);
+
+            // Calculate flow rate
+            const dailyWaterNeed = area * waterReq; // liters per day
+            const flowRate = dailyWaterNeed / operatingHours; // liters per hour
+
+            // System-specific calculations
+            let emitterCount, requiredPressure, pipeSize;
+
+            const systemSpecs = {
+                'drip': { flowPerEmitter: 4, pressure: 1.5, emitterSpacing: 0.5 },
+                'micro': { flowPerEmitter: 20, pressure: 2.0, emitterSpacing: 2 },
+                'sprinkler': { flowPerEmitter: 200, pressure: 3.0, emitterSpacing: 8 },
+                'bubbler': { flowPerEmitter: 60, pressure: 1.0, emitterSpacing: 3 }
+            };
+
+            const specs = systemSpecs[systemType];
+            emitterCount = Math.ceil(flowRate / specs.flowPerEmitter);
+            requiredPressure = specs.pressure;
+
+            // Pipe size calculation (simplified)
+            if (flowRate < 1000) pipeSize = 25;
+            else if (flowRate < 3000) pipeSize = 32;
+            else if (flowRate < 6000) pipeSize = 50;
+            else pipeSize = 75;
+
+            document.getElementById('flowRate').textContent = flowRate.toFixed(0) + ' لتر/ساعة';
+            document.getElementById('emitterCount').textContent = emitterCount;
+            document.getElementById('requiredPressure').textContent = requiredPressure + ' بار';
+            document.getElementById('pipeSize').textContent = pipeSize + ' مم';
+
+            document.getElementById('irrigationDesignResults').style.display = 'block';
+        });
+
+        // Environmental Impact Calculator
+        document.getElementById('environmentalForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const greenArea = parseFloat(document.getElementById('greenArea').value);
+            const treeCount = parseFloat(document.getElementById('treeCount').value);
+            const ambientTemp = parseFloat(document.getElementById('ambientTemp').value);
+            const urbanDensity = document.getElementById('urbanDensity').value;
+
+            // Calculate temperature reduction
+            const baseReduction = greenArea * 0.001; // 0.001°C per m²
+            const treeReduction = treeCount * 0.5; // 0.5°C per tree
+            let densityMultiplier;
+
+            switch (urbanDensity) {
+                case 'low': densityMultiplier = 1.0; break;
+                case 'medium': densityMultiplier = 1.2; break;
+                case 'high': densityMultiplier = 1.5; break;
+                case 'very-high': densityMultiplier = 2.0; break;
+            }
+
+            const tempReduction = (baseReduction + treeReduction) * densityMultiplier;
+
+            // Calculate CO2 absorption (kg/year)
+            const co2Absorption = (greenArea * 0.5) + (treeCount * 22); // simplified calculation
+
+            // Calculate oxygen production (kg/year)
+            const oxygenProduction = co2Absorption * 0.73; // O2/CO2 ratio
+
+            // Environmental impact assessment
+            let environmentalImpact;
+            if (tempReduction > 3) environmentalImpact = 'تأثير ممتاز';
+            else if (tempReduction > 2) environmentalImpact = 'تأثير جيد';
+            else if (tempReduction > 1) environmentalImpact = 'تأثير متوسط';
+            else environmentalImpact = 'تأثير محدود';
+
+            document.getElementById('tempReduction').textContent = tempReduction.toFixed(1) + '°C';
+            document.getElementById('co2Absorption').textContent = co2Absorption.toFixed(0) + ' كجم';
+            document.getElementById('oxygenProduction').textContent = oxygenProduction.toFixed(0) + ' كجم/سنة';
+            document.getElementById('environmentalImpact').textContent = environmentalImpact;
+
+            document.getElementById('environmentalResults').style.display = 'block';
+
+            // Create chart
+            const ctx = document.getElementById('environmentalChart').getContext('2d');
+            if (window.environmentalChart) {
+                window.environmentalChart.destroy();
+            }
+            window.environmentalChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['انخفاض الحرارة (°C)', 'امتصاص CO₂ (كجم/100)', 'إنتاج O₂ (كجم/100)'],
+                    datasets: [{
+                        label: 'التأثير البيئي',
+                        data: [tempReduction, co2Absorption / 100, oxygenProduction / 100],
+                        backgroundColor: ['#2196F3', '#4CAF50', '#ff9800']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

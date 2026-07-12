@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكتاب الثالث: التصميم الهندسي للمناظر الطبيعية - SAC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .code-content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #E8F5E8;
+            padding-bottom: 30px;
+        }
+
+        .chapter:last-child {
+            border-bottom: none;
+        }
+
+        .chapter-title {
+            color: #2E7D32;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-number {
+            color: #4CAF50;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .subsection {
+            margin-bottom: 15px;
+            padding-right: 20px;
+            border-right: 3px solid #C8E6C9;
+        }
+
+        .content-text {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .toc {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            color: #2E7D32;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+
+        .toc li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .toc li a:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين"
+                        style="width: 120px; height: auto; border-radius: 8px;">
+                    <div class="logo-text">
+                        <h1>الكتاب الثالث: التصميم الهندسي للمناظر الطبيعية</h1>
+                        <p>SAC-300</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#books">كتب الكود</a></li>
+                        <li><a href="index.html#tools">الأدوات</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="code-content">
+                <div class="toc">
+                    <h3><i class="fas fa-list"></i> فهرس الكتاب الثالث</h3>
+                    <ul>
+                        <li><a href="#chapter310">الباب 310: الشرايين الخضراء (الطرق، ممرات المشاة، مواقف السيارات)</a>
+                        </li>
+                        <li><a href="#chapter320">الباب 320: الرئات الحضرية (الحدائق والمتنزهات العامة)</a></li>
+                        <li><a href="#chapter330">الباب 330: المباني الحية</a></li>
+                    </ul>
+                </div>
+
+                <div class="chapter" id="chapter310">
+                    <h2 class="chapter-title">الباب 310: الشرايين الخضراء</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-311: مواصفات أحواض زراعة الأشجار</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-311-1.0 (أبعاد الحفر):</strong> تعتمد أبعاد حفرة الزراعة
+                                على حجم "المركن" أو "الصلاية" (Rootball) للنبات. يجب أن يكون <strong>عرض الحفرة</strong>
+                                من 2 إلى 3 أضعاف قطر كتلة الجذور، بينما يكون <strong>عمق الحفرة</strong> مساوياً تماماً
+                                لارتفاع كتلة الجذور، بحيث تستقر قاعدة الساق (Roo Flare) عند مستوى سطح التربة أو أعلى
+                                قليلاً (2-5 سم) لضمان التهوية وعدم تعفن الساق.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-311-2.0 (حواجز الجذور):</strong> إلزامية استخدام حواجز
+                                الجذور (Root Barriers) بعمق لا يقل عن 60 سم في جميع أحواض الزراعة المجاورة للأرصفة
+                                ومسارات المشاة.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-311-3.0 (أغطية الأحواض):</strong> يجب تغطية أحواض
+                                الأشجار في ممرات المشاة بأغطية (Tree Grates) تسمح بنفاذ المياه والهواء وتوفر سطحاً آمناً
+                                للمشاة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-312: المسافات والتباعد الآمن</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-312-1.0 (المسافة البينية):</strong> الحد الأدنى للمسافة
+                                بين جذع شجرة وأخرى: كبيرة (10-15م)، متوسطة (8-10م)، صغيرة (6-8م).</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-312-2.0 (المسافات عن المرافق):</strong> الحد الأدنى
+                                للمسافة عن حافة الطريق (2م)، الأسوار (2م)، ممرات المشاة (0.75م)، أعمدة الإنارة (6م)،
+                                وخطوط الخدمات (2م).</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-313: متطلبات التظليل والأداء البيئي</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-313-1.0 (تظليل ممرات المشاة):</strong> يجب أن يحقق تصميم
+                                التشجير نسبة تظليل لا تقل عن 70% على مسارات المشاة الرئيسية.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-313-2.0 (تظليل مواقف السيارات):</strong> يجب زراعة أشجار
+                                لتظليل ما لا يقل عن 50% من مساحة مواقف السيارات السطحية.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter320">
+                    <h2 class="chapter-title">الباب 320: الرئات الحضرية (الحدائق والمتنزهات العامة)</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-321: التصميم المكاني والوظيفي</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-321-1.1:</strong> يجب ألا تزيد نسبة المسطحات العشبية
+                                عالية الاستهلاك للمياه عن 15% من إجمالي المساحة الخضراء للحديقة.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-321-1.2:</strong> يجب تخصيص منطقة طبيعية لا تقل مساحتها
+                                عن 20% في الحدائق الكبرى (تزيد عن 5 هكتار).</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-321-2.1 (مناطق لعب الأطفال):</strong> يجب أن تكون جميع
+                                ألعاب الأطفال مطابقة لمواصفات الهيئة السعودية للمواصفات والمقاييس والجودة (SASO).</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-321-2.2:</strong> يجب توفير أسطح آمنة لامتصاص الصدمات
+                                تحت جميع الألعاب، وتمتد لمسافة لا تقل عن 1.8 متر في جميع الاتجاهات.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-321-2.3:</strong> يمنع منعًا باتًا زراعة أي نباتات سامة
+                                أو ذات أشواك بالقرب من مناطق لعب الأطفال.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter330">
+                    <h2 class="chapter-title">الباب 330: المباني الحية</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-331: الأسطح الخضراء (Green Roofs)</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-331-1.0 (التطبيق الإلزامي):</strong> إلزام المباني
+                                الجديدة (التجارية والحكومية والسكنية متعددة الطوابق) التي تزيد مساحة سطحها عن 500 متر
+                                مربع، بتغطية 50% من المساحة المتاحة بأسطح خضراء أو ما يعادلها.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-331-2.0 (المتطلبات الفنية):</strong> يجب أن يتكون نظام
+                                السطح الأخضر كحد أدنى من الطبقات التالية بالترتيب: غشاء مانع لتسرب المياه، غشاء واقٍ من
+                                اختراق الجذور، طبقة صرف وتخزين المياه، نسيج فاصل (فلتر)، وسط زراعي خفيف، ثم النباتات.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-332: الجدران الخضراء (Green Walls)</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-332-1.0 (المواصفات الفنية):</strong> يجب أن يكون نظام
+                                التثبيت الهيكلي للجدار الأخضر مقاوماً للتآكل ومصمماً لتحمل وزن النباتات والوسط الزراعي
+                                المشبع بالمياه بالإضافة إلى أحمال الرياح السائدة في المنطقة.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-332-2.0 (الري والصرف):</strong> يجب أن يكون نظام الري
+                                أوتوماتيكياً ومغلقاً (دائرة مغلقة)، مع نظام متكامل لجمع وتصريف وإعادة تدوير المياه
+                                الزائدة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter" id="chapter340">
+                    <h2 class="chapter-title">الباب 340: معايير التشجير للمرافق الخاصة</h2>
+                    <div class="section">
+                        <h3 class="section-number">SAC-341: المدارس والمرافق التعليمية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-341-1.0 (السلامة):</strong> يمنع منعاً باتاً زراعة أي
+                                نباتات سامة (مثل الدفلة)، أو ذات أشواك حادة (مثل السدر البري)، أو مثيرة للحساسية الشديدة
+                                في ساحات المدارس.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-341-2.0 (الوظيفة):</strong> يجب التركيز على أشجار الظل
+                                الكثيف لتظليل الساحات ومناطق التجمع، واختيار نباتات ذات قيمة تعليمية (مثل النباتات
+                                المثمرة الآمنة أو العطرية) لتعزيز الوعي البيئي.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-342: المستشفيات والمراكز الصحية</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-342-1.0 (الصحة):</strong> يجب اختيار نباتات
+                                "هيبوالرجينيك" (Hypoallergenic) التي تنتج كميات قليلة جداً من حبوب اللقاح لتجنب إثارة
+                                حساسية المرضى والزوار.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-342-2.0 (البيئة الاستشفائية):</strong> يفضل زراعة
+                                الحدائق العلاجية (Healing Gardens) التي تحتوي على نباتات ذات ألوان مهدئة وروائح عطرية
+                                خفيفة، مع توفير ممرات مريحة للكراسي المتحركة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-343: الحدائق العامة والمتنزهات</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-343-1.0 (المتانة):</strong> يجب اختيار أنواع نباتية قوية
+                                تتحمل الاستخدام المكثف والعبث المحتمل، وسريعة التعافي.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-343-2.0 (الأمان):</strong> يجب تجنب النباتات ذات الثمار
+                                الثقيلة التي قد تسقط وتسبب إصابات، أو النباتات التي تحجب الرؤية تماماً (لأسباب أمنية) في
+                                المناطق المنعزلة.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-344: الحدائق المجتمعية (Community Gardens)</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-344-1.0 (المساحة والتخصيص):</strong> الحد الأدنى لمساحة
+                                الحديقة المجتمعية 500 متر مربع. مساحة القطعة الواحدة للعائلة: 10-20 متر مربع. يجب توفير
+                                مساحات مشتركة لا تقل عن 30% من المساحة الكلية.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-344-2.0 (المرافق الأساسية):</strong> يجب توفير: مصدر
+                                مياه صالح للري، مخزن للأدوات المشتركة، منطقة كومبوست مشتركة، مظلات للراحة، ودورات مياه.
+                            </p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-344-3.0 (الإدارة والتنظيم):</strong> يجب تشكيل لجنة
+                                إدارة من المشاركين، ووضع لائحة داخلية تنظم الاستخدام، وجدول صيانة دوري للمرافق المشتركة.
+                            </p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-344-4.0 (الأمان):</strong> يجب إحاطة الحديقة بسور آمن
+                                بارتفاع 1.5-2 متر، مع بوابة رئيسية قابلة للقفل، وإضاءة كافية للمسارات الرئيسية.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-number">SAC-345: إمكانية الوصول الشامل (Universal Accessibility)</h3>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-345-1.0 (المسارات الشاملة):</strong> الحد الأدنى لعرض
+                                المسارات الرئيسية 1.5 متر لاستيعاب الكراسي المتحركة. ميل المنحدرات: لا يتجاوز 1:12
+                                (8.3%). يجب أن تكون جميع الأسطح غير قابلة للانزلاق حتى عند البلل.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-345-2.0 (الأحواض الزراعية المرتفعة):</strong> ارتفاع
+                                الأحواض للكراسي المتحركة: 60-80 سم من مستوى الأرض. عمق الأحواض: لا يزيد عن 60 سم للوصول
+                                السهل. يجب توفير مساحة دوران كافية (قطر 1.5 متر على الأقل) أمام كل حوض.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-345-3.0 (اللافتات الشاملة):</strong> يجب أن تحتوي
+                                اللافتات على خط برايل للمكفوفين، وألوان متباينة لضعاف البصر. ارتفاع اللافتات: 90-120 سم
+                                من مستوى الأرض. حجم الخط: لا يقل عن 3 سم للعناوين الرئيسية.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-345-4.0 (مواقف السيارات):</strong> يجب توفير موقف واحد
+                                على الأقل لذوي الإعاقة لكل 25 موقف عادي، بعرض لا يقل عن 3.5 متر، وبالقرب من المدخل
+                                الرئيسي.</p>
+                        </div>
+                        <div class="subsection">
+                            <p class="content-text"><strong>SAC-345-5.0 (الحدائق الحسية):</strong> يُنصح بتخصيص منطقة
+                                للحدائق الحسية تحتوي على نباتات ذات ملمس مميز، وروائح عطرية، وألوان زاهية، لتعزيز تجربة
+                                ذوي الإعاقة البصرية والسمعية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 جمعية المهندسين الزراعيين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

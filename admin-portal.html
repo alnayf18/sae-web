@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - جمعية المهندسين الزراعيين (SAE)</title>
+    
+    <!-- Google Fonts: Cairo & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- Database JS -->
+    <script src="./assets/js/db.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #07484a;
+            --accent-color: #14b8a6;
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --danger-color: #ef4444;
+            --success-color: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphic Background Shapes */
+        .shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+        }
+
+        .shape-1 {
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--primary-color);
+        }
+
+        .shape-2 {
+            bottom: -10%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--accent-color);
+        }
+
+        /* 1. Login Container */
+        #login-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .logo-img {
+            max-width: 90px;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .login-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        .input-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            border: none;
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.4);
+        }
+
+        .error-msg {
+            color: var(--danger-color);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* 2. Dashboard Layout */
+        #dashboard-container {
+            display: none;
+            width: 95%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.8s ease;
+        }
+
+        /* Header */
+        .dash-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            height: 50px;
+        }
+
+        .brand-title h2 {
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .brand-title p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-logout {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: var(--danger-color);
+            color: var(--text-light);
+        }
+
+        /* Metrics Bar */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .metric-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .metric-info h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .metric-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: rgba(20, 184, 166, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Main Workspace split: Tabs and Tables */
+        .workspace {
+            flex-grow: 1;
+            padding: 0 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab-bar {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Section action headers */
+        .action-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-add {
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-add:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            background: rgba(15, 23, 42, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .admin-table th {
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .admin-table td {
+            font-size: 0.9rem;
+        }
+
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .row-img {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .tag-pill {
+            padding: 4px 8px;
+            background: rgba(20, 184, 166, 0.1);
+            color: var(--accent-color);
+            border-radius: 100px;
+            font-size: 0.75rem;
+        }
+
+        .btn-delete {
+            padding: 6px 12px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--danger-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-delete:hover {
+            background: var(--danger-color);
+            color: var(--text-light);
+        }
+
+        /* 3. Popup Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .modal-card {
+            background: #1e293b;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--text-light);
+        }
+
+        /* Form Controls in Modal */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-col-full {
+            grid-column: span 2;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: right;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .btn-cancel {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-cancel:hover {
+            color: var(--text-light);
+            border-color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleUp {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            #dashboard-container {
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+                border: none;
+            }
+            .dash-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                align-items: center;
+                padding: 1.5rem 1rem;
+            }
+            .brand-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .user-section {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: center;
+            }
+            .metrics-grid {
+                padding: 1rem;
+                grid-template-columns: 1fr;
+            }
+            .workspace {
+                padding: 0 1rem 1rem;
+            }
+            .tab-bar {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .tab-btn {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            .action-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+                text-align: center;
+            }
+            .modal {
+                align-items: flex-start;
+                overflow-y: auto;
+                padding: 1rem 0.5rem;
+            }
+            .modal-card {
+                margin: 2rem auto;
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <!-- 1. Authentication Login Screen -->
+    <div id="login-container">
+        <img src="./assets/logo.png" alt="جمعية المهندسين الزراعيين" class="logo-img" onerror="this.onerror=null; this.src='https://sae.sa/wp-content/uploads/2021/11/cropped-logo-1.png';">
+        <h2 class="login-title">تسجيل الدخول - الإدارة</h2>
+        <p class="login-subtitle">يرجى تسجيل الدخول للوصول إلى لوحة تحكم المواد والأخبار</p>
+        
+        <form id="login-form">
+            <div class="input-group">
+                <label class="input-label" for="username">البريد الإلكتروني</label>
+                <div class="input-wrapper">
+                    <input type="email" id="username" class="input-control" required placeholder="info@sae.sa">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label class="input-label" for="password">كلمة المرور</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" class="input-control" required placeholder="••••••••">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">تسجيل الدخول</button>
+            <div id="login-error" class="error-msg">البريد الإلكتروني أو كلمة المرور غير صحيحة!</div>
+        </form>
+    </div>
+
+    <!-- 2. Admin Management Dashboard -->
+    <div id="dashboard-container">
+        <!-- Header -->
+        <header class="dash-header">
+            <div class="brand-section">
+                <img src="./assets/logo.png" alt="الشعار" class="brand-logo" onerror="this.onerror=null; this.src='https://sae.sa/wp-content/uploads/2021/11/cropped-logo-1.png';">
+                <div class="brand-title">
+                    <h2>بوابة إدارة محتوى SAE</h2>
+                    <p>إدارة الأخبار، اللوائح، ومحاضر الاجتماعات</p>
+                </div>
+            </div>
+            <div class="user-section">
+                <span>مرحباً، <strong style="color: var(--accent-color);">مسؤول الجمعية</strong></span>
+                <button id="logout-btn" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</button>
+            </div>
+        </header>
+
+        <!-- Metric Counter Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-info">
+                    <h4>الأخبار والفعاليات</h4>
+                    <h2 id="metric-news-count">0</h2>
+                </div>
+                <div class="metric-icon">
+                    <i class="fa-solid fa-newspaper"></i>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-info">
+                    <h4>اللوائح والسياسات</h4>
+                    <h2 id="metric-policies-count">0</h2>
+                </div>
+                <div class="metric-icon">
+                    <i class="fa-solid fa-file-shield"></i>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-info">
+                    <h4>القرارات والمحاضر</h4>
+                    <h2 id="metric-minutes-count">0</h2>
+                </div>
+                <div class="metric-icon">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-info">
+                    <h4>الأعضاء المؤسسون</h4>
+                    <h2 id="metric-founders-count">0</h2>
+                </div>
+                <div class="metric-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Workspace -->
+        <div class="workspace">
+            <div class="tab-bar">
+                <button class="tab-btn active" onclick="switchTab(event, 'tab-news')"><i class="fa-solid fa-newspaper"></i> إدارة الأخبار والفعاليات</button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab-docs')"><i class="fa-solid fa-file-pdf"></i> إدارة اللوائح ومحاضر الاجتماعات</button>
+                <button class="tab-btn" onclick="switchTab(event, 'tab-founders')"><i class="fa-solid fa-users-gear"></i> إدارة الأعضاء المؤسسين</button>
+            </div>
+
+            <!-- Tab 1: News Management -->
+            <div id="tab-news" class="tab-content active">
+                <div class="action-header">
+                    <h3>سجل الأخبار والفعاليات الحالية</h3>
+                    <button class="btn-add" onclick="openModal('modal-add-news')"><i class="fa-solid fa-plus"></i> إضافة خبر جديد</button>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>الصورة</th>
+                                <th>عنوان الخبر</th>
+                                <th>تاريخ النشر</th>
+                                <th>التصنيف</th>
+                                <th>التحكم</th>
+                            </tr>
+                        </thead>
+                        <tbody id="news-table-body">
+                            <!-- Populated via Javascript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Document Management -->
+            <div id="tab-docs" class="tab-content">
+                <div class="action-header">
+                    <h3>سجل اللوائح ومستندات الحوكمة</h3>
+                    <button class="btn-add" onclick="openModal('modal-add-doc')"><i class="fa-solid fa-plus"></i> إضافة مستند جديد</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>النوع</th>
+                                <th>عنوان المستند</th>
+                                <th>الوصف</th>
+                                <th>حجم الملف</th>
+                                <th>التحكم</th>
+                            </tr>
+                        </thead>
+                        <tbody id="docs-table-body">
+                            <!-- Populated via Javascript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 3: Founders Management -->
+            <div id="tab-founders" class="tab-content">
+                <div class="action-header">
+                    <h3>قائمة الأعضاء المؤسسين وأعضاء مجلس الإدارة</h3>
+                    <button class="btn-add" onclick="openModal('modal-add-founder')"><i class="fa-solid fa-plus"></i> إضافة عضو جديد</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>الصورة</th>
+                                <th>اسم العضو</th>
+                                <th>الصفة/المنصب</th>
+                                <th>نوع الحساب</th>
+                                <th>التحكم</th>
+                            </tr>
+                        </thead>
+                        <tbody id="founders-table-body">
+                            <!-- Populated via Javascript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Modals -->
+    <!-- Modal: Add News -->
+    <div id="modal-add-news" class="modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">إضافة خبر أو فعالية جديدة للجمعية</h3>
+                <button class="modal-close" onclick="closeModal('modal-add-news')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-add-news">
+                <div class="form-grid">
+                    <div class="form-group form-col-full">
+                        <label for="news-title">عنوان الخبر</label>
+                        <input type="text" id="news-title" class="form-control" required placeholder="مثال: ورشة عمل أو اتفاقية تعاون جديدة...">
+                    </div>
+                    <div class="form-group">
+                        <label for="news-date">تاريخ النشر</label>
+                        <input type="date" id="news-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-tag">التصنيف</label>
+                        <select id="news-tag" class="form-control">
+                            <option value="ورش عمل">ورش عمل</option>
+                            <option value="ملتقيات ومعارض">ملتقيات ومعارض</option>
+                            <option value="دورات تدريبية">دورات تدريبية</option>
+                            <option value="اجتماعات">اجتماعات</option>
+                            <option value="أخبار عامة">أخبار عامة</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-col-full">
+                        <label for="news-image-file">تحميل صورة الخبر (JPG, PNG)</label>
+                        <input type="file" id="news-image-file" class="form-control" accept="image/*">
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">أو اختر من الصور الافتراضية:</div>
+                        <select id="news-image-select" class="form-control" style="margin-top: 0.3rem;">
+                            <option value="./assets/img/news-exhibition-2026.jpg">صورة ملتقى الكفاءات (2026)</option>
+                            <option value="./assets/img/news-training-2025.jpg">صورة ورشة عمل الرقابة (2025)</option>
+                            <option value="./assets/img/news-meeting-2025.jpg">صورة اجتماع الإدارة (2025)</option>
+                            <option value="./assets/img/news-workshop-2023.jpg">صورة التدريب الميداني (2023)</option>
+                            <option value="./assets/img/news-newspaper-2.jpg">صورة صحيفة الجمعية (2022)</option>
+                            <option value="./assets/img/news-newspaper-1.jpg">صورة اللقاء السنوي (2022)</option>
+                            <option value="./assets/img/news-newspaper-3.jpg">صورة يوم المهندس العربي (2022)</option>
+                            <option value="./assets/img/news-afforestation-2022.jpg">صورة معرض التشجير (2022)</option>
+                            <option value="./assets/img/news-environment-2022.jpg">صورة أسبوع البيئة (2022)</option>
+                            <option value="./assets/img/default-news.jpg" selected>صورة افتراضية للجمعية</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-col-full">
+                        <label for="news-desc">تفاصيل الخبر</label>
+                        <textarea id="news-desc" class="form-control" required placeholder="اكتب تفاصيل ووصف الخبر بدقة ومصداقية..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('modal-add-news')">إلغاء</button>
+                    <button type="submit" class="btn-add">إضافة ونشر</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Add Document -->
+    <div id="modal-add-doc" class="modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">إضافة مستند حوكمة (سياسة / محضر)</h3>
+                <button class="modal-close" onclick="closeModal('modal-add-doc')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-add-doc">
+                <div class="form-grid">
+                    <div class="form-group form-col-full">
+                        <label for="doc-title">عنوان المستند</label>
+                        <input type="text" id="doc-title" class="form-control" required placeholder="مثال: سياسة حماية المستفيدين أو محضر اجتماع...">
+                    </div>
+                    <div class="form-group">
+                        <label for="doc-type">نوع المستند</label>
+                        <select id="doc-type" class="form-control">
+                            <option value="policy">لوائح وسياسات داخلية</option>
+                            <option value="minute">محاضر اجتماعات وقرارات إدارية</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="doc-size">حجم الملف</label>
+                        <input type="text" id="doc-size" class="form-control" required placeholder="مثال: 145 KB أو 1.2 MB">
+                    </div>
+                    <div class="form-group form-col-full">
+                        <label for="doc-upload-file">تحميل ملف المستند (PDF)</label>
+                        <input type="file" id="doc-upload-file" class="form-control" accept=".pdf">
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">أو اختر ملفاً افتراضياً:</div>
+                        <select id="doc-file-select" class="form-control" style="margin-top: 0.3rem;">
+                            <option value="./assets/docs/اللائحة-الأساسیة.pdf">اللائحة الأساسية للجمعية</option>
+                            <option value="./assets/docs/اللائحة-المالية.pdf">اللائحة المالية</option>
+                            <option value="./assets/docs/سياسة-تعارض-مصالح.pdf">سياسة تعارض المصالح</option>
+                            <option value="./assets/docs/سياسة-حماية-المبلغين.pdf">سياسة حماية المبلغين</option>
+                            <option value="./assets/docs/محضر-اجتماع-بتاريخ-28-08-2022-1.pdf">محضر الاجتماع الثامن للمجلس</option>
+                            <option value="./assets/docs/محضر-مجلس-الادارة-على-معرض-تقنيات-التشجير.pdf">محضر المشاركة بمعرض التشجير</option>
+                            <option value="./assets/docs/محضر-مجلس-الادارة-اسبوع-البيئة.pdf">محضر المشاركة بأسبوع البيئة</option>
+                            <option value="./assets/docs/قرار-انشاء-الجمعية.pdf">قرار إنشاء الجمعية</option>
+                            <option value="./assets/docs/تقييم-المخاطر.pdf">وثيقة تقييم المخاطر</option>
+                            <option value="./assets/docs/default.pdf" selected>ملف افتراضي مؤقت</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-col-full">
+                        <label for="doc-desc">الوصف المختصر</label>
+                        <textarea id="doc-desc" class="form-control" required placeholder="اكتب ملخصاً إدارياً عن محتوى هذا المستند وأهميته..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('modal-add-doc')">إلغاء</button>
+                    <button type="submit" class="btn-add">إضافة ونشر</button>
+                </div>
+            </form>
+        </div>
+    <!-- Modal: Add Founder -->
+    <div id="modal-add-founder" class="modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">إضافة عضو مؤسس أو مجلس إدارة جديد</h3>
+                <button class="modal-close" onclick="closeModal('modal-add-founder')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-add-founder">
+                <div class="form-grid">
+                    <div class="form-group form-col-full">
+                        <label for="founder-name">اسم العضو بالكامل</label>
+                        <input type="text" id="founder-name" class="form-control" required placeholder="مثال: م. عبدالمجيد بن مسعر العتيبي...">
+                    </div>
+                    <div class="form-group form-col-full">
+                        <label for="founder-role">الصفة / المنصب</label>
+                        <input type="text" id="founder-role" class="form-control" required placeholder="مثال: عضو مجلس الإدارة / رئيس اللجنة الزراعية...">
+                    </div>
+                    <div class="form-group form-col-full">
+                        <label for="founder-image-file">تحميل صورة العضو (JPG, PNG)</label>
+                        <input type="file" id="founder-image-file" class="form-control" accept="image/*">
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">أو اختر صورة افتراضية:</div>
+                        <select id="founder-image-select" class="form-control" style="margin-top: 0.3rem;">
+                            <option value="./assets/img/eng-abdulmajed.jpg">صورة م. عبدالمجيد العتيبي</option>
+                            <option value="./assets/img/dr-abdulaziz.jpg">صورة د. عبدالعزيز الغامدي</option>
+                            <option value="./assets/img/eng-ahmad.jpg">صورة م. أحمد الدايل</option>
+                            <option value="./assets/img/mr-zaid.jpg">صورة أ. زيد المطيري</option>
+                            <option value="./assets/img/eng-mishaal.jpg">صورة م. مشعل السيد</option>
+                            <option value="" selected>لا توجد صورة (عرض أيقونة افتراضية)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('modal-add-founder')">إلغاء</button>
+                    <button type="submit" class="btn-add">إضافة العضو</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Javascript Dashboard Operations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            checkAuth();
+            
+            // Login Handler
+            document.getElementById("login-form").addEventListener("submit", (e) => {
+                e.preventDefault();
+                const user = document.getElementById("username").value;
+                const pass = document.getElementById("password").value;
+                const errorDiv = document.getElementById("login-error");
+                
+                // Hardcoded admin validation
+                if (user === "info@sae.sa" && pass === "sae_admin_2026") {
+                    localStorage.setItem("sae_admin_logged_in", "true");
+                    errorDiv.style.display = "none";
+                    checkAuth();
+                } else {
+                    errorDiv.style.display = "block";
+                }
+            });
+
+            // Logout Handler
+            document.getElementById("logout-btn").addEventListener("click", () => {
+                localStorage.removeItem("sae_admin_logged_in");
+                checkAuth();
+            });
+
+            // Listen for background updates from Firebase
+            window.addEventListener("sae-db-updated", () => {
+                const isLoggedIn = localStorage.getItem("sae_admin_logged_in") === "true";
+                if (isLoggedIn) {
+                    renderAll();
+                }
+            });
+
+            // Helper to convert file input to base64 string
+            function readFileAsDataURL(file) {
+                return new Promise((resolve) => {
+                    if (!file) {
+                        resolve(null);
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.onerror = () => resolve(null);
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            // Add/Edit News Form Handler
+            document.getElementById("form-add-news").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                if (!window.SAE_DB) return;
+                
+                const title = document.getElementById("news-title").value;
+                const date = document.getElementById("news-date").value;
+                const tag = document.getElementById("news-tag").value;
+                const description = document.getElementById("news-desc").value;
+                
+                const fileInput = document.getElementById("news-image-file").files[0];
+                let image = "";
+                if (fileInput) {
+                    image = await readFileAsDataURL(fileInput);
+                } else {
+                    image = document.getElementById("news-image-select").value;
+                }
+                
+                if (editingNewsId) {
+                    window.SAE_DB.updateNews(editingNewsId, { title, date, tag, image, description });
+                } else {
+                    window.SAE_DB.addNews({ title, date, tag, image, description });
+                }
+                
+                closeModal('modal-add-news');
+                document.getElementById("form-add-news").reset();
+                renderAll();
+            });
+
+            // Add/Edit Document Form Handler
+            document.getElementById("form-add-doc").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                if (!window.SAE_DB) return;
+                
+                const title = document.getElementById("doc-title").value;
+                const type = document.getElementById("doc-type").value;
+                const size = document.getElementById("doc-size").value;
+                const description = document.getElementById("doc-desc").value;
+                
+                const fileInput = document.getElementById("doc-upload-file").files[0];
+                let file = "";
+                if (fileInput) {
+                    file = await readFileAsDataURL(fileInput);
+                } else {
+                    file = document.getElementById("doc-file-select").value;
+                }
+                
+                if (editingDocId) {
+                    window.SAE_DB.updateDoc(editingDocId, { title, type, size, file, description });
+                } else {
+                    window.SAE_DB.addDoc({ title, type, size, file, description });
+                }
+                
+                closeModal('modal-add-doc');
+                document.getElementById("form-add-doc").reset();
+                renderAll();
+            });
+
+            // Add/Edit Founder Form Handler
+            document.getElementById("form-add-founder").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                if (!window.SAE_DB) return;
+                
+                const name = document.getElementById("founder-name").value;
+                const role = document.getElementById("founder-role").value;
+                
+                const fileInput = document.getElementById("founder-image-file").files[0];
+                let image = "";
+                if (fileInput) {
+                    image = await readFileAsDataURL(fileInput);
+                } else {
+                    image = document.getElementById("founder-image-select").value;
+                }
+                
+                if (editingFounderId) {
+                    window.SAE_DB.updateFounder(editingFounderId, { name, role, image });
+                } else {
+                    window.SAE_DB.addFounder({ name, role, image });
+                }
+                
+                closeModal('modal-add-founder');
+                document.getElementById("form-add-founder").reset();
+                renderAll();
+            });
+        });
+
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem("sae_admin_logged_in") === "true";
+            const loginBox = document.getElementById("login-container");
+            const dashBox = document.getElementById("dashboard-container");
+            
+            if (isLoggedIn) {
+                loginBox.style.display = "none";
+                dashBox.style.display = "flex";
+                document.body.style.alignItems = "stretch";
+                renderAll();
+            } else {
+                loginBox.style.display = "block";
+                dashBox.style.display = "none";
+                document.body.style.alignItems = "center";
+            }
+        }
+
+        // Tab Switcher
+        function switchTab(e, tabId) {
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+            
+            e.currentTarget.classList.add("active");
+            document.getElementById(tabId).classList.add("active");
+        }
+
+        // Editing IDs state
+        let editingNewsId = null;
+        let editingDocId = null;
+        let editingFounderId = null;
+
+        // Modals management
+        function openModal(modalId) {
+            // Reset modal texts if opening normally (not editing)
+            if (modalId === "modal-add-news" && !editingNewsId) {
+                document.querySelector("#modal-add-news h3").innerText = "إضافة خبر أو فعالية جديدة";
+                document.querySelector("#modal-add-news .btn-add").innerText = "إضافة الخبر";
+                document.getElementById("form-add-news").reset();
+            }
+            if (modalId === "modal-add-doc" && !editingDocId) {
+                document.querySelector("#modal-add-doc h3").innerText = "إضافة لائحة أو محضر اجتماع جديد";
+                document.querySelector("#modal-add-doc .btn-add").innerText = "إضافة المستند";
+                document.getElementById("form-add-doc").reset();
+            }
+            if (modalId === "modal-add-founder" && !editingFounderId) {
+                document.querySelector("#modal-add-founder h3").innerText = "إضافة عضو مجلس إدارة جديد";
+                document.querySelector("#modal-add-founder .btn-add").innerText = "إضافة العضو";
+                document.getElementById("form-add-founder").reset();
+            }
+            document.getElementById(modalId).style.display = "flex";
+            document.body.style.overflow = "hidden"; // Lock background scroll
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = ""; // Unlock background scroll
+            // Reset editing state on close
+            if (modalId === "modal-add-news") editingNewsId = null;
+            if (modalId === "modal-add-doc") editingDocId = null;
+            if (modalId === "modal-add-founder") editingFounderId = null;
+        }
+
+        // Edit handlers
+        function editNewsItem(id) {
+            if (!window.SAE_DB) return;
+            const news = window.SAE_DB.getNews();
+            const item = news.find(n => n.id === id);
+            if (item) {
+                editingNewsId = id;
+                document.getElementById("news-title").value = item.title;
+                document.getElementById("news-date").value = item.date;
+                document.getElementById("news-tag").value = item.tag;
+                document.getElementById("news-desc").value = item.description;
+                document.getElementById("news-image-select").value = item.image.startsWith("data:") ? "" : item.image;
+                
+                // Change title of modal
+                document.querySelector("#modal-add-news h3").innerText = "تعديل الخبر";
+                document.querySelector("#modal-add-news .btn-add").innerText = "حفظ التعديلات";
+                
+                openModal("modal-add-news");
+            }
+        }
+
+        function editDocItem(id) {
+            if (!window.SAE_DB) return;
+            const docs = window.SAE_DB.getDocs();
+            const item = docs.find(d => d.id === id);
+            if (item) {
+                editingDocId = id;
+                document.getElementById("doc-title").value = item.title;
+                document.getElementById("doc-type").value = item.type;
+                document.getElementById("doc-size").value = item.size;
+                document.getElementById("doc-desc").value = item.description;
+                document.getElementById("doc-file-select").value = item.file.startsWith("data:") ? "./assets/docs/default.pdf" : item.file;
+                
+                document.querySelector("#modal-add-doc h3").innerText = "تعديل المستند";
+                document.querySelector("#modal-add-doc .btn-add").innerText = "حفظ التعديلات";
+                
+                openModal("modal-add-doc");
+            }
+        }
+
+        function editFounderItem(id) {
+            if (!window.SAE_DB) return;
+            const founders = window.SAE_DB.getFounders();
+            const item = founders.find(f => f.id === id);
+            if (item) {
+                editingFounderId = id;
+                document.getElementById("founder-name").value = item.name;
+                document.getElementById("founder-role").value = item.role;
+                document.getElementById("founder-image-select").value = item.image.startsWith("data:") ? "" : item.image;
+                
+                document.querySelector("#modal-add-founder h3").innerText = "تعديل بيانات العضو";
+                document.querySelector("#modal-add-founder .btn-add").innerText = "حفظ التعديلات";
+                
+                openModal("modal-add-founder");
+            }
+        }
+
+        // Deletion handlers
+        function deleteNewsItem(id) {
+            if (confirm("هل أنت متأكد من حذف هذا الخبر نهائياً؟")) {
+                if (window.SAE_DB) {
+                    window.SAE_DB.deleteNews(id);
+                    renderAll();
+                }
+            }
+        }
+
+        function deleteDocItem(id) {
+            if (confirm("هل أنت متأكد من حذف هذا المستند نهائياً؟")) {
+                if (window.SAE_DB) {
+                    window.SAE_DB.deleteDoc(id);
+                    renderAll();
+                }
+            }
+        }
+
+        function deleteFounderItem(id) {
+            if (confirm("هل أنت متأكد من حذف هذا العضو نهائياً؟")) {
+                if (window.SAE_DB) {
+                    window.SAE_DB.deleteFounder(id);
+                    renderAll();
+                }
+            }
+        }
+
+        // Render functions
+        function renderAll() {
+            if (!window.SAE_DB) return;
+            
+            const news = window.SAE_DB.getNews();
+            const docs = window.SAE_DB.getDocs();
+            const founders = window.SAE_DB.getFounders();
+            
+            // 1. Render Metrics
+            const policies = docs.filter(d => d.type === "policy");
+            const minutes = docs.filter(d => d.type === "minute");
+            
+            document.getElementById("metric-news-count").innerText = news.length;
+            document.getElementById("metric-policies-count").innerText = policies.length;
+            document.getElementById("metric-minutes-count").innerText = minutes.length;
+            document.getElementById("metric-founders-count").innerText = founders.length;
+            
+            // 2. Render News Table
+            const newsTableBody = document.getElementById("news-table-body");
+            newsTableBody.innerHTML = news.map(item => `
+                <tr>
+                    <td><img src="${item.image}" alt="${item.title}" class="row-img" onerror="this.onerror=null; this.src='./assets/img/news-newspaper-1.jpg';"></td>
+                    <td style="font-weight: 600;">${item.title}</td>
+                    <td>${item.dateFormatted || item.date}</td>
+                    <td><span class="tag-pill">${item.tag}</span></td>
+                    <td>
+                        <button class="btn-edit" onclick="editNewsItem('${item.id}')" style="padding: 6px 12px; background: rgba(20, 184, 166, 0.1); border: 1px solid rgba(20, 184, 166, 0.3); color: var(--accent-color); border-radius: 6px; cursor: pointer; transition: all 0.3s; margin-left: 0.5rem;"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+                        <button class="btn-delete" onclick="deleteNewsItem('${item.id}')"><i class="fa-solid fa-trash"></i> حذف</button>
+                    </td>
+                </tr>
+            `).join('');
+            
+            // 3. Render Documents Table
+            const docsTableBody = document.getElementById("docs-table-body");
+            docsTableBody.innerHTML = docs.map(item => {
+                const icon = item.type === "policy" ? "fa-file-shield" : "fa-file-invoice";
+                const typeText = item.type === "policy" ? "لوائح وسياسات" : "محاضر وقرارات";
+                return `
+                    <tr>
+                        <td><i class="fa-solid ${icon}" style="font-size: 1.25rem; color: var(--accent-color);"></i></td>
+                        <td style="font-weight: 600;">${item.title}</td>
+                        <td style="color: var(--text-muted); max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.description}</td>
+                        <td>${item.size}</td>
+                        <td>
+                            <button class="btn-edit" onclick="editDocItem('${item.id}')" style="padding: 6px 12px; background: rgba(20, 184, 166, 0.1); border: 1px solid rgba(20, 184, 166, 0.3); color: var(--accent-color); border-radius: 6px; cursor: pointer; transition: all 0.3s; margin-left: 0.5rem;"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+                            <button class="btn-delete" onclick="deleteDocItem('${item.id}')"><i class="fa-solid fa-trash"></i> حذف</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            // 4. Render Founders Table
+            const foundersTableBody = document.getElementById("founders-table-body");
+            if (foundersTableBody) {
+                foundersTableBody.innerHTML = founders.map(item => {
+                    const imgHtml = item.image && item.image.trim() !== "" 
+                        ? `<img src="${item.image}" alt="${item.name}" class="row-img" style="border-radius:50%; width:40px; height:40px; object-fit:cover;">`
+                        : `<i class="fa-solid fa-user-tie" style="font-size:1.5rem; color:var(--accent-color); padding: 5px;"></i>`;
+                    const typeText = item.isDefault ? "حساب تأسيسي" : "مضاف يدوياً";
+                    return `
+                        <tr>
+                            <td style="text-align: center; width: 80px;">${imgHtml}</td>
+                            <td style="font-weight: 600;">${item.name}</td>
+                            <td>${item.role}</td>
+                            <td><span class="tag-pill">${typeText}</span></td>
+                            <td>
+                                <button class="btn-edit" onclick="editFounderItem('${item.id}')" style="padding: 6px 12px; background: rgba(20, 184, 166, 0.1); border: 1px solid rgba(20, 184, 166, 0.3); color: var(--accent-color); border-radius: 6px; cursor: pointer; transition: all 0.3s; margin-left: 0.5rem;"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
+                                <button class="btn-delete" onclick="deleteFounderItem('${item.id}')"><i class="fa-solid fa-trash"></i> حذف</button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+        }
+    </script>
+</body>
+</html>

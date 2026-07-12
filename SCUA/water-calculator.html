@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة ميزانية المياه - الكود السعودي للزراعة الحضرية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .calculator {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2E7D32;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        .results {
+            background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.2);
+        }
+        
+        .result-value {
+            font-weight: 700;
+            color: #2E7D32;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/80x80/2E7D32/FFFFFF?text=SUAC" alt="شعار الكود السعودي للزراعة الحضرية">
+                    <div class="logo-text">
+                        <h1>حاسبة ميزانية المياه</h1>
+                        <p>Water Budget Calculator</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#parts">أجزاء الكود</a></li>
+                        <li><a href="restricted-plants.html">النباتات المقيدة</a></li>
+                        <li><a href="index.html#tools">الأدوات</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 60px 0;">
+            <div class="container">
+                <h2>حاسبة ميزانية المياه</h2>
+                <p class="hero-subtitle">احسب استهلاك المياه المقدر وفق معايير الكود السعودي للزراعة الحضرية</p>
+            </div>
+        </section>
+
+        <section style="padding: 60px 0;">
+            <div class="container">
+                <div class="calculator">
+                    <h3 style="color: #2E7D32; margin-bottom: 30px; text-align: center;">
+                        <i class="fas fa-calculator"></i>
+                        حساب ميزانية المياه (EWU vs LWA)
+                    </h3>
+                    
+                    <form id="waterCalculator">
+                        <div class="form-group">
+                            <label for="region">الإقليم المناخي:</label>
+                            <select id="region" required>
+                                <option value="">اختر الإقليم</option>
+                                <option value="riyadh">الرياض (ETo = 2100 مم/سنة)</option>
+                                <option value="jeddah">جدة (ETo = 1800 مم/سنة)</option>
+                                <option value="dammam">الدمام (ETo = 1950 مم/سنة)</option>
+                                <option value="abha">أبها (ETo = 1600 مم/سنة)</option>
+                                <option value="tabuk">تبوك (ETo = 1750 مم/سنة)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="treeArea">مساحة الأشجار (م²):</label>
+                            <input type="number" id="treeArea" min="0" step="0.1" placeholder="مثال: 500">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="shrubArea">مساحة الشجيرات (م²):</label>
+                            <input type="number" id="shrubArea" min="0" step="0.1" placeholder="مثال: 300">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grassArea">مساحة المسطحات العشبية (م²):</label>
+                            <input type="number" id="grassArea" min="0" step="0.1" placeholder="مثال: 200">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="irrigationType">نوع نظام الري:</label>
+                            <select id="irrigationType" required>
+                                <option value="">اختر نوع النظام</option>
+                                <option value="drip">تنقيط (IE = 0.85)</option>
+                                <option value="micro">ميكرو (IE = 0.85)</option>
+                                <option value="bubbler">بابلرات (IE = 0.80)</option>
+                                <option value="rotary">رشاشات دوارة (IE = 0.75)</option>
+                                <option value="spray">رشاشات تقليدية (IE = 0.65)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectType">نوع المشروع:</label>
+                            <select id="projectType" required>
+                                <option value="">اختر نوع المشروع</option>
+                                <option value="public">حديقة عامة</option>
+                                <option value="street">شارع وحقوق طريق</option>
+                                <option value="residential">سكني</option>
+                                <option value="commercial">تجاري</option>
+                                <option value="institutional">مؤسسي</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                            <i class="fas fa-calculator"></i>
+                            احسب ميزانية المياه
+                        </button>
+                    </form>
+
+                    <div id="results" class="results" style="display: none;">
+                        <h4 style="color: #2E7D32; margin-bottom: 20px;">
+                            <i class="fas fa-chart-bar"></i>
+                            نتائج الحساب
+                        </h4>
+                        <div class="result-item">
+                            <span>الاستهلاك المقدر (EWU):</span>
+                            <span class="result-value" id="ewuResult">0 م³/سنة</span>
+                        </div>
+                        <div class="result-item">
+                            <span>الحد الأعلى المسموح (LWA):</span>
+                            <span class="result-value" id="lwaResult">0 م³/سنة</span>
+                        </div>
+                        <div class="result-item">
+                            <span>حالة الامتثال:</span>
+                            <span class="result-value" id="complianceResult">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span>نسبة الاستهلاك:</span>
+                            <span class="result-value" id="percentageResult">0%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <canvas id="complianceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 الكود السعودي للزراعة الحضرية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('waterCalculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const region = document.getElementById('region').value;
+            const treeArea = parseFloat(document.getElementById('treeArea').value) || 0;
+            const shrubArea = parseFloat(document.getElementById('shrubArea').value) || 0;
+            const grassArea = parseFloat(document.getElementById('grassArea').value) || 0;
+            const irrigationType = document.getElementById('irrigationType').value;
+            const projectType = document.getElementById('projectType').value;
+            
+            if (!region || !irrigationType || !projectType) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+            
+            // ETo values for different regions
+            const etoValues = {
+                'riyadh': 2100,
+                'jeddah': 1800,
+                'dammam': 1950,
+                'abha': 1600,
+                'tabuk': 1750
+            };
+            
+            // KL values (Plant Factor) from the new code
+            const klValues = {
+                'shrubs': 0.4,
+                'grass': 0.8 
+            };
+
+            // IE values (Irrigation Efficiency)
+            const ieValues = {
+                'drip': 0.85,
+                'rotary': 0.75 
+            };
+
+            const eto = 8; // ETo from the example in the new code (8 mm/day)
+            
+            // Calculate LWR (Landscape Water Requirement)
+            const lwrGrass = (eto * klValues.grass * grassArea) / (ieValues.rotary || 0.75);
+            const lwrShrubs = (eto * klValues.shrubs * shrubArea) / (ieValues.drip || 0.85);
+            const totalLWR = lwrGrass + lwrShrubs;
+
+            // For consistency with the old layout, we'll map LWR to EWU
+            const totalEWU = totalLWR / 1000; // To convert from Liters to m³
+            const totalLWA = totalEWU * 1.25; // Assuming LWA is 25% more for this example
+            
+            // Check compliance
+            const isCompliant = totalEWU <= totalLWA;
+            const percentage = totalLWA > 0 ? (totalEWU / totalLWA * 100) : 0;
+            
+            // Display results
+            document.getElementById('ewuResult').textContent = totalEWU.toFixed(1) + ' م³/سنة';
+            document.getElementById('lwaResult').textContent = totalLWA.toFixed(1) + ' م³/سنة';
+            document.getElementById('complianceResult').textContent = isCompliant ? 'متوافق ✓' : 'غير متوافق ✗';
+            document.getElementById('complianceResult').style.color = isCompliant ? '#4CAF50' : '#f44336';
+            document.getElementById('percentageResult').textContent = percentage.toFixed(1) + '%';
+            
+            document.getElementById('results').style.display = 'grid';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+
+            // Render Chart
+            const ctx = document.getElementById('complianceChart').getContext('2d');
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+            window.myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['الاستهلاك المقدر (EWU)', 'المتبقي من المسموح به'],
+                    datasets: [{
+                        data: [totalEWU, Math.max(0, totalLWA - totalEWU)],
+                        backgroundColor: [
+                            isCompliant ? '#4CAF50' : '#f44336',
+                            '#E0E0E0'
+                        ],
+                        borderColor: [
+                            '#FFFFFF',
+                            '#FFFFFF'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed.toFixed(1) + ' م³/سنة';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

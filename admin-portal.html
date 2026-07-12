@@ -998,11 +998,15 @@
                 checkAuth();
             });
 
-            // Listen for background updates from Firebase
+            // Listen for background updates from Firebase with debouncing to prevent multiple rapid renders
+            let updateTimeout = null;
             window.addEventListener("sae-db-updated", () => {
                 const isLoggedIn = localStorage.getItem("sae_admin_logged_in") === "true";
                 if (isLoggedIn) {
-                    renderAll();
+                    if (updateTimeout) clearTimeout(updateTimeout);
+                    updateTimeout = setTimeout(() => {
+                        renderAll();
+                    }, 200); // Debounce for 200ms
                 }
             });
 

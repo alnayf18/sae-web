@@ -257,11 +257,15 @@
             // Listen for hashchange
             window.addEventListener("hashchange", checkHash);
             
-            // Listen for background updates from Firebase
+            // Listen for background updates from Firebase with debouncing to prevent flickering
+            let updateTimeout = null;
             window.addEventListener("sae-db-updated", (e) => {
                 if (e.detail.type === "news") {
-                    renderAllNews();
-                    checkHash();
+                    if (updateTimeout) clearTimeout(updateTimeout);
+                    updateTimeout = setTimeout(() => {
+                        renderAllNews();
+                        checkHash();
+                    }, 100);
                 }
             });
         });

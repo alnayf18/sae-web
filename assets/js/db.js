@@ -525,16 +525,29 @@ function syncWithFirestore() {
     
     // 1. Sync News
     db.collection("news").get().then(snapshot => {
-        if (snapshot.empty) {
-            // First time loading: populate Firestore with default news
+        let hasRealNews = false;
+        const newsList = [];
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            newsList.push(data);
+            if (data.id === "news-2807") {
+                hasRealNews = true;
+            }
+        });
+
+        if (snapshot.empty || !hasRealNews) {
+            console.log("Firestore news collection is empty or contains outdated dummy news. Overwriting with real WordPress news...");
+            // Clean up any old dummy documents
+            snapshot.forEach(doc => {
+                db.collection("news").doc(doc.id).delete();
+            });
+            // Populate with real DEFAULT_NEWS
             DEFAULT_NEWS.forEach(item => {
                 db.collection("news").doc(item.id).set(item);
             });
+            localStorage.setItem("sae_news", JSON.stringify(DEFAULT_NEWS));
+            window.dispatchEvent(new CustomEvent("sae-db-updated", { detail: { type: "news" } }));
         } else {
-            const newsList = [];
-            snapshot.forEach(doc => {
-                newsList.push(doc.data());
-            });
             // Sort news list by date descending
             newsList.sort((a, b) => new Date(b.date) - new Date(a.date));
             localStorage.setItem("sae_news", JSON.stringify(newsList));
@@ -576,7 +589,7 @@ function syncWithFirestore() {
 }
 
 // Helper to initialize LocalStorage if empty
-const DB_VERSION = "2.1";
+const DB_VERSION = "2.2";
 
 function initializeDB() {
     if (localStorage.getItem("sae_db_version") !== DB_VERSION) {

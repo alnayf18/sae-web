@@ -133,7 +133,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (typeof firebase !== 'undefined' && firebase.apps.length) {
                 const db = firebase.firestore();
-                db.collection("contacts").add(messageData)
+                
+                // 1. Save message to contacts log
+                const contactPromise = db.collection("contacts").add(messageData);
+                
+                // 2. Save trigger document to mail collection for the Firebase Extension
+                const emailPromise = db.collection("mail").add({
+                    to: "info@sae.sa",
+                    message: {
+                        subject: `رسالة جديدة من الموقع: ${subject}`,
+                        text: `الاسم: ${name}\nالبريد الإلكتروني: ${email}\nرقم الجوال: ${phone}\nنوع الطلب: ${subject}\n\nالرسالة:\n${message}`,
+                        html: `
+                            <div dir="rtl" style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                                <h2 style="color: #07484a; border-bottom: 2px solid #14b8a6; padding-bottom: 10px;">رسالة جديدة من نموذج الاتصال</h2>
+                                <p><strong>الاسم:</strong> ${name}</p>
+                                <p><strong>البريد الإلكتروني:</strong> <a href="mailto:${email}">${email}</a></p>
+                                <p><strong>رقم الجوال:</strong> ${phone}</p>
+                                <p><strong>نوع الطلب:</strong> ${subject}</p>
+                                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                                <h3 style="color: #07484a;">نص الرسالة:</h3>
+                                <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; border-right: 4px solid #14b8a6; white-space: pre-wrap;">${message}</div>
+                            </div>
+                        `
+                    }
+                });
+
+                Promise.all([contactPromise, emailPromise])
                     .then(() => {
                         handleSuccess();
                     })

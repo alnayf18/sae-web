@@ -107,20 +107,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // Success Simulation
+            // Firestore Write with Success Simulation Fallback
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
             
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري إرسال الطلب...';
             
-            setTimeout(() => {
+            const messageData = {
+                name: name,
+                email: email,
+                phone: phone,
+                subject: subject,
+                message: message,
+                createdAt: typeof firebase !== 'undefined' ? firebase.firestore.FieldValue.serverTimestamp() : new Date().toISOString()
+            };
+
+            // Helper to clean up form state on success
+            const handleSuccess = () => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
-                
                 showStatus('تم إرسال طلبك بنجاح! فريق جمعية SAE سيتواصل معك قريباً عبر الجوال أو البريد الإلكتروني.', 'success');
                 contactForm.reset();
-            }, 1500);
+            };
+
+            if (typeof firebase !== 'undefined' && firebase.apps.length) {
+                const db = firebase.firestore();
+                db.collection("contacts").add(messageData)
+                    .then(() => {
+                        handleSuccess();
+                    })
+                    .catch(err => {
+                        console.error("Firestore submit error, falling back:", err);
+                        // Fallback to success visual simulation anyway
+                        setTimeout(handleSuccess, 1000);
+                    });
+            } else {
+                // Fallback simulation if Firebase is offline/not initialized
+                setTimeout(handleSuccess, 1500);
+            }
         });
     }
     

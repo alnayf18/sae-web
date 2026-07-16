@@ -1239,3 +1239,11 @@ footer {
         text-align: center;
     }
 }
+
+/* Custom Utility Class */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+}
+

@@ -3,6 +3,7 @@
     "rules": "firestore.rules"
   },
   "hosting": {
+    "target": "wep",
     "public": ".",
     "ignore": [
       "firebase.json",

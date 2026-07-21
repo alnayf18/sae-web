@@ -502,6 +502,41 @@
                                 </tbody>
                             </table>
 
+                            <!-- Recommended Pump Specs Box -->
+                            <div class="pump-specs-box" style="background: linear-gradient(135deg, #153729 0%, #20533e 100%); color: white; border-radius: var(--border-radius-sm); padding: 20px; margin: 20px 0; border: 1px solid var(--accent-color); box-shadow: 0 4px 15px rgba(21, 55, 41, 0.15);">
+                                <h4 style="color: var(--accent-color); margin-bottom: 12px; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-gauge-high"></i> التوصية الهندسية لمضخة الري المناسبة للمشروع:
+                                </h4>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; text-align: center; margin-top: 15px;">
+                                    <div style="background: rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3);">
+                                        <div style="font-size: 0.8rem; color: var(--accent-light);">قدرة المضخة المطلوبة</div>
+                                        <div style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-top: 3px;" id="pumpPowerResult">0.75 حصان</div>
+                                        <div style="font-size: 0.75rem; color: var(--accent-light);" id="pumpKwResult">(0.55 كيلوواط)</div>
+                                    </div>
+
+                                    <div style="background: rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3);">
+                                        <div style="font-size: 0.8rem; color: var(--accent-light);">معدل التدفق (Flow)</div>
+                                        <div style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-top: 3px;" id="pumpFlowResult">20 لتر/دقيقة</div>
+                                        <div style="font-size: 0.75rem; color: var(--accent-light);" id="pumpFlowM3Result">(1.2 م³/ساعة)</div>
+                                    </div>
+
+                                    <div style="background: rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3);">
+                                        <div style="font-size: 0.8rem; color: var(--accent-light);">الضغط المطلوب (Head)</div>
+                                        <div style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-top: 3px;" id="pumpPressureResult">3.0 - 3.5 بار</div>
+                                        <div style="font-size: 0.75rem; color: var(--accent-light);">(30 - 35 متر هيدروليكي)</div>
+                                    </div>
+
+                                    <div style="background: rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3);">
+                                        <div style="font-size: 0.8rem; color: var(--accent-light);">تشغيل الري اليومي</div>
+                                        <div style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-top: 3px;" id="pumpRunTimeResult">1.5 ساعة/يوم</div>
+                                        <div style="font-size: 0.75rem; color: var(--accent-light);">(مقسمة على 2 دورات)</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 0.85rem; color: #e0e0e0; margin-top: 12px; background: rgba(0,0,0,0.25); padding: 10px 12px; border-radius: 6px; line-height: 1.6;" id="pumpTechNote">
+                                    <i class="fa-solid fa-circle-info" style="color: var(--accent-color);"></i> <strong>نوع المضخة الموصى به:</strong> مضخة طاردة مركزية مع منظم ضغط أوتوماتيكي (Press Control) لحماية الأنابيب والتنقيط.
+                                </div>
+                            </div>
+
                             <!-- Chart Container -->
                             <div class="chart-container">
                                 <canvas id="waterChart"></canvas>
@@ -720,6 +755,43 @@
                     tbody.appendChild(tr);
                 }
             });
+
+            // Pump Specification Recommendation Calculation
+            const runTimeHours = 1.5;
+            const requiredFlowLpm = totalLitersDaily / (runTimeHours * 60.0);
+            const requiredFlowM3h = totalLitersDaily / (runTimeHours * 1000.0);
+
+            let recommendedHp = 0.5;
+            let pumpTypeNote = '';
+
+            if (totalLitersDaily <= 1500) {
+                recommendedHp = 0.5;
+                pumpTypeNote = 'مضخة صغيرة 0.5 حصان مع منظم ضغط أتوماتيكي (Press Control) كافية لتغطية احتياج المشروع بالكامل.';
+            } else if (totalLitersDaily <= 3500) {
+                recommendedHp = 0.75;
+                pumpTypeNote = 'مضخة متوسطة 0.75 حصان بنظام تحكم بالضغط، تضمن تدفقاً منتظماً لجميع خطوط التنقيط والرش.';
+            } else if (totalLitersDaily <= 7500) {
+                recommendedHp = 1.0;
+                pumpTypeNote = 'مضخة قدرة 1.0 حصان ذات ضغط مرتفع وتدفق مستمر، مناسبة للمشاريع السكنية والحدائق متوسطة المساحة.';
+            } else if (totalLitersDaily <= 15000) {
+                recommendedHp = 1.5;
+                pumpTypeNote = 'مضخة قدرة 1.5 حصان مع منظم سرعة متغير (VFD Inverter) لحماية الشبكة وتوفير الطاقة.';
+            } else if (totalLitersDaily <= 30000) {
+                recommendedHp = 2.5;
+                pumpTypeNote = 'مشتمل ري كامل بمضخة 2.5 حصان أو مضختين متوازيتين للحدائق العامة والمنتزهات.';
+            } else {
+                recommendedHp = Math.ceil(totalLitersDaily / 10000);
+                pumpTypeNote = 'مشروع كبير يحتاج إلى محطة مضخات رئيسية (Pump Station) متعددة المراحل بقدرة ' + recommendedHp + ' حصان.';
+            }
+
+            const kwPower = (recommendedHp * 0.7457).toFixed(2);
+
+            document.getElementById('pumpPowerResult').textContent = recommendedHp + ' حصان';
+            document.getElementById('pumpKwResult').textContent = '(' + kwPower + ' كيلوواط)';
+            document.getElementById('pumpFlowResult').textContent = Math.ceil(requiredFlowLpm) + ' لتر/دقيقة';
+            document.getElementById('pumpFlowM3Result').textContent = '(' + requiredFlowM3h.toFixed(1) + ' م³/ساعة)';
+            document.getElementById('pumpRunTimeResult').textContent = runTimeHours + ' ساعة/يوم';
+            document.getElementById('pumpTechNote').innerHTML = '<i class="fa-solid fa-circle-info" style="color: var(--accent-color);"></i> <strong>التوصية الفنية للمضخة:</strong> ' + pumpTypeNote;
 
             // Populate Recommendations
             const recList = document.getElementById('recommendationsList');

@@ -73,9 +73,19 @@ body {
 }
 
 .logo img {
-    border-radius: 8px;
-    border: 2px solid rgba(197, 160, 89, 0.4);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    background: #ffffff;
+    padding: 6px 14px;
+    border-radius: 10px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.03);
 }
 
 .logo-text h1 {
@@ -505,4 +515,91 @@ body {
     .about-content {
         grid-template-columns: 1fr;
     }
+}
+
+/* Book & Document Content Styles (SAE Brand Identity) */
+.code-content {
+    max-width: 950px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 45px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+}
+
+.chapter {
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 30px;
+}
+
+.chapter:last-child {
+    border-bottom: none;
+}
+
+.chapter-title {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section-number {
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.subsection {
+    margin-bottom: 18px;
+    padding-right: 20px;
+    border-right: 4px solid var(--primary-color);
+}
+
+.content-text {
+    line-height: 1.85;
+    color: var(--text-dark);
+    font-size: 1.05rem;
+}
+
+.toc {
+    background: #FAF9F6;
+    padding: 25px 30px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(21, 55, 41, 0.1);
+    margin-bottom: 40px;
+}
+
+.toc h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.toc ul {
+    list-style-type: none;
+    padding-right: 0;
+}
+
+.toc li {
+    margin-bottom: 8px;
+}
+
+.toc li a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.toc li a:hover {
+    color: var(--accent-color);
 }

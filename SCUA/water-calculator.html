@@ -93,7 +93,7 @@
             padding: 12px 16px;
             border: 1.5px solid rgba(21, 55, 41, 0.15);
             border-radius: var(--border-radius-sm);
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-family: inherit;
             color: var(--text-dark);
             background-color: #FAF9F6;
@@ -210,11 +210,11 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 25px;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
         .breakdown-table th, .breakdown-table td {
-            padding: 12px 15px;
+            padding: 10px 12px;
             text-align: right;
             border-bottom: 1px solid var(--border-color);
         }
@@ -227,7 +227,7 @@
 
         .chart-container {
             position: relative;
-            height: 250px;
+            height: 240px;
             margin-top: 20px;
         }
 
@@ -264,7 +264,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين" style="width: 110px; height: auto;">
+                    <img src="sae-logo.png" alt="شعار جمعية المهندسين الزراعيين">
                     <div class="logo-text">
                         <h1>حاسبة ميزانية المياه (SCUA)</h1>
                         <p>Water Budget Calculator - SAC-300 / SAC-400</p>
@@ -288,8 +288,8 @@
         <section class="hero" style="padding: 50px 0;">
             <div class="container">
                 <div class="hero-content">
-                    <h2>حاسبة ميزانية مياه الري الهندسية</h2>
-                    <p class="hero-subtitle">المرجع الحسابي المعياري لحساب الاستهلاك المقدر (EWU) والحد الأقصى المسموح (LWA) وفق معادلات الكود السعودي للزراعة الحضرية</p>
+                    <h2>حاسبة ميزانية مياه الري الهندسية الدقيقة</h2>
+                    <p class="hero-subtitle">حساب الاحتياجات المائية الحقيقية للنباتات والحد الأقصى المسموح (EWU vs LWA) طبقاً لمعاملات البخر-نتح ومعايير الكود السعودي للزراعة الحضرية</p>
                 </div>
             </div>
         </section>
@@ -302,7 +302,7 @@
                     <div class="calc-card">
                         <div class="calc-card-header">
                             <i class="fa-solid fa-sliders"></i>
-                            <h3>مدخلات حساب ميزانية المياه</h3>
+                            <h3>مدخلات نوع النباتات والمنطقة</h3>
                         </div>
 
                         <form id="waterCalculator">
@@ -311,18 +311,18 @@
                                 <label for="region"><i class="fa-solid fa-location-dot" style="color: var(--accent-color);"></i> الإقليم المناخي والمدينة:</label>
                                 <select id="region" class="form-control" required>
                                     <option value="">-- اختر الإقليم المناخي --</option>
-                                    <option value="riyadh" data-eto="2100">الرياض والمنطقة الوسطى (ETo السنوي = 2,100 مم/سنة)</option>
-                                    <option value="jeddah" data-eto="1800">جدة والمنطقة الساحلية الغربية (ETo السنوي = 1,800 مم/سنة)</option>
-                                    <option value="dammam" data-eto="1950">الدمام والمنطقة الشرقية (ETo السنوي = 1,950 مم/سنة)</option>
-                                    <option value="qassim" data-eto="2150">القصيم والمناطق الداخلية (ETo السنوي = 2,150 مم/سنة)</option>
-                                    <option value="makkah" data-eto="2200">مكة المكرمة (ETo السنوي = 2,200 مم/سنة)</option>
-                                    <option value="medina" data-eto="2000">المدينة المنورة (ETo السنوي = 2,000 مم/سنة)</option>
-                                    <option value="abha" data-eto="1600">أبها والمنطقة الجنوبية الجبلية (ETo السنوي = 1,600 مم/سنة)</option>
-                                    <option value="tabuk" data-eto="1750">تبوك والمنطقة الشمالية (ETo السنوي = 1,750 مم/سنة)</option>
+                                    <option value="riyadh" data-eto="2100">الرياض والمنطقة الوسطى (ETo = 2,100 مم/سنة | 5.75 مم/يوم)</option>
+                                    <option value="jeddah" data-eto="1800">جدة والمنطقة الساحلية الغربية (ETo = 1,800 مم/سنة | 4.93 مم/يوم)</option>
+                                    <option value="dammam" data-eto="1950">الدمام والمنطقة الشرقية (ETo = 1,950 مم/سنة | 5.34 مم/يوم)</option>
+                                    <option value="qassim" data-eto="2150">القصيم والمناطق الداخلية (ETo = 2,150 مم/سنة | 5.89 مم/يوم)</option>
+                                    <option value="makkah" data-eto="2200">مكة المكرمة (ETo = 2,200 مم/سنة | 6.03 مم/يوم)</option>
+                                    <option value="medina" data-eto="2000">المدينة المنورة (ETo = 2,000 مم/سنة | 5.48 مم/يوم)</option>
+                                    <option value="abha" data-eto="1600">أبها وعسير (ETo = 1,600 مم/سنة | 4.38 مم/يوم)</option>
+                                    <option value="tabuk" data-eto="1750">تبوك والمنطقة الشمالية (ETo = 1,750 مم/سنة | 4.79 مم/يوم)</option>
                                 </select>
                             </div>
 
-                            <!-- 2. Plant Cover Areas -->
+                            <!-- 2. Trees Input & Type Selection -->
                             <div class="form-group">
                                 <label for="treeArea"><i class="fa-solid fa-tree" style="color: var(--primary-light);"></i> مساحة الأشجار:<small>(م²)</small></label>
                                 <div class="input-wrapper">
@@ -330,7 +330,16 @@
                                     <span class="unit-badge">م²</span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="treeType">نوع وحاجة الأشجار للمياه:</label>
+                                <select id="treeType" class="form-control">
+                                    <option value="native" data-ks="0.30">أشجار بيئية محلية قليلة الاحتياج (غاف، سدر، سمر، أثل - Ks=0.30)</option>
+                                    <option value="moderate" data-ks="0.45" selected>أشجار ظل وتنسيق متوسطة (بوانسيانا، جاكارندا، نيم - Ks=0.45)</option>
+                                    <option value="high" data-ks="0.65">أشجار مثمرة وحمضيات عالية الاحتياج (Ks=0.65)</option>
+                                </select>
+                            </div>
 
+                            <!-- 3. Palms & Succulents Input -->
                             <div class="form-group">
                                 <label for="palmArea"><i class="fa-solid fa-sun" style="color: var(--accent-color);"></i> مساحة النخيل والصباريات:<small>(م²)</small></label>
                                 <div class="input-wrapper">
@@ -338,7 +347,15 @@
                                     <span class="unit-badge">م²</span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="palmType">نوع النخيل أو النباتات العصارية:</label>
+                                <select id="palmType" class="form-control">
+                                    <option value="succulent" data-ks="0.15">صبارات ونباتات عصارية موفرة جداً (Ks=0.15)</option>
+                                    <option value="date_palm" data-ks="0.45" selected>نخيل التمر وواشنطونيا (متوسط الاحتياج - Ks=0.45)</option>
+                                </select>
+                            </div>
 
+                            <!-- 4. Shrubs & Groundcovers Input -->
                             <div class="form-group">
                                 <label for="shrubArea"><i class="fa-solid fa-seedling" style="color: var(--primary-light);"></i> مساحة الشجيرات والمغطيات:<small>(م²)</small></label>
                                 <div class="input-wrapper">
@@ -346,7 +363,15 @@
                                     <span class="unit-badge">م²</span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="shrubType">نوع الشجيرات ومغطيات التربة:</label>
+                                <select id="shrubType" class="form-control">
+                                    <option value="native_shrub" data-ks="0.35">شجيرات بيئية محلية موفرة (مرمية، ياسمين هندي، أتربلكس - Ks=0.35)</option>
+                                    <option value="exotic_shrub" data-ks="0.50" selected>شجيرات وتنسيق مستورد كثيف (Ks=0.50)</option>
+                                </select>
+                            </div>
 
+                            <!-- 5. Turfgrass / Lawns Input -->
                             <div class="form-group">
                                 <label for="grassArea"><i class="fa-solid fa-border-all" style="color: #4CAF50;"></i> مساحة المسطحات العشبية:<small>(م²)</small></label>
                                 <div class="input-wrapper">
@@ -354,10 +379,17 @@
                                     <span class="unit-badge">م²</span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="grassType">نوع العشب (Turfgrass):</label>
+                                <select id="grassType" class="form-control">
+                                    <option value="warm_grass" data-ks="0.60" selected>عشب دافئ موفر للمياه (برمودا Bermuda / باسبالم Paspalum - Ks=0.60)</option>
+                                    <option value="cool_grass" data-ks="0.80">عشب تقليدي عالي الاحتياج (راي جراس Cool-season - Ks=0.80)</option>
+                                </select>
+                            </div>
 
-                            <!-- 3. Irrigation Type -->
+                            <!-- 6. Irrigation Efficiency -->
                             <div class="form-group full-width">
-                                <label for="irrigationType"><i class="fa-solid fa-faucet-drip" style="color: var(--accent-color);"></i> نوع نظام الري المستخدم:</label>
+                                <label for="irrigationType"><i class="fa-solid fa-faucet-drip" style="color: var(--accent-color);"></i> نوع نظام الري وكفاءته (IE):</label>
                                 <select id="irrigationType" class="form-control" required>
                                     <option value="">-- اختر نوع نظام الري --</option>
                                     <option value="sub_drip" data-ie="0.90">تنقيط مدفون تحت السطح - Subsurface Drip (كفاءة IE = 90%)</option>
@@ -369,7 +401,7 @@
                                 </select>
                             </div>
 
-                            <!-- 4. Project Category -->
+                            <!-- 7. Project Category -->
                             <div class="form-group full-width">
                                 <label for="projectType"><i class="fa-solid fa-building-user" style="color: var(--primary-light);"></i> تصنيف المشروع (معامل ETAF):</label>
                                 <select id="projectType" class="form-control" required>
@@ -377,7 +409,7 @@
                                     <option value="public" data-etaf="0.60">حديقة عامة أو منتزه (ETAF = 0.60)</option>
                                     <option value="street" data-etaf="0.50">حقوق طريق وتشجير طرق (ETAF = 0.50)</option>
                                     <option value="residential" data-etaf="0.55" selected>مشروع سكني / مجمع سكني (ETAF = 0.55)</option>
-                                    <option value="commercial" data-etaf="0.45">مشروع تجاري / مؤسسي (ETAF = 0.45)</option>
+                                    <option value="commercial" data-etaf="0.45">مشروع تجاري / حكومي (ETAF = 0.45)</option>
                                 </select>
                             </div>
 
@@ -426,14 +458,14 @@
                             </div>
 
                             <!-- Breakdown Table -->
-                            <h4 style="color: var(--primary-color); margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-list-check" style="color: var(--accent-color);"></i> توزيع مياه الري اليومية حسب الغطاء النباتي:</h4>
+                            <h4 style="color: var(--primary-color); margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-list-check" style="color: var(--accent-color);"></i> تفصيل احتياجات المياه اليومية حسب النباتات:</h4>
                             <table class="breakdown-table">
                                 <thead>
                                     <tr>
-                                        <th>نوع الغطاء النباتي</th>
-                                        <th>المساحة (م²)</th>
-                                        <th>الاستهلاك (لتر/يوم)</th>
-                                        <th>النسبة</th>
+                                        <th>نوع النبات والاحتياج</th>
+                                        <th>المساحة</th>
+                                        <th>المعدل النوعي</th>
+                                        <th>الإجمالي اليومي</th>
                                     </tr>
                                 </thead>
                                 <tbody id="breakdownTbody">
@@ -447,7 +479,7 @@
 
                             <!-- Smart Recommendations -->
                             <div class="recommendations">
-                                <h4><i class="fa-solid fa-lightbulb"></i> التوصيات الهندسية لرفع الكفاءة:</h4>
+                                <h4><i class="fa-solid fa-lightbulb"></i> التوصيات الهندسية لرفع كفاءة الري:</h4>
                                 <ul id="recommendationsList">
                                 </ul>
                             </div>
@@ -493,7 +525,7 @@
         document.getElementById('waterCalculator').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Fetch Select Elements
+            // Fetch Region, Irrigation & Project Category Selects
             const regionSelect = document.getElementById('region');
             const irrigationSelect = document.getElementById('irrigationType');
             const projectSelect = document.getElementById('projectType');
@@ -503,7 +535,7 @@
             const etafMax = parseFloat(projectSelect.options[projectSelect.selectedIndex].getAttribute('data-etaf')) || 0.55;
 
             if (!etoAnnual) {
-                alert('يرجى اختيار الإقليم المناخي أولاً.');
+                alert('يرجى اختيار الإقليم المناخي والمدينة.');
                 return;
             }
 
@@ -520,28 +552,33 @@
                 return;
             }
 
+            // Fetch Specific Plant Species Factors (Ks / KL)
+            const treeSelect = document.getElementById('treeType');
+            const palmSelect = document.getElementById('palmType');
+            const shrubSelect = document.getElementById('shrubType');
+            const grassSelect = document.getElementById('grassType');
+
+            const ksTree = parseFloat(treeSelect.options[treeSelect.selectedIndex].getAttribute('data-ks')) || 0.45;
+            const ksPalm = parseFloat(palmSelect.options[palmSelect.selectedIndex].getAttribute('data-ks')) || 0.45;
+            const ksShrub = parseFloat(shrubSelect.options[shrubSelect.selectedIndex].getAttribute('data-ks')) || 0.45;
+            const ksGrass = parseFloat(grassSelect.options[grassSelect.selectedIndex].getAttribute('data-ks')) || 0.60;
+
             // Daily ETo (mm/day)
             const etoDaily = etoAnnual / 365.0;
 
-            // Plant Factors (KL) based on SAC-300 / SCUA
-            const klTree = 0.45;
-            const klPalm = 0.35;
-            const klShrub = 0.50;
-            const klGrass = 0.75;
-
             // Calculate Daily Water Demand per category (Liters/day)
-            // Equation: (Area * ETo_daily * KL) / IE
-            const treeLitersDaily = (treeArea * etoDaily * klTree * 1000) / ieEfficiency;
-            const palmLitersDaily = (palmArea * etoDaily * klPalm * 1000) / ieEfficiency;
-            const shrubLitersDaily = (shrubArea * etoDaily * klShrub * 1000) / ieEfficiency;
-            const grassLitersDaily = (grassArea * etoDaily * klGrass * 1000) / ieEfficiency;
+            // Formula: (Area * ETo_daily * Ks * 1000) / IE  (in Liters/day)
+            const treeLitersDaily = (treeArea * etoDaily * ksTree * 1000) / ieEfficiency;
+            const palmLitersDaily = (palmArea * etoDaily * ksPalm * 1000) / ieEfficiency;
+            const shrubLitersDaily = (shrubArea * etoDaily * ksShrub * 1000) / ieEfficiency;
+            const grassLitersDaily = (grassArea * etoDaily * ksGrass * 1000) / ieEfficiency;
 
             const totalLitersDaily = treeLitersDaily + palmLitersDaily + shrubLitersDaily + grassLitersDaily;
             const totalM3Daily = totalLitersDaily / 1000.0;
             const totalM3Annual = totalM3Daily * 365.0;
 
             // Maximum Allowed Water Budget (LWA in m³/year)
-            // Equation: (TotalArea * ETo_annual * ETAF_max) / (1000 * IE)
+            // Formula: (TotalArea * ETo_annual * ETAF_max) / (1000 * IE)
             const annualLWA = (totalArea * etoAnnual * etafMax) / (1000.0 * ieEfficiency);
 
             // Compliance Assessment
@@ -564,7 +601,7 @@
             const badgeText = document.getElementById('complianceText');
             if (isCompliant) {
                 badge.className = 'compliance-badge compliant';
-                badgeText.innerHTML = '<i class="fa-solid fa-circle-check"></i> متوافق مع الكود السعودي (' + ratio + '% من الحد المسموح) - وفر قدره ' + diffM3 + ' م³/سنة';
+                badgeText.innerHTML = '<i class="fa-solid fa-circle-check"></i> متوافق مع معايير الكود السعودي (' + ratio + '% من الحد المسموح) - وفر قدره ' + diffM3 + ' م³/سنة';
             } else {
                 badge.className = 'compliance-badge non-compliant';
                 badgeText.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> غير متوافق - تجاوز للحد المسموح بنسبة ' + ratio + '% (تجاوز قدره ' + diffM3 + ' م³/سنة)';
@@ -575,21 +612,21 @@
             tbody.innerHTML = '';
 
             const categories = [
-                { name: 'الأشجار البيئية', area: treeArea, liters: treeLitersDaily, icon: 'fa-tree' },
-                { name: 'النخيل والصباريات', area: palmArea, liters: palmLitersDaily, icon: 'fa-sun' },
-                { name: 'الشجيرات والمغطيات', area: shrubArea, liters: shrubLitersDaily, icon: 'fa-seedling' },
-                { name: 'المسطحات العشبية', area: grassArea, liters: grassLitersDaily, icon: 'fa-border-all' }
+                { name: 'الأشجار (' + treeSelect.options[treeSelect.selectedIndex].text.split('(')[0].trim() + ')', area: treeArea, liters: treeLitersDaily, icon: 'fa-tree' },
+                { name: 'النخيل والصباريات (' + palmSelect.options[palmSelect.selectedIndex].text.split('(')[0].trim() + ')', area: palmArea, liters: palmLitersDaily, icon: 'fa-sun' },
+                { name: 'الشجيرات (' + shrubSelect.options[shrubSelect.selectedIndex].text.split('(')[0].trim() + ')', area: shrubArea, liters: shrubLitersDaily, icon: 'fa-seedling' },
+                { name: 'المسطحات العشبية (' + grassSelect.options[grassSelect.selectedIndex].text.split('(')[0].trim() + ')', area: grassArea, liters: grassLitersDaily, icon: 'fa-border-all' }
             ];
 
             categories.forEach(cat => {
                 if (cat.area > 0) {
-                    const pct = totalLitersDaily > 0 ? ((cat.liters / totalLitersDaily) * 100).toFixed(1) : 0;
+                    const ratePerM2 = (cat.liters / cat.area).toFixed(2);
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td><i class="fa-solid ${cat.icon}" style="margin-left: 8px; color: var(--primary-color);"></i> ${cat.name}</td>
                         <td>${cat.area.toLocaleString('ar-SA')} م²</td>
-                        <td>${Math.round(cat.liters).toLocaleString('ar-SA')} لتر/يوم</td>
-                        <td><strong>${pct}%</strong></td>
+                        <td>${ratePerM2} لتر/م²/يوم</td>
+                        <td><strong>${Math.round(cat.liters).toLocaleString('ar-SA')} لتر/يوم</strong></td>
                     `;
                     tbody.appendChild(tr);
                 }
@@ -600,18 +637,18 @@
             recList.innerHTML = '';
 
             const recs = [];
-            if (!isCompliant) {
-                recs.push('تقليل مساحة المسطحات العشبية عالية الاستهلاك واستبدال جزء منها بمغطيات تربة محلية موفرة للمياه (مثل الـ Dymondia أو الأتربلكس).');
-                recs.push('تطوير نظام الري إلى التنسيق بالتنقيط المدفون (Subsurface Drip) لرفع كفاءة الري من ' + Math.round(ieEfficiency * 100) + '% إلى 90%.');
-                recs.push('تركيب حساسات رطوبة التربة (Soil Moisture Sensors) ومحطة ري ذكية مرتبطة بحالة الطقس لمنع الري في أوقات الأمطار.');
-            } else {
-                recs.push('نظام الري متوافق مع معايير الكود السعودي بشكل ممتاز.');
-                recs.push('يُنصح بجدولة الري خلال الفترات الصباحية الباكر أو المسائية لتقليل التبخر.');
-                recs.push('استمرار فحص خطوط الري دورياً لمنع التسربات والحفاظ على كفاءة الأداء.');
+            if (ksTree <= 0.35 && treeArea > 0) {
+                recs.push('ممتاز: اختيار الأشجار البيئية المحلية (الغاف والسدر والأثل) يساهم في توفير أكثر من 35% من مياه الري مقارنة بالأشجار المستوردة.');
             }
-
-            if (grassArea > totalArea * 0.3) {
-                recs.push('تنبيه: مساحة النجيل تزيد عن 30% من إجمالي مساحة الموقع، يفضل مراجعة حدود المسطحات الخضراء طبقاً لـ SAC-300.');
+            if (ksGrass >= 0.75 && grassArea > 0) {
+                recs.push('تنبيه: العشب البارد (Cool-season) يستهلك كميات مياه عالية جداً. يُنصح باستبداله بنوع Bermuda أو Paspalum الموفر للماء.');
+            }
+            if (!isCompliant) {
+                recs.push('الاستهلاك الحالي يتجاوز الحد المسموح به في الكود. يُنصح بتقليل مساحة النجيل أو تحويل نظام الري إلى التنقيط المدفون (Subsurface Drip).');
+                recs.push('تركيب أجهزة استشعار الرطوبة ومؤقتات الري الذكية (Smart Controllers) لمنع الإفراط في الري.');
+            } else {
+                recs.push('تصميم ميزانية المياه متوافق تماماً مع المتطلبات البيئية والهندسية لـ SAC-300.');
+                recs.push('يُوصى بالري خلال الساعات الأولى من الصباح لتقليل معدلات الفقد بالتبخر.');
             }
 
             recs.forEach(r => {

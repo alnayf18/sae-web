@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="styles.css?v=3.0">
+    <link rel="stylesheet" href="styles.css?v=4.0">
     <style>
         .calc-wrapper {
             display: grid;
@@ -620,11 +620,12 @@
             const etoDaily = etoAnnual / 365.0;
 
             // Daily Water Requirements (Liters/day)
-            // Formula: (Area * ETo_daily * Ks * 1000) / IE
-            const treeLitersDaily = (treeArea * etoDaily * ksTree * 1000) / ieEfficiency;
-            const palmLitersDaily = (palmArea * etoDaily * ksPalm * 1000) / ieEfficiency;
-            const shrubLitersDaily = (shrubArea * etoDaily * ksShrub * 1000) / ieEfficiency;
-            const grassLitersDaily = (grassArea * etoDaily * ksGrass * 1000) / ieEfficiency;
+            // Formula: (Area * ETo_daily * Ks) / IE
+            // Note: 1 mm depth over 1 m² area equals 1 Liter of water (1 m² * 1 mm = 1 Liter)
+            const treeLitersDaily = (treeArea * etoDaily * ksTree) / ieEfficiency;
+            const palmLitersDaily = (palmArea * etoDaily * ksPalm) / ieEfficiency;
+            const shrubLitersDaily = (shrubArea * etoDaily * ksShrub) / ieEfficiency;
+            const grassLitersDaily = (grassArea * etoDaily * ksGrass) / ieEfficiency;
 
             const totalLitersDaily = treeLitersDaily + palmLitersDaily + shrubLitersDaily + grassLitersDaily;
             const totalM3Daily = totalLitersDaily / 1000.0;
